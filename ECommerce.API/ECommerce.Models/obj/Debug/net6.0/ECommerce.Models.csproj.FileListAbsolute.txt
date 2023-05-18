@@ -1,0 +1,14 @@
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\bin\Debug\net6.0\ECommerce.Models.deps.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\bin\Debug\net6.0\ECommerce.Models.runtimeconfig.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\bin\Debug\net6.0\ECommerce.Models.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\bin\Debug\net6.0\ECommerce.Models.pdb
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\obj\Debug\net6.0\ECommerce.Models.csproj.AssemblyReference.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\obj\Debug\net6.0\ECommerce.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\obj\Debug\net6.0\ECommerce.Models.AssemblyInfoInputs.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\obj\Debug\net6.0\ECommerce.Models.AssemblyInfo.cs
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\obj\Debug\net6.0\ECommerce.Models.csproj.CoreCompileInputs.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\obj\Debug\net6.0\ECommerce.Models.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\obj\Debug\net6.0\refint\ECommerce.Models.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\obj\Debug\net6.0\ECommerce.Models.pdb
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\obj\Debug\net6.0\ECommerce.Models.genruntimeconfig.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.Models\obj\Debug\net6.0\ref\ECommerce.Models.dll
