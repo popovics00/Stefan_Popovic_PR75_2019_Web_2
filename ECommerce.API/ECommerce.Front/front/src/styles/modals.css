@@ -1,0 +1,78 @@
+.modal-wrapper {
+  position: fixed;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  top: 0;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  background-color: white;
+  width: 70%;
+  height: 80%;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  max-width: 56rem;
+}
+
+.modal-photo {
+  width: 60%;
+  margin: 1rem;
+  object-fit: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.modal-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 1rem 1rem 0rem;
+  width: 50%;
+}
+
+.modal-info-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+}
+
+.modal-info-header {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.modal-info-description {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-info-price {
+  font-size: 1.4rem;
+  color: rgb(163, 1, 1);
+}
+
+.modal-info-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  margin-top: 5rem;
+}
+
+.add-to-cart-btn {
+  width: 10rem;
+}
+
+.add-to-cart-btn:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+}
