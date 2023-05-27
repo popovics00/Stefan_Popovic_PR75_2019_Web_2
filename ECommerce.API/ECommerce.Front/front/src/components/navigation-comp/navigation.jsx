@@ -12,7 +12,7 @@ function Navigation() {
           <NavigationItem item={"Register"} path={"register"} />
         </div>
         <div className="navigation-header">
-          <Link to={""}>Movie Props</Link>
+          <Link to={""}>WEB SHOP</Link>
         </div>
         <div className="navigation-right">
           <NavigationItem item={"Shop"} path={"main-shop"} />

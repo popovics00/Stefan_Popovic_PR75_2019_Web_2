@@ -2,21 +2,37 @@ import styles from "../styles/dashboard.css";
 
 function Dashboard() {
   return (
+    Slider()
+    );
+}
+
+function Slider() {
+  return (
     <>
       <div className="dashboard-wrapper">
         <div className="dashboard-header">
-          <span>What is your favorite movie?</span>
+          <span>BITNO JE DA KUPUJETE POVOLJNO</span>
           <p>
-            If you ever wondered is there somewhere a website to buy a Thors
-            hamer, or Harry Pothers glasses, You are on the right site
+            Kupovinom kod nas stedite novac, a pritom dobijate
+            kvalitetne proizvode. 
           </p>
         </div>
         <div className="dashboard-photo-wrapper">
           <img
             className="dashboard-photo"
-            src={require("../images/john.jpg")}
+            src={require("../images/girl.jpg")}
           />
         </div>
+      </div>
+    </>
+  );
+}
+
+function Icons() {
+  return (
+    <>
+      <div>
+        dsad
       </div>
     </>
   );
