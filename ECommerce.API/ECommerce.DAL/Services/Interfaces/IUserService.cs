@@ -1,4 +1,4 @@
-﻿using DebtMonitoring.DAL.DTO;
+﻿using ECommerce.DAL.DTO;
 using ECommerce.DAL.DTO.User.DataIn;
 using ECommerce.Models.Models;
 

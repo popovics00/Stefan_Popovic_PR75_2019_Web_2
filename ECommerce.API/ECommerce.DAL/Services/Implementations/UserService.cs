@@ -1,5 +1,5 @@
-﻿using DebtMonitoring.DAL.DTO;
-using ECommerce.DAL.Data;
+﻿using ECommerce.DAL.Data;
+using ECommerce.DAL.DTO;
 using ECommerce.DAL.DTO.User.DataIn;
 using ECommerce.DAL.Services.Interfaces;
 using ECommerce.Models.Models;
@@ -10,8 +10,8 @@ namespace ECommerce.DAL.Services.Implementations
 {
     public class UserService : IUserService
     {
-        private readonly ApplicationDbContext _dbContext;
-        public UserService(ApplicationDbContext dbContext)
+        private readonly UserDbContext _dbContext;
+        public UserService(UserDbContext dbContext)
         {
             _dbContext = dbContext;
         }

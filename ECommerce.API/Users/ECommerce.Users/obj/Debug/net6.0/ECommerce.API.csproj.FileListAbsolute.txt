@@ -1,0 +1,288 @@
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\appsettings.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.exe
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.deps.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.runtimeconfig.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.pdb
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Humanizer.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Runtime.Caching.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.DAL.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.Models.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.DAL.pdb
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.Models.pdb
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.csproj.AssemblyReference.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.AssemblyInfoInputs.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.AssemblyInfo.cs
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.csproj.CoreCompileInputs.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets\msbuild.ECommerce.API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets\msbuild.build.ECommerce.API.props
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ECommerce.API.props
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.ECommerce.API.props
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\scopedcss\bundle\ECommerce.API.styles.css
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.csproj.CopyComplete
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\refint\ECommerce.API.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.pdb
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.genruntimeconfig.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ref\ECommerce.API.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\appsettings.json
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\libman.json
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ocelot.json
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.exe
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.deps.json
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.runtimeconfig.json
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.pdb
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Humanizer.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.DiagnosticAdapter.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Ocelot.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Runtime.Caching.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.DAL.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.Models.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.DAL.pdb
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.Models.pdb
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.csproj.AssemblyReference.cache
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.AssemblyInfoInputs.cache
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.AssemblyInfo.cs
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.csproj.CoreCompileInputs.cache
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\scopedcss\bundle\ECommerce.API.styles.css
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.csproj.CopyComplete
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\refint\ECommerce.API.dll
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.pdb
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.genruntimeconfig.cache
+C:\Users\Stefan Sotex\Desktop\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ref\ECommerce.API.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\appsettings.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\libman.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.exe
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.deps.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.runtimeconfig.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.API.pdb
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Humanizer.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.DiagnosticAdapter.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Ocelot.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Runtime.Caching.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Security.Permissions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\System.Windows.Extensions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.DAL.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.Models.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.DAL.pdb
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\bin\Debug\net6.0\ECommerce.Models.pdb
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.csproj.AssemblyReference.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.AssemblyInfoInputs.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.AssemblyInfo.cs
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.csproj.CoreCompileInputs.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets\msbuild.ECommerce.API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets\msbuild.build.ECommerce.API.props
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ECommerce.API.props
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.ECommerce.API.props
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\scopedcss\bundle\ECommerce.API.styles.css
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.csproj.CopyComplete
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\refint\ECommerce.API.dll
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.pdb
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ECommerce.API.genruntimeconfig.cache
+C:\Users\stefa\OneDrive\Desktop\Stefan_Popovic_PR75_2019_Web_2\Stefan_Popovic_PR75_2019_Web_2\ECommerce.API\ECommerce.API\obj\Debug\net6.0\ref\ECommerce.API.dll

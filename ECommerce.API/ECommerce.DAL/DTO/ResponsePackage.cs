@@ -1,4 +1,4 @@
-﻿namespace DebtMonitoring.DAL.DTO
+﻿namespace ECommerce.DAL.DTO
 {
     public class ResponsePackage<T> : ResponsePackageNoData
     {
