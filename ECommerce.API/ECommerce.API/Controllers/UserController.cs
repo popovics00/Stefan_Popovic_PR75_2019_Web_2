@@ -5,15 +5,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.API.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly IUserService userService;
 
         [AllowAnonymous]
-        [HttpPost("save")]
-        public ActionResult Save(UserRegisterDataIn dataIn)
+        [HttpGet("save")]
+        public ActionResult Save()
         {
-            return Ok(this.userService.Save(dataIn););
+            return Ok();
         }
     }
 }

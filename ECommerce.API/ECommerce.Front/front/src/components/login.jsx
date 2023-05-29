@@ -2,113 +2,59 @@ import React, { Component, Fragment } from 'react';
 import styles from "../styles/login.css";
 import { Link, useNavigate } from "react-router-dom";
 import MyInput from "./input-comp/myInput";
-// import axios from 'axios';
-// import AuthService from './_Services/AuthService';
-// import { NavMenu } from './NavMenu';
-
-const initialState = {
-    email: '',
-    password: '',
-    emailError: "",
-    passwordError: "",
-}
-
-export class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = initialState;
-        // create new authservice
-        // this.Auth = new AuthService();
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    //handle login validation
-    handleValidate = () => {
-        let emailError = "", passwordError = "";
-        if (!this.state.email.includes('@')) {
-            emailError = "* Invalid email";
-        }
-        if (!this.state.email) {
-            emailError = "* Email cannot be blank";
-        }
-        if (!this.state.password) {
-            passwordError = "* Password cannot be blank";
-        }
-        if (emailError || passwordError) {
-            this.setState({ emailError: emailError, passwordError: passwordError });
-            return false;
-        } else {
-            this.setState({ emailError: "", passwordError: "" });
-            return true;
-        }
-    }
-
-    //handle change form events
-    handleChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value })
-    }
-    //handle submit form
-    handleSubmit = (event) => {
-        event.preventDefault();
-        const isValid = this.handleValidate();
-        // check validation frontend first
-        if (isValid) {   
-            // this.Auth.login(this.state.email, this.state.password)
-            //     .then(res => {
-            //         this.props.history.push('/');
-            //         this.props.handleLogin();
-            //         //this.props.handleStatus(); //after login, run to update the login/logout status
-            //     })
-            //     .catch(error => {
-            //         this.setState({ passwordError: "* " + JSON.parse(error).message });
-            //     })
-            
-        }
-    }
+import { useForm } from 'react-hook-form';
+import userServices from "../services/userServices";
 
 
-    render() {
-        return (
-            <Fragment>
-                <div class="wrapper fadeInDown">
-                    <div id="formContent">
-                        <h2 class="active"> Sign In </h2>
-                        <Link to="/signup"><h2 className="inactive underlineHover">Sign Up</h2></Link>
+function Login() {
+    const navigate = useNavigate();
+   // const location = useLocation();
+  
+    //const { login } = useUser();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+  
+    const onSubmit = async (loginData) => {
+        console.log(loginData)
+      //const user = await login(loginData);
+      const resp = await userServices.login(loginData);
+      //if (user && location.pathname === '/authentication') {
+        navigate('/');
+      //}
+    };
+//   const navigate = useNavigate();
 
-                        <div class="fadeIn first">
-                            <img src="https://cdn1.iconfinder.com/data/icons/essential-21/128/User-512.png" id="icon" alt="User Icon" />
-                        </div>
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     const resp = await userServices.createUser(registerData);
+//     navigate("/");
+//   };
 
-                        <form onSubmit={this.handleSubmit} noValidate>
-                            <input
-                                onChange={this.handleChange}
-                                value={this.state.email} type="email"
-                                id="email"
-                                class="fadeIn second"
-                                name="email"
-                                placeholder="Email" />
-                            <div style={{ fontSize:12, color: "red" }}>{this.state.emailError}</div>
-                            <input
-                                onChange={this.handleChange}
-                                value={this.state.password}
-                                type="password"
-                                id="password"
-                                class="fadeIn third"
-                                name="password"
-                                placeholder="Password" />
-                            <div style={{ fontSize: 12, color: "red" }}>{this.state.passwordError}</div>
-                            <input type="submit" class="fadeIn fourth" value="Log In" />
-                        </form>
-
-                        <div id="formFooter">
-                            <a class="underlineHover" href="#">Forgot Password?</a>
-                        </div>
-
-                    </div>
-                </div>
-            </Fragment>
-        );
-    }
+  return (
+    <>
+     <div className='login'>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label className='input-label'>
+          Email
+          <div className='input-wrapper'>
+            {/* <FontAwesomeIcon icon={icons.email}></FontAwesomeIcon> */}
+            <input type="text" {...register("email", { required: true })} />
+          </div>
+        </label>
+        {errors.email && <span>This field is required</span>}
+        <label className='input-label'>
+          Password
+          <div className='input-wrapper'>
+            {/* <FontAwesomeIcon icon={icons.lock}></FontAwesomeIcon> */}
+            <input type="password" {...register("password", { required: true })} />
+          </div>
+        </label>
+        {errors.password && <span>This field is required</span>}
+        <button type="submit">LOGIN</button>
+      </form>
+    </div>
+      {/* <img className="login-photo" src={require("../images/lotrRing.png")} /> */}
+    </>
+  );
 }
 

@@ -1,22 +1,22 @@
-import Login from "./components/login";
-import { Routes, Route } from "react-router-dom";
-import Register from "./components/register";
+import logo from './logo.svg';
+import './App.css';
 import Dashboard from "./components/dashboard";
-import Navigation from "./components/navigation-comp/navigation";
-import AddArticle from "./components/article-comp/addArticle";
-import MainShop from "./components/mainShop";
+import { Routes, Route } from "react-router-dom";
+import Menu from "./components/menu-component/menu";
+import Register from "./components/register";
+import Login from "./components/login";
 
 function App() {
   return (
     <>
       <div className="main-container">
-        <Navigation />
+        <Menu />
         <Routes>
           <Route path="" element={<Dashboard />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="add-article" element={<AddArticle />} />
-          <Route path="main-shop" element={<MainShop />} />
+          {/* <Route path="add-article" element={<AddArticle />} />
+          <Route path="main-shop" element={<MainShop />} />  */}
         </Routes>
       </div>
     </>
