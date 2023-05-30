@@ -1,4 +1,3 @@
-import React, { Component, Fragment } from 'react';
 import styles from "../styles/login.css";
 import { Link, useNavigate } from "react-router-dom";
 import MyInput from "./input-comp/myInput";
@@ -8,16 +7,17 @@ import userServices from "../services/userServices";
 
 function Login() {
     const navigate = useNavigate();
-   // const location = useLocation();
-  
-    //const { login } = useUser();
+    if(userServices.isLoggedIn)
+      navigate('/');
+    else
+      navigate('/login');
+
+
     const { register, handleSubmit, formState: { errors } } = useForm();
   
     const onSubmit = async (loginData) => {
         console.log(loginData)
-      //const user = await login(loginData);
       const resp = await userServices.login(loginData);
-      //if (user && location.pathname === '/authentication') {
         navigate('/');
       //}
     };
@@ -58,3 +58,4 @@ function Login() {
   );
 }
 
+export default Login;

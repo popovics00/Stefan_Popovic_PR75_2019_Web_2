@@ -35,12 +35,6 @@ function Dashboard() {
         // Add more image URLs as needed
       ];
   return (
-    Slider()
-    );
-}
-
-function Slider() {
-  return (
     <>
       {/* <div className="dashboard-wrapper">
         <div className="dashboard-header"> */}
@@ -103,7 +97,7 @@ function Slider() {
         {/* <div className="dashboard-photo-wrapper">
           <img
             className="dashboard-photo"
-            src={require("../images/girl.jpg")}
+            src={require("../images/john.jpg")}
           />
         </div> */}
      {/* </div> */}

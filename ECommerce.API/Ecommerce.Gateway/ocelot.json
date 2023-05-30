@@ -1,6 +1,12 @@
 {
   "Routes": [
     {
+      //
+      //
+      //  PRODUCT SERVICE
+      //
+      //
+
       "DownstreamPathTemplate": "/api/product/save",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
@@ -24,8 +30,18 @@
       //},
       "FileCacheOptions": { "TtlSeconds": 30 }
     },
+
+
+
+
+    //
+    //
+    //  USER SERVICE
+    //
+    //
+
     {
-      "DownstreamPathTemplate": "/api/user/save",
+      "DownstreamPathTemplate": "/api/user/register",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -33,8 +49,32 @@
           "Port": 7219
         }
       ],
-      "UpstreamPathTemplate": "/api/user/save",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamPathTemplate": "/api/user/register",
+      "UpstreamHttpMethod": [ "POST" ],
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //},
+      //"RateLimitOptions": {
+      //  "ClientWhitelist": [],
+      //  "EnableRateLimiting": true,
+      //  "Period": "5s",
+      //  "PeriodTimespan": 1,
+      //  "Limit": 1
+      //},
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/login",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7219
+        }
+      ],
+      "UpstreamPathTemplate": "/api/user/login",
+      "UpstreamHttpMethod": [ "POST" ],
       //"AuthenticationOptions": {
       //  "AuthenticationProviderKey": "Bearer",
       //  "AllowedScopes": []

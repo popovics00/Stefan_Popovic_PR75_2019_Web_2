@@ -16,7 +16,13 @@ namespace ECommerce.DAL.Services.Implementations
             _dbContext = dbContext;
         }
 
-        public ResponsePackage<string> Save(UserRegisterDataIn dataIn)
+        public User GetUserByEmailAndPass(string email, string pass)
+        {
+            return _dbContext.Users
+                            .FirstOrDefault(x => !x.IsDeleted && x.Email == email && x.Password == pass);
+        }
+
+        public ResponsePackage<string> Save(RegisterUserDataIn dataIn)
         {
             dataIn.Email = dataIn.Email.ToLower().Trim();
             var userForDb = new User()

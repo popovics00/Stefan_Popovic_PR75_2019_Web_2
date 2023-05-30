@@ -1,44 +1,83 @@
+import React from "react";
 import axios from 'axios';
 import baseUrl from '../components/endpoints';
-import User from '../models/user'
-import { decodeToken, useJwt } from "react-jwt";
+import User from '../models/user';
+import { decodeToken, isExpired } from "react-jwt";
 
-const API_URL = `${baseUrl}`+ "user/";                   //process.env.API_URL 
+
+const API_URL = `${baseUrl}` + "user/"; // process.env.API_URL
+
+
+function isLoggedIn() {
+  let token = localStorage.getItem('token');
+  if (!token)
+  return false;
+  return isExpired(token);
+}
+
+function logOut() {
+  console.log(localStorage.getItem('token'))
+  localStorage.removeItem("token");
+  window.location.href = "/login";
+  };
+
+function getCurrentUser () {
+  let token = localStorage.getItem('token');
+  if (!token)
+    return null;
+  return decodeToken(token);
+}
 
 const login = async (loginData) => {
-    try {
-      const response = await axios.post(`https://localhost:7218/api/User/login`, loginData);
-      if (response.data.token) {
-        localStorage.setItem('user', JSON.stringify(response.data));
-        const token = response.data.token;
-        const decodedToken = decodeToken(token);
-        return decodedToken.nameid;
-      }
-      return { token: null };
-    } catch (error) {
-      if (error.response && error.response.status === 401) {
-        alert('Invalid email or password');
-      } else {
-        alert('An error occurred');
-      }
-      return { token: null };
+  try {
+    const response = await axios.post(`https://localhost:57416/api/User/login`, loginData);
+    if (response.data.status === 200 || response.data.status ==="OK") {
+      localStorage.setItem('token', JSON.stringify(response.data.transferObject));
+      return alert("Successfully login");                           //decodedToken.nameid
     }
-    
-  };
-  const getUsers = async () => {
-    const response = await axios.get(`https://localhost:7218/api/User`);
-    return response.data;
+    return { token: null };
+  } catch (error) {
+    if (error.response && error.response.status === 401) {
+      alert('Invalid email or password');
+    } else {
+      alert('An error occurred');
+    }
+    return { token: null };
   }
+  
+};
+
+
+
+const getUsers = async () => {
+  try {
+    const response = await axios.get(`https://localhost:57416/api/User`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
 
 const createUser = async (user) => {
-  console.log(API_URL + "DADADAADADDADADAAD")
-  console.log("dddddddddddddddddddddddddddddddddddddddddddd")
-  console.log(JSON.stringify(user)+"prviiiiiii")
-  const response = await axios.post(`https://localhost:7218/api/User/save`, user);
-  return response.data;
-}
+  console.log(API_URL + "DADADAADADDADADAAD");
+  console.log(JSON.stringify(user) + "prviiiiiii");
+  
+  try {
+    const response = await axios.post(`https://localhost:57416/api/User/register`, user);
+    console.log('radi');
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    // return null;
+  }
+};
+
 export default {
   login,
   createUser,
-  getUsers
+  getUsers,
+  logOut,
+  getCurrentUser,
+  isLoggedIn,
 };

@@ -4075,19 +4075,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\stefa\\.nuget\\packages\\": {}
+    "C:\\Users\\Stefan Sotex\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\stefa\\OneDrive\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\Products\\ECommerce.Product\\ECommerce.Product.csproj",
+      "projectUniqueName": "C:\\Users\\Stefan Sotex\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\Products\\ECommerce.Product\\ECommerce.Product.csproj",
       "projectName": "ECommerce.Product",
-      "projectPath": "C:\\Users\\stefa\\OneDrive\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\Products\\ECommerce.Product\\ECommerce.Product.csproj",
-      "packagesPath": "C:\\Users\\stefa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\stefa\\OneDrive\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\Products\\ECommerce.Product\\obj\\",
+      "projectPath": "C:\\Users\\Stefan Sotex\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\Products\\ECommerce.Product\\ECommerce.Product.csproj",
+      "packagesPath": "C:\\Users\\Stefan Sotex\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Stefan Sotex\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\Products\\ECommerce.Product\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\stefa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Stefan Sotex\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4101,8 +4101,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\stefa\\OneDrive\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\ECommerce.DAL\\ECommerce.DAL.csproj": {
-              "projectPath": "C:\\Users\\stefa\\OneDrive\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\ECommerce.DAL\\ECommerce.DAL.csproj"
+            "C:\\Users\\Stefan Sotex\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\ECommerce.DAL\\ECommerce.DAL.csproj": {
+              "projectPath": "C:\\Users\\Stefan Sotex\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\ECommerce.DAL\\ECommerce.DAL.csproj"
             }
           }
         }
@@ -4163,7 +4163,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

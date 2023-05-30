@@ -20,11 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\User\DataOut\" />
+    <ProjectReference Include="..\ECommerce.Models\ECommerce.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ECommerce.Models\ECommerce.Models.csproj" />
+    <Folder Include="DTO\User\DataOut\" />
   </ItemGroup>
 
 </Project>

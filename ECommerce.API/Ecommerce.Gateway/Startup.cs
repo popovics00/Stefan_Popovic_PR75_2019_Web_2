@@ -1,3 +1,5 @@
+using ECommerce.DAL.Services.Implementations;
+using ECommerce.DAL.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Ocelot.Cache.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using System.Configuration;
 using System.Text;
 
 namespace Ecommerce.Gateway
@@ -37,6 +40,21 @@ namespace Ecommerce.Gateway
                 };
             });
 
+            services.AddCors(options =>
+            {
+                var frontendUrl = "http://localhost:3000/";
+
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins(frontendUrl)
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed((host) => true)
+                    .AllowCredentials();
+                });
+            });
+
+
             services.AddOcelot().AddCacheManager(settings => settings.WithDictionaryHandle());
         }
 
@@ -51,6 +69,7 @@ namespace Ecommerce.Gateway
             app.UseRouting();
 
             app.UseAuthentication();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
@@ -63,5 +82,6 @@ namespace Ecommerce.Gateway
 
             app.UseOcelot().Wait();
         }
+
     }
 }

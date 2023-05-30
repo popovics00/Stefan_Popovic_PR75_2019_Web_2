@@ -1,9 +1,11 @@
 import styles from "../styles/login.css";
 import { Link, useNavigate } from "react-router-dom";
 import MyInput from "./input-comp/myInput";
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import userServices from "../services/userServices";
-import { useEffect } from "react";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function Register() {
   const navigate = useNavigate();
@@ -13,7 +15,8 @@ function Register() {
 //     navigate("/dashboard");
   //};
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, control } = useForm();
+  const [birthDate, setBirthDate] = useState(new Date());
 
   const onSubmit = async (registerData) => {
     console.log(registerData)
@@ -89,6 +92,16 @@ function Register() {
             <input type="password" {...register("password", { required: true, minLength: 8, maxLength: 20 })} />
           </div>
         </label>
+        {errors.password?.type === 'required' && <span>This field is required</span>}
+        {errors.password?.type === 'minLength' && <span>Password must be at least 8 characters long</span>}
+        {errors.password?.type === 'maxLength' && <span>Password must be at most 20 characters long</span>}
+        <label className='input-label'>
+        Birth Date <span>*</span>
+        <div className='input-wrapper'>
+        <input type="date" {...register("birthDate", { required: true, minLength: 8, maxLength: 20 })} />
+                </div>
+      </label>
+
         {errors.password?.type === 'required' && <span>This field is required</span>}
         {errors.password?.type === 'minLength' && <span>Password must be at least 8 characters long</span>}
         {errors.password?.type === 'maxLength' && <span>Password must be at most 20 characters long</span>}
