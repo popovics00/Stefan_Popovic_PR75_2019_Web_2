@@ -1,7 +1,9 @@
+import React from "react";
 import axios from 'axios';
 import baseUrl from '../components/endpoints';
 import User from '../models/user';
 import { decodeToken, isExpired } from "react-jwt";
+
 
 const API_URL = `${baseUrl}` + "user/"; // process.env.API_URL
 
@@ -9,9 +11,15 @@ const API_URL = `${baseUrl}` + "user/"; // process.env.API_URL
 function isLoggedIn() {
   let token = localStorage.getItem('token');
   if (!token)
-    return false;
+  return false;
   return isExpired(token);
 }
+
+function logOut() {
+  console.log(localStorage.getItem('token'))
+  localStorage.removeItem("token");
+  window.location.href = "/login";
+  };
 
 function getCurrentUser () {
   let token = localStorage.getItem('token');
@@ -69,6 +77,7 @@ export default {
   login,
   createUser,
   getUsers,
+  logOut,
   getCurrentUser,
   isLoggedIn,
 };
