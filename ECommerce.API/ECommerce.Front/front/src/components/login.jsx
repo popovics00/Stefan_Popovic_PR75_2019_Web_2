@@ -1,4 +1,3 @@
-import React, { Component, Fragment } from 'react';
 import styles from "../styles/login.css";
 import { Link, useNavigate } from "react-router-dom";
 import MyInput from "./input-comp/myInput";
@@ -58,3 +57,4 @@ function Login() {
   );
 }
 
+export default Login;
