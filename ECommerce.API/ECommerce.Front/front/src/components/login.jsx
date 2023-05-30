@@ -7,16 +7,17 @@ import userServices from "../services/userServices";
 
 function Login() {
     const navigate = useNavigate();
-   // const location = useLocation();
-  
-    //const { login } = useUser();
+    if(userServices.isLoggedIn)
+      navigate('/');
+    else
+      navigate('/login');
+
+
     const { register, handleSubmit, formState: { errors } } = useForm();
   
     const onSubmit = async (loginData) => {
         console.log(loginData)
-      //const user = await login(loginData);
       const resp = await userServices.login(loginData);
-      //if (user && location.pathname === '/authentication') {
         navigate('/');
       //}
     };
