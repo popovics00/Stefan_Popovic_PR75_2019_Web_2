@@ -90,6 +90,7 @@ namespace ECommerce.API
 
         private void BindServices(IServiceCollection services)
         {
+            services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IUserService, UserService>();
 
         }

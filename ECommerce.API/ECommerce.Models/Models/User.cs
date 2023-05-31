@@ -15,7 +15,8 @@ namespace ECommerce.Models.Models
         [Required]
         public string Password { get; set; }
         public Role Role { get; set; }
-
+        public bool Active { get; set; } = false;
+        public string ActivateKey { get; set; }
     }
     public enum Role
     {

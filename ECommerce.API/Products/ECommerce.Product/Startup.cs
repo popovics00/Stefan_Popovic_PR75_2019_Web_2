@@ -89,7 +89,7 @@ namespace ECommerce.Product
 
         private void BindServices(IServiceCollection services)
         {
-
+            services.AddTransient<IEmailService, EmailService>();
         }
     }
 }

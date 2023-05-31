@@ -8,6 +8,7 @@ namespace ECommerce.DAL.Services.Interfaces
     {
         ResponsePackage<string> Save(RegisterUserDataIn dataIn);
         User GetUserByEmailAndPass(string email, string pass);
+        ResponsePackage<string> ActivateUser(string email, string key);
 
     }
 }

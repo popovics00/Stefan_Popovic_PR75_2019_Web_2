@@ -30,7 +30,7 @@ function getCurrentUser () {
 
 const login = async (loginData) => {
   try {
-    const response = await axios.post(`https://localhost:57416/api/User/login`, loginData);
+    const response = await axios.post(`https://localhost:63290/api/User/login`, loginData);
     if (response.data.status === 200 || response.data.status ==="OK") {
       localStorage.setItem('token', JSON.stringify(response.data.transferObject));
       return alert("Successfully login");                           //decodedToken.nameid
@@ -51,7 +51,7 @@ const login = async (loginData) => {
 
 const getUsers = async () => {
   try {
-    const response = await axios.get(`https://localhost:57416/api/User`);
+    const response = await axios.get(`https://localhost:63290/api/User`);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -64,7 +64,7 @@ const createUser = async (user) => {
   console.log(JSON.stringify(user) + "prviiiiiii");
   
   try {
-    const response = await axios.post(`https://localhost:57416/api/User/register`, user);
+    const response = await axios.post(`https://localhost:63290/api/User/register`, user);
     console.log('radi');
     return response.data;
   } catch (error) {
