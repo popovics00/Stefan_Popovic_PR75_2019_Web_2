@@ -3,7 +3,7 @@ import axios from 'axios';
 import baseUrl from '../components/endpoints';
 import User from '../models/user';
 import { decodeToken, isExpired } from "react-jwt";
-
+import { toast } from 'react-toastify';
 
 const API_URL = `${baseUrl}` + "user/"; // process.env.API_URL
 
@@ -31,21 +31,20 @@ function getCurrentUser () {
 const login = async (loginData) => {
   try {
     const response = await axios.post(`https://localhost:63290/api/User/login`, loginData);
-    if (response.data.status === 200 || response.data.status ==="OK") {
+    if (response.status == 200 || response.status === "OK") {
+      toast.success(response.data.message);
       localStorage.setItem('token', JSON.stringify(response.data.transferObject));
-      return alert("Successfully login");                           //decodedToken.nameid
-    }
-    return { token: null };
+    } 
+    else if (response.status === 402) 
+      toast.error(response.data.message);
+    else
+      toast.error("Error ocurred.");
   } catch (error) {
-    if (error.response && error.response.status === 401) {
-      alert('Invalid email or password');
-    } else {
-      alert('An error occurred');
-    }
-    return { token: null };
+    toast.success(error);
   }
-  
 };
+
+
 
 
 

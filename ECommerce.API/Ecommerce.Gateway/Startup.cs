@@ -1,4 +1,4 @@
-using ECommerce.DAL.Services.Implementations;
+﻿using ECommerce.DAL.Services.Implementations;
 using ECommerce.DAL.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -53,6 +53,8 @@ namespace Ecommerce.Gateway
                     .AllowCredentials();
                 });
             });
+
+
 
 
             services.AddOcelot().AddCacheManager(settings => settings.WithDictionaryHandle());

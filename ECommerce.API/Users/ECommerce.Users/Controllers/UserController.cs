@@ -5,6 +5,7 @@ using ECommerce.DAL.Services.Interfaces;
 using ECommerce.Models.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
 
 namespace ECommerce.API.Controllers
 {
@@ -28,16 +29,26 @@ namespace ECommerce.API.Controllers
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public ActionResult Login([FromBody] LoginDataIn loginData)
+        public async Task<ActionResult> Login([FromBody] LoginDataIn loginData)
         {
             DateTime passwordLimit = DateTime.Today.AddDays(-90);
             ResponsePackage<string> retval;
             var user = this._userService.GetUserByEmailAndPass(loginData.Email, loginData.Password);
-            
-            string token = JwtManager.GetToken(user, 60);
-            retval = new ResponsePackage<string>(token);
-
-            return Ok(retval);
+            if (user != null)
+            {
+                string token = JwtManager.GetToken(user, 60);
+                retval = new ResponsePackage<string>(token);
+                return Ok(new ResponsePackage<string>()
+                {
+                    Status = ResponseStatus.Ok,
+                    Message = "Success loging!",
+                    TransferObject = token
+                });
+            }
+            else if(user.Active == false)
+                return Ok(new ResponsePackage<string>(ResponseStatus.Error, "Account is corrent, but deactivated (please check your email or contact support)!"));
+            else
+                return Ok(new ResponsePackage<string>(ResponseStatus.Error, "Wrong email or password!"));
         }
 
         [HttpGet("activate/{email}/{key}")]

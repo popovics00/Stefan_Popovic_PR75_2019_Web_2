@@ -11,7 +11,7 @@ body {
 .main-container {
   height: 100vh;
   width: 100%;
-  background-image: url("./images/backgroundRed.jpg");
+  background-image: url("./images/background.webp");
   background-size: cover;
   position: fixed;
   overflow-y: scroll;

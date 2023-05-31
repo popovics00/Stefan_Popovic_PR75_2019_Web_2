@@ -35,7 +35,7 @@ namespace ECommerce.DAL.Services.Implementations
         public User GetUserByEmailAndPass(string email, string pass)
         {
             return _dbContext.Users
-                            .FirstOrDefault(x => !x.IsDeleted && !x.Active && x.Email == email && x.Password == pass);
+                            .FirstOrDefault(x => !x.IsDeleted && x.Email == email && x.Password == pass);
         }
 
         public ResponsePackage<string> Save(RegisterUserDataIn dataIn)
@@ -59,7 +59,7 @@ namespace ECommerce.DAL.Services.Implementations
                     return new ResponsePackage<string>(ResponseStatus.Error, "User with this email already exists.");
                 _dbContext.Users.Add(userForDb);
                 _dbContext.SaveChanges();
-                _emailService.SendEmail(dataIn.Email, $"Klikni da aktiviras na link https://localhost:63290/api/User/login/{dataIn.Email}/{userForDb.ActivateKey}");
+                _emailService.SendEmail(dataIn.Email, $"Klikni da aktiviras na link https://localhost:63290/api/User/activate/{dataIn.Email}/{userForDb.ActivateKey}");
                 return new ResponsePackage<string>(ResponseStatus.Ok, "Successfully added new user.");
             }
             else // edit exist

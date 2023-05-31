@@ -1,4 +1,4 @@
-import styles from "../styles/login.css";
+import styles from "../styles/register.css";
 import { Link, useNavigate } from "react-router-dom";
 import MyInput from "./input-comp/myInput";
 import { useForm, Controller } from 'react-hook-form';

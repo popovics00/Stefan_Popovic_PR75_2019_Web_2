@@ -9,6 +9,7 @@ import userServices from "./services/userServices";
 
 function App() {
   const currentUser = userServices.getCurrentUser();
+  console.log(currentUser)
   if(currentUser == null)
   {
     return (
@@ -16,15 +17,15 @@ function App() {
      <div className="main-container">
         <Menu />
         <Routes>
-          <Route path="" element={<Dashboard />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          <Route path="" element={<Login/>} />
+          <Route path="login" element={<Login/>} />
+          <Route path="register" element={<Register/>} />
         </Routes>
       </div>
     </>
     );
   }
-  else if(currentUser.role=='1')
+  else if(currentUser.role=='Customer')
   {
     return (
     <>
@@ -39,7 +40,7 @@ function App() {
     </>
     );
   }
-  else if(currentUser.role=='2')
+  else if(currentUser.role=='Saler')
   {
     return (
     <>
@@ -54,7 +55,7 @@ function App() {
     </>
     );
   }
-  else if(currentUser.role=='3')
+  else if(currentUser.role=='Admin')
   {
     return (
     <>
