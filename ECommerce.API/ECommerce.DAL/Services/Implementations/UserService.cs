@@ -64,7 +64,7 @@ namespace ECommerce.DAL.Services.Implementations
             }
             else // edit exist
             {
-                var dbUser = _dbContext.Users.FirstOrDefault(x => x.Id == userForDb.Id);
+                var dbUser = _dbContext.Users.FirstOrDefault(x => x.Id == dataIn.Id);
                 if(dbUser == null)
                     return new ResponsePackage<string>(ResponseStatus.Error, "User not fount in database.");
 

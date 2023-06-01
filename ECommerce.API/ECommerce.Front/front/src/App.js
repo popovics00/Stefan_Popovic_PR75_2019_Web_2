@@ -5,6 +5,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Menu from "./components/menu-component/menu";
 import Register from "./components/register";
 import Login from "./components/login";
+import AddProduct from "./components/product-comp/add-product";
 import userServices from "./services/userServices";
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
           <Route path="" element={<Login/>} />
           <Route path="login" element={<Login/>} />
           <Route path="register" element={<Register/>} />
+            <Route path="add-product" element={<AddProduct/>} />
+
         </Routes>
       </div>
     </>
@@ -35,6 +38,8 @@ function App() {
           <Route path="" element={<Dashboard />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+            <Route path="add-product" element={<AddProduct/>} />
+
         </Routes>
       </div>
     </>
@@ -50,6 +55,8 @@ function App() {
           <Route path="" element={<Dashboard />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+            <Route path="add-product" element={<AddProduct/>} />
+
         </Routes>
       </div>
     </>
@@ -65,11 +72,18 @@ function App() {
           <Route path="" element={<Dashboard />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+            <Route path="add-product" element={<AddProduct/>} />
+
         </Routes>
       </div>
     </>
     );
   }
-}
+  <Routes>
+  <Route path="" element={<Dashboard />} />
+  <Route path="login" element={<Login />} />
+  <Route path="register" element={<Register />} />
+  <Route path="add-product" element={<AddProduct/>} />
+  </Routes>}
 
 export default App;

@@ -16,7 +16,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/product/save",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [ "Post" ],
       //"AuthenticationOptions": {
       //  "AuthenticationProviderKey": "Bearer",
       //  "AllowedScopes": []

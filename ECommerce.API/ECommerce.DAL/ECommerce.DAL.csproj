@@ -25,9 +25,4 @@
     <ProjectReference Include="..\ECommerce.Models\ECommerce.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DTO\Other\" />
-    <Folder Include="DTO\User\DataOut\" />
-  </ItemGroup>
-
 </Project>

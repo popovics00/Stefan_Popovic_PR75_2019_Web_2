@@ -36,6 +36,9 @@ namespace ECommerce.API.Controllers
             var user = this._userService.GetUserByEmailAndPass(loginData.Email, loginData.Password);
             if (user != null)
             {
+                if (user.Active == false)
+                    return Ok(new ResponsePackage<string>(ResponseStatus.Error, "Account is corrent, but deactivated (please check your email or contact support)!"));
+
                 string token = JwtManager.GetToken(user, 60);
                 retval = new ResponsePackage<string>(token);
                 return Ok(new ResponsePackage<string>()
@@ -45,8 +48,6 @@ namespace ECommerce.API.Controllers
                     TransferObject = token
                 });
             }
-            else if(user.Active == false)
-                return Ok(new ResponsePackage<string>(ResponseStatus.Error, "Account is corrent, but deactivated (please check your email or contact support)!"));
             else
                 return Ok(new ResponsePackage<string>(ResponseStatus.Error, "Wrong email or password!"));
         }
