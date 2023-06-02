@@ -2,6 +2,7 @@
 using ECommerce.DAL.Data;
 using ECommerce.DAL.Services.Implementations;
 using ECommerce.DAL.Services.Interfaces;
+using ECommerce.DAL.UOWs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Ocelot.DependencyInjection;
@@ -90,6 +91,8 @@ namespace ECommerce.API
 
         private void BindServices(IServiceCollection services)
         {
+            services.AddDbContext<UserDbContext>();
+            services.AddTransient<IUnitOfWorkUser, UnitOfWorkUser>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IUserService, UserService>();
 

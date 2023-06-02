@@ -2,6 +2,7 @@
 using ECommerce.DAL.DTO;
 using ECommerce.DAL.DTO.User.DataIn;
 using ECommerce.DAL.Services.Interfaces;
+using ECommerce.DAL.UOWs;
 using ECommerce.Models.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
@@ -13,10 +14,11 @@ namespace ECommerce.DAL.Services.Implementations
     {
         private readonly UserDbContext _dbContext;
         private readonly IEmailService _emailService;
+        private readonly IUnitOfWorkUser _uowUser;
 
-        public UserService(UserDbContext dbContext, IEmailService userService)
+        public UserService(IUnitOfWorkUser uowUser, IEmailService userService)
         {
-            _dbContext = dbContext;
+            _uowUser = uowUser;
             _emailService = userService;
         }
 
@@ -34,8 +36,7 @@ namespace ECommerce.DAL.Services.Implementations
 
         public User GetUserByEmailAndPass(string email, string pass)
         {
-            return _dbContext.Users
-                            .FirstOrDefault(x => !x.IsDeleted && x.Email == email && x.Password == pass);
+            return _uowUser.UserRepository.GetUserByEmailAndPassword(email, pass);
         }
 
         public ResponsePackage<string> Save(RegisterUserDataIn dataIn)
@@ -55,6 +56,7 @@ namespace ECommerce.DAL.Services.Implementations
             };
             if(dataIn.Id == null) //create new
             {
+                //if (_dbContext.Users.FirstOrDefault(x => x.IsDeleted == false && x.Email.ToLower() == userForDb.Email) != null)
                 if (_dbContext.Users.FirstOrDefault(x => x.IsDeleted == false && x.Email.ToLower() == userForDb.Email) != null)
                     return new ResponsePackage<string>(ResponseStatus.Error, "User with this email already exists.");
                 _dbContext.Users.Add(userForDb);

@@ -2,6 +2,7 @@
 using ECommerce.DAL.Data;
 using ECommerce.DAL.Services.Implementations;
 using ECommerce.DAL.Services.Interfaces;
+using ECommerce.DAL.UOWs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Ocelot.DependencyInjection;
@@ -33,6 +34,7 @@ namespace ECommerce.Product
 
             //registracija db contexta u kontejneru zavisnosti, njegov zivotni vek je Scoped
             services.AddDbContext<ProductDbContext>(options => options.UseSqlServer("Server=localhost;Database=ECommerce_Products;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True;"));
+
             //Registracija mapera u kontejneru, zivotni vek singleton
             var mapperConfig = new MapperConfiguration(mc =>
             {
@@ -43,7 +45,7 @@ namespace ECommerce.Product
             services.AddSingleton(mapper);
 
             var provider = services.BuildServiceProvider();
-           // var configure
+            // var configure
 
             services.AddCors(options =>
             {
@@ -89,8 +91,11 @@ namespace ECommerce.Product
 
         private void BindServices(IServiceCollection services)
         {
+            services.AddDbContext<ProductDbContext>();
+            services.AddTransient<IUnitOfWorkProduct, UnitOfWorkProduct>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IProductService, ProductService>();
+
         }
     }
 }
