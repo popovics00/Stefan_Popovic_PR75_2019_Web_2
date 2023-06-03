@@ -6,16 +6,21 @@ namespace ECommerce.DAL.UOWs
     public class UnitOfWorkUser : IUnitOfWorkUser
     {
         private UserDbContext _userDb;
+        private IUserRepository UserRepository { get; set; }
 
         public UnitOfWorkUser(UserDbContext userDb)
         {
             _userDb = userDb;
         }
-        public IUserRepository UserRepository { get; private set; }
 
         public void Save()
         {
             _userDb.SaveChanges();
+        }
+
+        public IUserRepository GetUserRepository()
+        {
+            return UserRepository ?? (UserRepository = new UserRepository(_userDb));
         }
     }
 }

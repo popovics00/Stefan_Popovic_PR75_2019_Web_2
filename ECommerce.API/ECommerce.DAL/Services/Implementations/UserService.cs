@@ -36,7 +36,7 @@ namespace ECommerce.DAL.Services.Implementations
 
         public User GetUserByEmailAndPass(string email, string pass)
         {
-            return _uowUser.UserRepository.GetUserByEmailAndPassword(email, pass);
+            return _uowUser.GetUserRepository().GetUserByEmailAndPassword(email, pass);
         }
 
         public ResponsePackage<string> Save(RegisterUserDataIn dataIn)
