@@ -3,7 +3,7 @@ using Microsoft.Identity.Client;
 using Org.BouncyCastle.Crypto.Digests;
 using System.ComponentModel.DataAnnotations;
 
-namespace ECommerce.Models.Models
+namespace ECommerce.DAL.Models
 {
     public class Product : Entity
     {

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom";
 import userServices from "../../services/userServices";
 import { toast } from "react-toastify";
-import styles from "..//..//styles/add-product.css";
+import styles from "..//..//styles/product.css";
 import productService from "../../services/productService";
 
 function AddProduct() {
@@ -26,7 +26,7 @@ function AddProduct() {
         <h1>CREATE PRODUCT</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className='row'>
-                <div class="col-md-6">
+                <div className="col-md-6">
                     <label className='input-label'>
                         Name
                         <div className='input-wrapper'>
@@ -56,7 +56,7 @@ function AddProduct() {
                     </label>
                     {errors.categories && <span>This field is required</span>}
                 </div>
-                <div class="col-md-6">
+                <div className="col-md-6">
                     {/* <label className='input-label'>
                         Image
                         <div className='input-wrapper'>
@@ -72,7 +72,7 @@ function AddProduct() {
                     </label>
                     {errors.description && <span>This field is required</span>}
                 </div>
-                <div class="row">
+                <div className="row">
                     <button type="submit">CREATE</button>
                 </div>
             </div>

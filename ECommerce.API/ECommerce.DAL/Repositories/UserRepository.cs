@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ECommerce.Models.Models;
+using ECommerce.DAL.Models;
 using ECommerce.DAL.Data;
 
 namespace ECommerce.DAL.Repositories

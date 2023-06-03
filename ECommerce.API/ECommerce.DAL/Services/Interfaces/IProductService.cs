@@ -1,14 +1,14 @@
 ﻿using ECommerce.DAL.DTO;
 using ECommerce.DAL.DTO.Product.DataIn;
 using ECommerce.DAL.DTO.User.DataIn;
-using ECommerce.Models.Models;
+using ECommerce.DAL.Models;
 
 namespace ECommerce.DAL.Services.Interfaces
 {
     public interface IProductService
     {
-        ResponsePackage<string> Save(CreateProduct dataIn);
-        ResponsePackage<List<Product>> GetAll();
+        Task<ResponsePackage<string>> Save(CreateProduct dataIn);
+        ResponsePackage<PaginationDataOut<Product>> GetAll(PaginationDataIn dataIn);
 
     }
 }

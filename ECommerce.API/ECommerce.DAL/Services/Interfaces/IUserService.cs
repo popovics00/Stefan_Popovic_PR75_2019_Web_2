@@ -1,6 +1,6 @@
 ﻿using ECommerce.DAL.DTO;
 using ECommerce.DAL.DTO.User.DataIn;
-using ECommerce.Models.Models;
+using ECommerce.DAL.Models;
 
 namespace ECommerce.DAL.Services.Interfaces
 {

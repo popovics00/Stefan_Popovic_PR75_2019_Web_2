@@ -1,12 +1,11 @@
 {
   "Routes": [
+    //
+    //
+    //  PRODUCT SERVICE
+    //
+    //
     {
-      //
-      //
-      //  PRODUCT SERVICE
-      //
-      //
-
       "DownstreamPathTemplate": "/api/product/save",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
@@ -17,17 +16,19 @@
       ],
       "UpstreamPathTemplate": "/api/product/save",
       "UpstreamHttpMethod": [ "Post" ],
-      //"AuthenticationOptions": {
-      //  "AuthenticationProviderKey": "Bearer",
-      //  "AllowedScopes": []
-      //},
-      //"RateLimitOptions": {
-      //  "ClientWhitelist": [],
-      //  "EnableRateLimiting": true,
-      //  "Period": "5s",
-      //  "PeriodTimespan": 1,
-      //  "Limit": 1
-      //},
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
+      "DownstreamPathTemplate": "/api/product/getall",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7220
+        }
+      ],
+      "UpstreamPathTemplate": "/api/product/getall",
+      "UpstreamHttpMethod": [ "Post" ],
       "FileCacheOptions": { "TtlSeconds": 30 }
     },
 

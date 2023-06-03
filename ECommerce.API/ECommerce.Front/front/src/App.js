@@ -7,7 +7,7 @@ import Register from "./components/register";
 import Login from "./components/login";
 import AddProduct from "./components/product-comp/add-product";
 import userServices from "./services/userServices";
-
+import ProductTable from './components/product-comp/product-table';
 function App() {
   const currentUser = userServices.getCurrentUser();
   console.log(currentUser)
@@ -22,6 +22,7 @@ function App() {
           <Route path="login" element={<Login/>} />
           <Route path="register" element={<Register/>} />
             <Route path="add-product" element={<AddProduct/>} />
+            <Route path="products" element={<ProductTable/>} />
 
         </Routes>
       </div>
@@ -39,6 +40,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
             <Route path="add-product" element={<AddProduct/>} />
+            <Route path="products" element={<ProductTable/>} />
 
         </Routes>
       </div>
@@ -56,6 +58,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
             <Route path="add-product" element={<AddProduct/>} />
+            <Route path="products" element={<ProductTable/>} />
 
         </Routes>
       </div>
@@ -73,6 +76,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
             <Route path="add-product" element={<AddProduct/>} />
+            <Route path="products" element={<ProductTable/>} />
 
         </Routes>
       </div>
@@ -84,6 +88,7 @@ function App() {
   <Route path="login" element={<Login />} />
   <Route path="register" element={<Register />} />
   <Route path="add-product" element={<AddProduct/>} />
+  <Route path="products" element={<ProductTable/>} />
   </Routes>}
 
 export default App;

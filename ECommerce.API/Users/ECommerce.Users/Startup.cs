@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using ECommerce.DAL.Data;
+using ECommerce.DAL.Mappings;
 using ECommerce.DAL.Services.Implementations;
 using ECommerce.DAL.Services.Interfaces;
 using ECommerce.DAL.UOWs;
+using MailKit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Ocelot.DependencyInjection;
@@ -62,6 +64,7 @@ namespace ECommerce.API
             });
 
             BindServices(services);
+            MappingServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -96,6 +99,11 @@ namespace ECommerce.API
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IUserService, UserService>();
 
+        }
+        private void MappingServices(IServiceCollection services)
+        {
+            //bind mappings
+            services.AddAutoMapper(typeof(UserProfile));
         }
     }
 }

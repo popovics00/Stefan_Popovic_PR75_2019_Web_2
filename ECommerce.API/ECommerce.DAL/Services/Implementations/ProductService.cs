@@ -3,11 +3,13 @@ using ECommerce.DAL.DTO;
 using ECommerce.DAL.DTO.Product.DataIn;
 using ECommerce.DAL.DTO.User.DataIn;
 using ECommerce.DAL.Services.Interfaces;
-using ECommerce.Models.Models;
+using ECommerce.DAL.UOWs;
+using ECommerce.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
 using System.Net;
 using static System.Net.Mime.MediaTypeNames;
+using AutoMapper;
 
 namespace ECommerce.DAL.Services.Implementations
 {
@@ -15,46 +17,54 @@ namespace ECommerce.DAL.Services.Implementations
     {
         private readonly ProductDbContext _dbContext;
         private readonly IEmailService _emailService;
+        private readonly IUnitOfWorkProduct _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public ProductService(ProductDbContext dbContext, IEmailService userService)
+
+        public ProductService(ProductDbContext dbContext, IEmailService userService, IUnitOfWorkProduct unitOfWork, IMapper mapper)
         {
             _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
             _emailService = userService;
+            _mapper = mapper;
         }
 
-        public ResponsePackage<List<Product>> GetAll()
+        public ResponsePackage<PaginationDataOut<Product>> GetAll(PaginationDataIn dataIn)
         {
-            return new ResponsePackage<List<Product>>()
+            var products = _unitOfWork.GetProductRepository().GetAllProductsWithPaggination(dataIn);
+            var data = _mapper.Map<List<Product>>(products.TransferObject);
+
+            return new ResponsePackage<PaginationDataOut<Product>>()
             {
                 Status = ResponseStatus.Ok,
-                TransferObject = _dbContext.Products.Where(x => x.IsDeleted == false).ToList()
+                TransferObject = new PaginationDataOut<Product> { Data = data, Count = int.Parse(products.Message) }
             };
         }
 
-        public ResponsePackage<string> Save(CreateProduct dataIn)
+        public async Task<ResponsePackage<string>> Save(CreateProduct dataIn)
         {
             var productForDb = new Product()
             {
                 Name = dataIn.Name,
-            Price = dataIn.Price,
-            Stock = dataIn.Stock,
-            Description = dataIn.Description,
-            Images = dataIn.Images,
-            CategoryId = dataIn.CategoryId
-        };
+                Price = dataIn.Price,
+                Stock = dataIn.Stock,
+                Description = dataIn.Description,
+                Images = dataIn.Images,
+                CategoryId = dataIn.CategoryId
+            };
 
-            if(dataIn.Id == null) //create new
+            if(dataIn.Id == null || dataIn.Id == 0) //create new
             {
-                if (_dbContext.Products.FirstOrDefault(x => x.IsDeleted == false && x.Name.ToLower() == productForDb.Name) != null)
+                if (_unitOfWork.GetProductRepository().GetProductByName(dataIn.Name).TransferObject != null)
                     return new ResponsePackage<string>(ResponseStatus.Error, "Product with this name already exists.");
 
-                _dbContext.Products.Add(productForDb);
-                _dbContext.SaveChanges();
+                await _unitOfWork.GetProductRepository().AddAsync(productForDb);
+                _unitOfWork.Save();
                 return new ResponsePackage<string>(ResponseStatus.Ok, "Successfully added new product.");
             }
             else // edit exist
             {
-                var dbUser = _dbContext.Products.FirstOrDefault(x => x.Id == dataIn.Id);
+                var dbUser = await _unitOfWork.GetProductRepository().GetByIdAsync(dataIn.Id.GetValueOrDefault());
                 if(dbUser == null)
                     return new ResponsePackage<string>(ResponseStatus.Error, "Product not fount in database.");
 
@@ -65,7 +75,7 @@ namespace ECommerce.DAL.Services.Implementations
                 dbUser.CategoryId = productForDb.CategoryId;
                 dbUser.Images = productForDb.Images;
 
-                _dbContext.SaveChanges();
+                _unitOfWork.Save();
                 return new ResponsePackage<string>(ResponseStatus.Ok, "Successfully edited product.");
             }
         }

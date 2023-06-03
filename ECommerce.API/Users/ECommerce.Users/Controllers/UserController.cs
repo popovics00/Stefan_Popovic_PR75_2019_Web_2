@@ -2,7 +2,7 @@
 using ECommerce.DAL.DTO.User.DataIn;
 using ECommerce.DAL.Services.Implementations;
 using ECommerce.DAL.Services.Interfaces;
-using ECommerce.Models.Helpers;
+using ECommerce.DAL.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;

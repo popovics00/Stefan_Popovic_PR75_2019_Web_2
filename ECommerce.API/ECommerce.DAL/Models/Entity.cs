@@ -1,4 +1,4 @@
-﻿namespace ECommerce.Models.Models
+﻿namespace ECommerce.DAL.Models
 {
     public class Entity
     {

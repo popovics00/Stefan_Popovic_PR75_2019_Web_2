@@ -2,7 +2,7 @@
 using ECommerce.DAL.DTO;
 using ECommerce.DAL.DTO.User.DataIn;
 using ECommerce.DAL.Services.Interfaces;
-using ECommerce.Models.Models;
+using ECommerce.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using SendGrid.Helpers.Mail;
 using SendGrid;

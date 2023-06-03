@@ -1,82 +1,49 @@
 import React from "react";
 import axios from 'axios';
 import baseUrl from '../components/endpoints';
-import Product from '../models/product';
+import ProductDataIn from '../models/product';
 import { decodeToken, isExpired } from "react-jwt";
 import { toast } from 'react-toastify';
 
 const API_URL = `${baseUrl}` + "user/"; // process.env.API_URL
 
 
-function isLoggedIn() {
-  let token = localStorage.getItem('token');
-  if (!token)
-  return false;
-  return isExpired(token);
-}
-
-function logOut() {
-  console.log(localStorage.getItem('token'))
-  localStorage.removeItem("token");
-  window.location.href = "/login";
-  };
-
-function getCurrentUser () {
-  let token = localStorage.getItem('token');
-  if (!token)
-    return null;
-  return decodeToken(token);
-}
-
-const createProduct = async (loginData) => {
+const createProduct = async (productData) => {
   try {
-    const response = await axios.post(`https://localhost:63290/api/Product/save`, loginData);
+    const response = await axios.post(`https://localhost:63290/api/Product/save`, productData);
     if (response.status == 200 || response.status === "OK") {
-      toast.success(response.data.message);
-      localStorage.setItem('token', JSON.stringify(response.data.transferObject));
+      if(response.data.message != "")
+        toast.success(response.data.message);
     } 
     else if (response.status === 402) 
       toast.error(response.data.message);
     else
       toast.error("Error ocurred.");
   } catch (error) {
-    toast.success(error);
+    toast.error(error);
   }
 };
 
-
-
-
-
-const getUsers = async () => {
+const getAll = async (getData) => {
   try {
-    const response = await axios.get(`https://localhost:63290/api/User`);
-    return response.data;
+    const response = await axios.post(`https://localhost:63290/api/Product/getall`, getData);
+    if (response.status >= 200 && response.status < 300) {
+      if(response.data.message != "")
+        toast.success(response.data.message);
+        
+      return response.data.transferObject.data;
+    } else if (response.status === 402) {
+      toast.error(response.data.message);
+    } else {
+      toast.error("Error occurred.");
+    }
   } catch (error) {
-    console.log(error);
-    return null;
+    toast.error(error.message);
   }
 };
 
-const createUser = async (user) => {
-  console.log(API_URL + "DADADAADADDADADAAD");
-  console.log(JSON.stringify(user) + "prviiiiiii");
-  
-  try {
-    const response = await axios.post(`https://localhost:63290/api/User/register`, user);
-    console.log('radi');
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    // return null;
-  }
-};
 
 export default {
   createProduct,
-  createUser,
-  getUsers,
-  logOut,
-  getCurrentUser,
-  isLoggedIn,
+  getAll,
 };

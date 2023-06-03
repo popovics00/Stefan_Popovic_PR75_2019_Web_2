@@ -3,7 +3,7 @@ using ECommerce.DAL.DTO;
 using ECommerce.DAL.DTO.User.DataIn;
 using ECommerce.DAL.Services.Interfaces;
 using ECommerce.DAL.UOWs;
-using ECommerce.Models.Models;
+using ECommerce.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
 using System.Net;

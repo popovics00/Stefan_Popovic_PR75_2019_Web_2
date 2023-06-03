@@ -25,7 +25,7 @@ namespace ECommerce.DAL.Migrations.UserDb
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ECommerce.Models.Models.User", b =>
+            modelBuilder.Entity("ECommerce.DAL.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

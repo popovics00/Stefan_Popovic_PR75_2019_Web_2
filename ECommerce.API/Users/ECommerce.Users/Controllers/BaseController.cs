@@ -1,6 +1,4 @@
-﻿using ECommerce.DAL.DTO.User.DataIn;
-using ECommerce.DAL.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.API.Controllers

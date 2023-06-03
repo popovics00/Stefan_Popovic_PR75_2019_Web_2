@@ -39,7 +39,7 @@ namespace ECommerce.DAL.Migrations
                     b.ToTable("CategoryProduct");
                 });
 
-            modelBuilder.Entity("ECommerce.Models.Models.Category", b =>
+            modelBuilder.Entity("ECommerce.DAL.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace ECommerce.DAL.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("ECommerce.Models.Models.Product", b =>
+            modelBuilder.Entity("ECommerce.DAL.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -99,13 +99,13 @@ namespace ECommerce.DAL.Migrations
 
             modelBuilder.Entity("CategoryProduct", b =>
                 {
-                    b.HasOne("ECommerce.Models.Models.Category", null)
+                    b.HasOne("ECommerce.DAL.Models.Category", null)
                         .WithMany()
                         .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ECommerce.Models.Models.Product", null)
+                    b.HasOne("ECommerce.DAL.Models.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)

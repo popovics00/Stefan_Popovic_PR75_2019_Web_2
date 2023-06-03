@@ -6,17 +6,25 @@ namespace ECommerce.DAL.UOWs
     public class UnitOfWorkProduct : IUnitOfWorkProduct
     {
         private ProductDbContext _productDb;
+        private ICategoryRepository CategoryRepository { get; set; }
+        private IProductRepository ProductRepository { get; set; }
 
         public UnitOfWorkProduct(ProductDbContext productDb)
         {
             _productDb = productDb;
         }
-        public ICategoryRepostiry CategoryRepository { get; private set; }
-        public IProductRepository ProductRepository { get; private set; }
 
         public void Save()
         {
             _productDb.SaveChanges();
+        }
+        public ICategoryRepository GetCategoryRepository()
+        {
+            return CategoryRepository ?? (CategoryRepository = new CategoryRepository(_productDb));
+        }
+        public IProductRepository GetProductRepository()
+        {
+            return ProductRepository ?? (ProductRepository = new ProductRepository(_productDb));
         }
     }
 }
