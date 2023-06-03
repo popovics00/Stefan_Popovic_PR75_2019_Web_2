@@ -10,6 +10,7 @@ using System.ComponentModel.Design;
 using System.Net;
 using static System.Net.Mime.MediaTypeNames;
 using AutoMapper;
+using ECommerce.DAL.DTO.Product.DataOut;
 
 namespace ECommerce.DAL.Services.Implementations
 {
@@ -29,15 +30,15 @@ namespace ECommerce.DAL.Services.Implementations
             _mapper = mapper;
         }
 
-        public ResponsePackage<PaginationDataOut<Product>> GetAll(PaginationDataIn dataIn)
+        public ResponsePackage<PaginationDataOut<ProductDataOut>> GetAll(PaginationDataIn dataIn)
         {
             var products = _unitOfWork.GetProductRepository().GetAllProductsWithPaggination(dataIn);
-            var data = _mapper.Map<List<Product>>(products.TransferObject);
+            var data = _mapper.Map<List<ProductDataOut>>(products.TransferObject);
 
-            return new ResponsePackage<PaginationDataOut<Product>>()
+            return new ResponsePackage<PaginationDataOut<ProductDataOut>>()
             {
                 Status = ResponseStatus.Ok,
-                TransferObject = new PaginationDataOut<Product> { Data = data, Count = int.Parse(products.Message) }
+                TransferObject = new PaginationDataOut<ProductDataOut> { Data = data, Count = int.Parse(products.Message) }
             };
         }
 

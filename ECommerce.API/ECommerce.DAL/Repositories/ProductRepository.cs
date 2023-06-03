@@ -2,6 +2,7 @@
 using ECommerce.DAL.Data;
 using ECommerce.DAL.DTO;
 using ECommerce.DAL.DTO.Product.DataOut;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.DAL.Repositories
 {
@@ -28,10 +29,10 @@ namespace ECommerce.DAL.Repositories
 
         public ResponsePackage<List<Product>> GetAllProductsWithPaggination(PaginationDataIn dataIn)
         {
-            var q = _dbContext.Set<Product>().Where(x => x.IsDeleted==false);
-            var count = q.Count();
+            var q = _dbContext.Set<Product>().Include(x=>x.Category).Where(x => x.IsDeleted==false);
             if (dataIn.SearchName != null && dataIn.SearchName != "")
                 q = q.Where(x => x.Name.Contains(dataIn.SearchName));
+            var count = q.Count();
 
             return new ResponsePackage<List<Product>>
             {

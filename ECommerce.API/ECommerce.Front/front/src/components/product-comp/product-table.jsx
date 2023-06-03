@@ -1,8 +1,9 @@
 import React from 'react';
 import productService from "../../services/productService";
 import CreateEditProduct from './create-edit-product';
-import ProductDataIn from '../../models/product'
+import ProductDataIn from '../../models/product';
 import { toast } from 'react-toastify';
+import Pagination from '../pagination';
 
 class ProductTable extends React.Component {
   constructor(props) {
@@ -11,35 +12,42 @@ class ProductTable extends React.Component {
       products: [],
       showModal: false,
       selectedProduct: null,
-      searchName: ""
+      searchName: "",
+      currentPage: 1,
+      pageSize: 7,
+      totalCount: 0,
     };
   }
 
   openModal = (productId) => {
-    if(productId==null){
+    if (productId == null) {
       this.setState({ showModal: true, selectedProduct: null });
-    }
-    else{
+    } else {
       const selectedProductTemp = this.state.products.find(product => product.id === productId);
       this.setState({ showModal: true, selectedProduct: selectedProductTemp });
     }
-}
+  }
 
   closeModal = () => {
     this.setState({ showModal: false, selectedProduct: null, productId: null });
-    this.reloadTable("");
+    this.reloadTable(1);
   }
 
-  async reloadTable() {
+  async reloadTable(page) {
     try {
       const productData = {
-        page: 1,
-        pageSize: 5,
-        searchName: this.state.searchName
+        page: page,
+        searchName: this.state.searchName,
+        pageSize: this.state.pageSize,
       };
-  
+
+      if (productData.searchName !== "") {
+        productData.page = 1;
+        this.setState({ currentPage: 1 });
+      }
+
       const productsData = await productService.getAll(productData);
-      const products = productsData.map(item => new ProductDataIn(
+      const products = productsData.data.map(item => new ProductDataIn(
         item.category,
         item.categoryId,
         item.description,
@@ -51,29 +59,36 @@ class ProductTable extends React.Component {
         item.price,
         item.stock
       ));
-      this.setState({ products });
+      this.setState({ products: products, totalCount: productsData.count });
     } catch (error) {
       console.log("Došlo je do greške:", error);
     }
   }
-  
+
   componentDidMount() {
-    this.reloadTable();
+    this.reloadTable(1);
   }
-  
+
   handleSearchSubmit = (event) => {
     event.preventDefault();
-    this.reloadTable();
+    this.reloadTable(1);
   }
 
   handleSearchChange = (event) => {
     this.setState({ searchName: event.target.value });
   }
 
+  handlePageChange = (page) => {
+    this.setState({ currentPage: page });
+    this.reloadTable(page);
+  };
+
   render() {
+    const { totalCount, currentPage, pageSize } = this.state;
+
     return (
       <>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossOrigin="anonymous" />
         <div className="width90">
           <div className="row">
             <div className="col-md-6"><h1 className="title">PROIZVODI</h1></div>
@@ -115,6 +130,7 @@ class ProductTable extends React.Component {
               ))}
             </tbody>
           </table>
+          <Pagination count={totalCount} currentPage={currentPage} pageSize={pageSize} onPageChange={this.handlePageChange} />
         </div>
         <CreateEditProduct isOpen={this.state.showModal} onClose={this.closeModal} product={this.state.selectedProduct} />
       </>
