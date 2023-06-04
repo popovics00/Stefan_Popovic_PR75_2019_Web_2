@@ -3,6 +3,7 @@ using ECommerce.DAL.DTO;
 using ECommerce.DAL.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace ECommerce.Product.Controllers
 {
@@ -14,7 +15,8 @@ namespace ECommerce.Product.Controllers
             _productService = productService;
         }
         [HttpPost("save")]
-        public ActionResult Save(CreateProduct dataIn)
+        [DisableRequestSizeLimit]
+        public ActionResult Save([FromForm] CreateProduct dataIn)
         {
             return Ok(_productService.Save(dataIn));
         }

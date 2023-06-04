@@ -4,7 +4,7 @@ import CreateEditProduct from './create-edit-product';
 import ProductDataIn from '../../models/product';
 import { toast } from 'react-toastify';
 import Pagination from '../pagination';
-
+import { Style } from '../../index.css';
 class ProductTable extends React.Component {
   constructor(props) {
     super(props);

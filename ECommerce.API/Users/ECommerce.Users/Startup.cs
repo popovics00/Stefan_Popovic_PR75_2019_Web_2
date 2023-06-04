@@ -7,6 +7,8 @@ using ECommerce.DAL.UOWs;
 using MailKit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -83,12 +85,19 @@ namespace ECommerce.API
 
             app.UseRouting();
 
-            app.UseAuthorization();
 
+            app.UseRouting();
+
+            app.UseAuthorization();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers().RequireCors("AllowAll");
             });
         }
 
@@ -98,7 +107,15 @@ namespace ECommerce.API
             services.AddTransient<IUnitOfWorkUser, UnitOfWorkUser>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IUserService, UserService>();
-
+            services.AddControllers()
+                    .AddNewtonsoftJson(options =>
+                    {
+                        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                        options.SerializerSettings.ContractResolver = new DefaultContractResolver
+                        {
+                            NamingStrategy = new CamelCaseNamingStrategy()
+                        };
+                    });
         }
         private void MappingServices(IServiceCollection services)
         {

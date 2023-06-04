@@ -5,10 +5,7 @@ using ECommerce.DAL.DTO.User.DataIn;
 using ECommerce.DAL.Services.Interfaces;
 using ECommerce.DAL.UOWs;
 using ECommerce.DAL.Models;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.Design;
-using System.Net;
-using static System.Net.Mime.MediaTypeNames;
+using Newtonsoft.Json;
 using AutoMapper;
 using ECommerce.DAL.DTO.Product.DataOut;
 
@@ -50,10 +47,10 @@ namespace ECommerce.DAL.Services.Implementations
                 Price = dataIn.Price,
                 Stock = dataIn.Stock,
                 Description = dataIn.Description,
-                Images = dataIn.Images,
                 CategoryId = dataIn.CategoryId,
                 LastUpdateTime = DateTime.Now
             };
+            productForDb.Images = await productForDb.SaveImage(dataIn.Images);
 
             if(dataIn.Id == null || dataIn.Id == 0) //create new
             {
@@ -75,7 +72,7 @@ namespace ECommerce.DAL.Services.Implementations
                 dbUser.Stock = productForDb.Stock;
                 dbUser.Description = productForDb.Description;
                 dbUser.CategoryId = productForDb.CategoryId;
-                dbUser.Images = productForDb.Images;
+                dbUser.Images = await dbUser.SaveImage(dataIn.Images);
                 dbUser.LastUpdateTime = DateTime.Now;
 
                 _unitOfWork.Save();

@@ -35,20 +35,36 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
       price: '',
       stock: '',
       categoryId: '',
-      description: ''
+      description: '',
+      images: ''
     });
     reset(product);
   };
 
   const onSubmit = async (productData) => {
     try {
-      await productService.createProduct(productData);
+      const formData = new FormData();
+      formData.append('id', productData.id);
+      formData.append('name', productData.name);
+      formData.append('price', productData.price);
+      formData.append('stock', productData.stock);
+      formData.append('description', productData.description);
+      formData.append('categoryId', productData.categoryId);
+      formData.append('images', productData.images[0], productData.images[0].name);
+      
+      console.log(productData.images[0], 'productData.images');
+      console.log(formData, 'formData');
+      
+      await productService.createProduct(formData);
       onClose();
       resetProduct();
     } catch (error) {
       toast.error('Error creating product.');
     }
   };
+  
+  
+  
 
   // Reagujte na promenu vrednosti `product` i resetujte formu
   useEffect(() => {
@@ -139,6 +155,16 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
                 </div>
               </label>
               {errors.description && <span>This field is required</span>}
+              <label className="input-label">
+              Images
+              <div className="input-wrapper">
+                <input type="file" {...register('images', { required: false })} accept="image/*"/>
+              </div>
+              {errors.images && <span>This field is required</span>}
+            </label>
+              <div className="input-wrapper">
+                <img src={product.images} alt="Product" />
+              </div>
             </div>
           </div>
           <div className="row">

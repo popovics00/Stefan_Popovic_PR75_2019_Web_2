@@ -28,6 +28,7 @@ namespace ECommerce.DAL.DTO.Product.DataOut
             Price = product?.Price;
             Description = product?.Description;
             CategoryId = product?.CategoryId;
+            Images = product?.Images;
             CategoryName = product?.Category?.Name;
         }
     }
