@@ -39,7 +39,7 @@ namespace ECommerce.DAL.Services.Implementations
             return _uowUser.GetUserRepository().GetUserByEmailAndPassword(email, pass);
         }
 
-        public ResponsePackage<string> Save(RegisterUserDataIn dataIn)
+        public async Task<ResponsePackage<string>> Save(RegisterUserDataIn dataIn)
         {
 
             dataIn.Email = dataIn.Email.ToLower().Trim();
@@ -52,11 +52,11 @@ namespace ECommerce.DAL.Services.Implementations
                 Password = dataIn.Password,
                 Role = (Role)dataIn.RoleId,
                 Active = false,
-                ActivateKey = System.Guid.NewGuid().ToString()
+                ActivateKey = System.Guid.NewGuid().ToString(),
+                LastUpdateTime = DateTime.Now
             };
             if(dataIn.Id == null) //create new
             {
-                //if (_dbContext.Users.FirstOrDefault(x => x.IsDeleted == false && x.Email.ToLower() == userForDb.Email) != null)
                 if (_dbContext.Users.FirstOrDefault(x => x.IsDeleted == false && x.Email.ToLower() == userForDb.Email) != null)
                     return new ResponsePackage<string>(ResponseStatus.Error, "User with this email already exists.");
                 _dbContext.Users.Add(userForDb);
@@ -76,8 +76,9 @@ namespace ECommerce.DAL.Services.Implementations
                 dbUser.LastName = dataIn.LastName;
                 dbUser.Password = dataIn.Password;
                 dbUser.Role = (Role)dataIn.RoleId;
+                dbUser.LastUpdateTime = DateTime.Now;
 
-                _dbContext.SaveChanges();
+                await _dbContext.SaveChangesAsync();
                 return new ResponsePackage<string>(ResponseStatus.Ok, "Successfully edited user.");
             }
         }

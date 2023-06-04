@@ -62,9 +62,11 @@ namespace ECommerce.Product
                     .AllowCredentials();
                 });
             });
+            services.AddAutoMapper(typeof(ProductProfile));
+            services.AddAutoMapper(typeof(CategoryProfile));
 
-            BindServices(services);
             MappingServices(services);
+            BindServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -98,13 +100,13 @@ namespace ECommerce.Product
             services.AddTransient<IUnitOfWorkProduct, UnitOfWorkProduct>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<ICategoryService, CategoryService>();
         }
 
         private void MappingServices(IServiceCollection services)
         {
             //bind mappings
-            services.AddAutoMapper(typeof(ProductProfile));
-            services.AddAutoMapper(typeof(CategoryProfile));
+
         }
     }
 }

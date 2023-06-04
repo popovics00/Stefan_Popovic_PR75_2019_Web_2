@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import productService from '../../services/productService';
+import categoryService from '../../services/categoryService';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 
@@ -13,6 +14,21 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
     defaultValues: product
   });
 
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const tempCategories = await categoryService.getAllForOption();
+        setCategories(tempCategories);
+      } catch (error) {
+        toast.error('Error retrieving categories.');
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   const resetProduct = () => {
     reset({
       name: '',
@@ -23,7 +39,7 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
     });
     reset(product);
   };
-  
+
   const onSubmit = async (productData) => {
     try {
       await productService.createProduct(productData);
@@ -39,7 +55,7 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
     reset(product);
   }, [product, reset]);
 
-  //reset forme
+  // Reset forme
   useEffect(() => {
     if (product === null) {
       reset({
@@ -49,7 +65,8 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
         stock: '',
         categoryId: '',
         description: ''
-      });    }
+      });
+    }
   }, [product, reset]);
 
   if (!isOpen) {
@@ -59,59 +76,78 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
   return (
     <div className="modal">
       <div className="modal-content">
-        <span className="close" onClick={onClose}>&times;</span>
-        {children}      
-        <h1 className="title">{product != null ? "EDIT" : "CREATE"} PRODUCT</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="row">
-                <div className="col-md-6">
-                  <input type="number" {...register('id', { required: true })} defaultValue={product?.id || null} hidden/>
-                  <label className="input-label">
-                    Name
-                    <div className="input-wrapper">
-                      <input type="text" {...register('name', { required: true })} defaultValue={product?.name || ''}/>
-                    </div>
-                  </label>
-                  {errors.name && <span>This field is required</span>}
-                  <label className="input-label">
-                    Price
-                    <div className="input-wrapper">
-                      <input type="number" step="0.01" {...register('price', { required: true })} defaultValue={product?.price || ''}/>
-                    </div>
-                  </label>
-                  {errors.price && <span>This field is required</span>}
-                  <label className="input-label">
-                    Stock
-                    <div className="input-wrapper">
-                      <input type="number" {...register('stock', { required: true })} defaultValue={product?.stock || ''}/>
-                    </div>
-                  </label>
-                  {errors.stock && <span>This field is required</span>}
-                  <label className="input-label">
-                    Categories
-                    <div className="input-wrapper">
-                      <input type="number" {...register('categoryId', { required: true })} defaultValue={product?.categoryId || ''}/>
-                    </div>
-                  </label>
-                  {errors.categoryId && <span>This field is required</span>}
+        <span className="close" onClick={onClose}>
+          &times;
+        </span>
+        {children}
+        <h1 className="title">{product != null ? 'EDIT' : 'CREATE'} PRODUCT</h1>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="row">
+            <div className="col-md-6">
+              <input type="number" {...register('id', { required: true })} defaultValue={product?.id || null} hidden />
+              <label className="input-label">
+                Name
+                <div className="input-wrapper">
+                  <input type="text" {...register('name', { required: true })} defaultValue={product?.name || ''} />
                 </div>
-                <div className="col-md-6">
-                  <label className="input-label">
-                    Description
-                    <div className="input-wrapper">
-                      <textarea {...register('description', { required: true })} defaultValue={product?.description || ''}></textarea>
-                    </div>
-                  </label>
-                  {errors.description && <span>This field is required</span>}
+              </label>
+              {errors.name && <span>This field is required</span>}
+              <label className="input-label">
+                Price
+                <div className="input-wrapper">
+                  <input type="number" step="0.01" {...register('price', { required: true })} defaultValue={product?.price || ''} />
                 </div>
-              </div>
-              <div className="row">
-                <button type="submit">{product != null ? "EDIT" : "CREATE"} PRODUCT</button>
-              </div>
-            </form>
+              </label>
+              {errors.price && <span>This field is required</span>}
+              <label className="input-label">
+                Stock
+                <div className="input-wrapper">
+                  <input type="number" {...register('stock', { required: true })} defaultValue={product?.stock || ''} />
+                </div>
+              </label>
+              {errors.stock && <span>This field is required</span>}
+              <label className="input-label">
+                Categories
+                <div className="input-wrapper">
+                <select {...register('categoryId', { required: true })} defaultValue={product?.categoryId || ''}>
+                    <option value="">Select a category</option>
+                    {categories && categories.length > 0 ? (
+                      categories.map((category) => (
+                        <option
+                          key={category.id}
+                          value={category.id}
+                          selected={product?.categoryId === category.id} // Dodajte ovu liniju za provjeru odgovarajućeg odabira
+                        >
+                          {category.name}
+                        </option>
+                      ))
+                    ) : (
+                      <option value="" disabled>
+                        No categories available
+                      </option>
+                    )}
+                  </select>
+                </div>
+              </label>
+              {errors.categoryId && <span>This field is required</span>}
             </div>
-      </div>  
-      );
+            <div className="col-md-6">
+              <label className="input-label">
+                Description
+                <div className="input-wrapper">
+                  <textarea {...register('description', { required: true })} defaultValue={product?.description || ''}></textarea>
+                </div>
+              </label>
+              {errors.description && <span>This field is required</span>}
+            </div>
+          </div>
+          <div className="row">
+            <button type="submit">{product != null ? 'EDIT' : 'CREATE'} PRODUCT</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default CreateEditProduct;

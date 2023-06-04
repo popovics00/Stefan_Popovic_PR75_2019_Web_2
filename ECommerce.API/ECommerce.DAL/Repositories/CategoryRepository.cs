@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ECommerce.DAL.Models;
 using ECommerce.DAL.Data;
+using ECommerce.DAL.DTO;
 
 namespace ECommerce.DAL.Repositories
 {
@@ -13,6 +14,11 @@ namespace ECommerce.DAL.Repositories
 
         public CategoryRepository(ProductDbContext context) : base(context)
         {
+        }
+
+        public List<Category> GetAllForOptions()
+        {
+            return _dbContext.Set<Category>().Where(x => x.IsDeleted == false).ToList();
         }
     }
 }

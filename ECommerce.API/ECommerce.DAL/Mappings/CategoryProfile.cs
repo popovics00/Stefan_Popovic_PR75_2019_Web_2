@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using ECommerce.DAL.DTO.Category.DataOut;
+using ECommerce.DAL.DTO.Product.DataOut;
+using ECommerce.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +12,10 @@ namespace ECommerce.DAL.Mappings
 {
     public class CategoryProfile : Profile
     {
-        //CreateMap<Building, BuildingDto>()
-        //        //.ForMember(dest => dest.Area, opt => opt.MapFrom(src => src.Area.Name ?? "/"))
-        //        .ForMember(dest => dest.LastUpdateTime, opt => opt.MapFrom(src => src.LastUpdateTime != null ? src.LastUpdateTime.Value.ToString("dd/MM/yyyy") : ""))
-        //        //.ForMember(dest => dest.LastUpdateUser, opt => opt.MapFrom(src => src.LastUpdateUser != null ? src.LastUpdateUser.FirstName + " " + src.LastUpdateUser.LastName : ""))
-        //        .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString() ?? "/"))
-        //        .ForMember(dest => dest.Source, opt => opt.MapFrom(src => src.Source.HasValue? src.Source : Source.Mobile))
-        //        .ForMember(dest => dest.CustomerCount, opt => opt.MapFrom(src => src.Customers.Count));
+        public CategoryProfile()
+        {
+            CreateMap<Category, CategoryDataOut>().ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                                                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
+        }
     }
 }

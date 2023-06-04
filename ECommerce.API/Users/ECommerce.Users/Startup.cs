@@ -63,8 +63,8 @@ namespace ECommerce.API
                 });
             });
 
-            BindServices(services);
             MappingServices(services);
+            BindServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

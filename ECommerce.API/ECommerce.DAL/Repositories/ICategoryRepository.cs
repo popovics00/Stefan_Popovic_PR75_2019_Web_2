@@ -6,6 +6,6 @@ namespace ECommerce.DAL.Repositories
 {
     public interface ICategoryRepository : IRepository<Category>
     {
-
+        public List<Category> GetAllForOptions();
     }
 }

@@ -14,6 +14,7 @@ namespace ECommerce.DAL.DTO.Product.DataOut
         public string Description { get; set; }
         public int Stock { get; set; }
         public string CategoryName { get; set; }
+        public int? CategoryId { get; set; }
         public string Images { get; set; }
 
         public ProductDataOut()
@@ -26,6 +27,7 @@ namespace ECommerce.DAL.DTO.Product.DataOut
             Id = product?.Id;
             Price = product?.Price;
             Description = product?.Description;
+            CategoryId = product?.CategoryId;
             CategoryName = product?.Category?.Name;
         }
     }

@@ -51,7 +51,8 @@ namespace ECommerce.DAL.Services.Implementations
                 Stock = dataIn.Stock,
                 Description = dataIn.Description,
                 Images = dataIn.Images,
-                CategoryId = dataIn.CategoryId
+                CategoryId = dataIn.CategoryId,
+                LastUpdateTime = DateTime.Now
             };
 
             if(dataIn.Id == null || dataIn.Id == 0) //create new
@@ -75,6 +76,7 @@ namespace ECommerce.DAL.Services.Implementations
                 dbUser.Description = productForDb.Description;
                 dbUser.CategoryId = productForDb.CategoryId;
                 dbUser.Images = productForDb.Images;
+                dbUser.LastUpdateTime = DateTime.Now;
 
                 _unitOfWork.Save();
                 return new ResponsePackage<string>(ResponseStatus.Ok, "Successfully edited product.");

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ECommerce.DAL.DTO.Category.DataOut;
 using ECommerce.DAL.DTO.Product.DataOut;
 using ECommerce.DAL.Models;
 using System;
@@ -18,7 +19,10 @@ namespace ECommerce.DAL.Mappings
                     .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
                     .ForMember(dest => dest.Stock, opt => opt.MapFrom(src => src.Stock))
                     .ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.Images))
+                    .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.CategoryId))
                     .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category == null ? "/" : src.Category.Name));
+
+
         }
     }
 }
