@@ -5,6 +5,7 @@ import userServices from "../../services/userServices";
 function MenuItem({ item, path, role }) {
   const navigate = useNavigate();
   const currentUser = userServices.getCurrentUser();
+  console.log(currentUser,'currentUser')
   const handleClick = (e) => {
     e.preventDefault();
     navigate("../" + path);

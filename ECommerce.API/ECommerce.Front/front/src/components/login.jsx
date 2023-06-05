@@ -5,6 +5,8 @@ import MyInput from "./input-comp/myInput";
 import { useForm } from 'react-hook-form';
 import userServices from "../services/userServices";
 import { toast } from "react-toastify";
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 function Login() {
     const navigate = useNavigate();

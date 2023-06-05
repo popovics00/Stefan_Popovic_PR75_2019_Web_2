@@ -257,6 +257,7 @@ right: 0;
   font-weight: 700;
   color: #ffffff;
   text-decoration: none;
+  cursor: pointer;
 }
 .mask-icon a.cart:hover{
   background: #000000;

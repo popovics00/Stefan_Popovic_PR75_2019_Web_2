@@ -1,43 +1,108 @@
 .sidebar {
-  background-color: #f5f5f5;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 100%;
+  background-color: #fff;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding-top: 0px;
+  box-shadow: -1px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  overflow-y: auto;
 }
 
-h2 {
+.sidebar .row {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .col-md-6 {
+  width: 50%;
+}
+
+.sidebar h2.sidebar-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: black;
+  display: flex;
+  justify-self: left;
+}
+
+.sidebar .close-button {
+  color: red;
+  cursor: pointer;
+  display: flex;
+  justify-content: right;
+}
+
+.sidebar .empty-cart-message {
+  margin-bottom: 10px;
+}
+
+.sidebar ul.cart-items-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li.cart-item {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .cart-item .cart-item-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 30px;
+  border: 1px solid black;
+  margin-right: 20px;
+}
+
+.sidebar .cart-item .item-details {
+  flex: 1;
+  text-align: left;
+}
+
+.sidebar .cart-item .item-details .item-name {
   font-size: 18px;
   margin-bottom: 10px;
 }
 
-p {
-  margin: 0;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
+.sidebar .cart-item .item-details .item-price {
   margin-bottom: 10px;
 }
 
-h3 {
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
-button {
-  background-color: #b0b435;
-  color: #fff;
+.sidebar .cart-item .remove-button {
+  background-color: transparent;
   border: none;
-  padding: 5px 10px;
+  padding: 0;
+  font-size: 20px;
+  color: red;
   cursor: pointer;
-  font-size: 14px;
 }
 
-button:hover {
-  background-color: #000;
+.sidebar .remove-button:hover {
+  color: darkred;
+}
+
+.sidebar .col-md-2:last-child {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.text-right{
+  display: block;
+  width: 10%;
+}
+
+.col1{
+  display: block;
+  width: 30%;
+}
+
+.col2{
+  display: block;
+  width: 60%;
 }
