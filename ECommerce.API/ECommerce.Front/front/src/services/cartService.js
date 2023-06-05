@@ -10,19 +10,20 @@ const API_URL = `${baseUrl}` + "user/"; // process.env.API_URL
 
 function addToCart(product) {
   const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-  product.count = 1;
-  console.log(cartItems,'cartitems')
-  console.log(product,'prod')
-  const existingItem = cartItems.find((item) => item.Id == product.Id);
-  if (existingItem) {
-    existingItem.count++;
+  const existingItemIndex = cartItems.findIndex((item) => item.id == product.Id);
+
+  if (existingItemIndex !== -1) {
+    cartItems[existingItemIndex].count++;
   } else {
+    product.count = 1;
     cartItems.push(product);
   }
 
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
   toast.success('Product added to cart!');
 }
+
+
 
 
 function logOut() {

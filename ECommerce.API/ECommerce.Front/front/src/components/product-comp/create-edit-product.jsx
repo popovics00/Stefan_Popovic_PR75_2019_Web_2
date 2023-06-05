@@ -163,7 +163,7 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
               {errors.images && <span>This field is required</span>}
             </label>
               <div className="input-wrapper">
-                <img src={product.images} alt="Product" />
+                <img src={product?.images} alt="Product" />
               </div>
             </div>
           </div>

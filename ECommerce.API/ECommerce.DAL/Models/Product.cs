@@ -10,7 +10,7 @@ namespace ECommerce.DAL.Models
     {
         public string Name { get; set; }
         public double Price { get; set; }
-        public int Stock { get; set; } = 0;
+        public int Stock { get; set; }
         public string Description { get; set; }
         public int? CategoryId { get; set; }
         public Category Category { get; set; }
@@ -21,7 +21,7 @@ namespace ECommerce.DAL.Models
             if (image != null && image.Length > 0)
             {
                 string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
-                string imagePath = Path.Combine("C:\\Users\\stefa\\OneDrive\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\Products\\ECommerce.Product\\save\\images", uniqueFileName);
+                string imagePath = Path.Combine("C:\\Users\\stefa\\OneDrive\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\Products\\ECommerce.Product\\images", uniqueFileName);
 
                 using (var fileStream = new FileStream(imagePath, FileMode.Create))
                 {
@@ -29,7 +29,7 @@ namespace ECommerce.DAL.Models
                 }
 
                 //return imagePath;
-                return "http://127.0.0.1:8887/"+uniqueFileName;
+                return "https://localhost:7220/images/" + uniqueFileName;
             }
 
             return null;

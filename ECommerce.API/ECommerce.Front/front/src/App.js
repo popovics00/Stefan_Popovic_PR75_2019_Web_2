@@ -8,6 +8,7 @@ import Login from "./components/login";
 import userServices from "./services/userServices";
 import ProductTable from './components/product-comp/product-table';
 import HomePage from './components/home';
+import Checkout from './components/cart/checkout'
 function App() {
   const currentUser = userServices.getCurrentUser();
   console.log(currentUser)
@@ -97,6 +98,7 @@ function App() {
           <Route path="register" element={<Register />} />
             <Route path="products" element={<ProductTable/>} />
             <Route path="home" element={<HomePage/>} />
+            <Route path="checkout" element={<Checkout/>} />
 
         </Routes>
       </div>
