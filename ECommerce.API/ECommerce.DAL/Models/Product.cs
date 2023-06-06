@@ -4,6 +4,8 @@ using Microsoft.Identity.Client;
 using Org.BouncyCastle.Crypto.Digests;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace ECommerce.DAL.Models
 {
     public class Product : Entity
@@ -15,15 +17,14 @@ namespace ECommerce.DAL.Models
         public int? CategoryId { get; set; }
         public Category Category { get; set; }
         public string? Images{ get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; }
-
 
         public async Task<string> SaveImage(IFormFile image)
         {
             if (image != null && image.Length > 0)
             {
                 string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
-                string imagePath = Path.Combine("C:\\Users\\stefa\\OneDrive\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\Products\\ECommerce.Product\\images", uniqueFileName);
+                string imagePath = Path.Combine("C:\\Users\\Stefan Sotex\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\Products\\ECommerce.Product\\images", uniqueFileName);
+                //string imagePath = Path.Combine(Environment.CurrentDirectory, "images");
 
                 using (var fileStream = new FileStream(imagePath, FileMode.Create))
                 {

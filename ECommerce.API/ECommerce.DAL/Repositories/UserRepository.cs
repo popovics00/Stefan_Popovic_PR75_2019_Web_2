@@ -19,5 +19,19 @@ namespace ECommerce.DAL.Repositories
         {
              return _dbContext.Set<User>().FirstOrDefault(x => !x.IsDeleted && x.Email == email && x.Password == password);
         }
+
+        public User GetUserByEmail(string email)
+        {
+            return _dbContext.Set<User>().FirstOrDefault(x => !x.IsDeleted && x.Email == email);
+        }
+        public User GetUserByUserName(string username)
+        {
+            return _dbContext.Set<User>().FirstOrDefault(x => !x.IsDeleted && x.UserName == username);
+        }
+
+        public User GetUserById(int userId)
+        {
+            return _dbContext.Set<User>().FirstOrDefault(x => !x.IsDeleted && x.Id == userId);
+        }
     }
 }

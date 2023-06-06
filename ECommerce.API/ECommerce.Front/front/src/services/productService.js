@@ -1,12 +1,8 @@
 import React from "react";
 import axios from 'axios';
-import baseUrl from '../components/endpoints';
 import ProductDataIn from '../models/product';
 import { decodeToken, isExpired } from "react-jwt";
 import { toast } from 'react-toastify';
-
-const API_URL = `${baseUrl}` + "user/"; // process.env.API_URL
-
 
 const createProduct = async (productData) => {
   try {
@@ -43,8 +39,10 @@ const getAll = async (getData) => {
   }
 };
 
-
-export default {
+const productService = {
   createProduct,
-  getAll,
+  getAll
 };
+
+
+export default productService;

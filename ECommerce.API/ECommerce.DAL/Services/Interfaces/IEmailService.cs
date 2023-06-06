@@ -4,6 +4,6 @@ namespace ECommerce.DAL.Services.Interfaces
 {
     public interface IEmailService
     {
-        Task<ResponsePackage<string>> SendEmail(string destination, string content);
+        Task<ResponsePackage<string>> SendEmail(string destination, string content, string title);
     }
 }

@@ -5,11 +5,11 @@ import userServices from "../../services/userServices";
 import { toast } from "react-toastify";
 import { FaShoppingCart } from 'react-icons/fa';
 import cartService from '../../services/cartService'
+import userService from '../../services/userServices'
 import CartSidebar from '../../components/cart/cart-sidebar'
 import React, { useState } from "react";
 
 function useLogout() {
-  const navigate = useNavigate();
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
 
   const openCartModal = () => {
@@ -21,9 +21,7 @@ function useLogout() {
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
-    window.sessionStorage.clear();
-    navigate("/login");
+    userService.logOut();
   }
 
   return { logout, openCartModal, closeCartModal, isCartModalOpen };

@@ -1,5 +1,5 @@
 
-class CreateEditProduct {
+export class CreateEditProduct {
   constructor(Name, Price, Stock, Address, Description, Image, Categories) {
     this.Name = Name;
     this.Price = Price;

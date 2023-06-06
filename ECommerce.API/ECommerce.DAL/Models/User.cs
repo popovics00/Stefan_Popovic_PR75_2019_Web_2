@@ -14,6 +14,7 @@ namespace ECommerce.DAL.Models
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
+        public string UserName { get; set; }
         public Role Role { get; set; }
         public bool Active { get; set; } = false;
         public string ActivateKey { get; set; }

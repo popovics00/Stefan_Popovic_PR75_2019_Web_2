@@ -23,11 +23,6 @@ namespace ECommerce.DAL.Data
                 .HasKey(cp => new { cp.OrderId, cp.ProductId });
 
             builder.Entity<OrderItem>()
-                .HasOne(cp => cp.Product)
-                .WithMany(c => c.OrderItems)
-                .HasForeignKey(cp => cp.ProductId);
-
-            builder.Entity<OrderItem>()
                 .HasOne(cp => cp.Order)
                 .WithMany(p => p.OrderItems)
                 .HasForeignKey(cp => cp.OrderId);
@@ -35,6 +30,5 @@ namespace ECommerce.DAL.Data
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
-        //public virtual DbSet<OrderItem> OrderItems { get; set; }
     }
 }

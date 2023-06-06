@@ -1,82 +1,67 @@
-import React from "react";
 import axios from 'axios';
-import baseUrl from '../components/endpoints';
-import User from '../models/user';
 import { decodeToken, isExpired } from "react-jwt";
 import { toast } from 'react-toastify';
 
-const API_URL = `${baseUrl}` + "user/"; // process.env.API_URL
-
-
 function isLoggedIn() {
   let token = localStorage.getItem('token');
-  if (!token)
-  return false;
-  return isExpired(token);
+  if (!token || isExpired(token)) {
+    return false;
+  }
 }
 
 function logOut() {
-  console.log(localStorage.getItem('token'))
   localStorage.removeItem("token");
-  window.location.href = "/login";
-  };
+  // toast.warn('Success logout!');
+  // window.location.reload(true);
+  window.location.href = "/";
+  toast.warn('Success logout!');
+}
 
-function getCurrentUser () {
+function getCurrentUser() {
   let token = localStorage.getItem('token');
-  if (!token)
+  if (!token) {
     return null;
+  }
   return decodeToken(token);
 }
 
 const login = async (loginData) => {
   try {
     const response = await axios.post(`https://localhost:63290/api/User/login`, loginData);
-    if (response.status == 200 || response.status === "OK") {
-      toast.success(response.data.message);
+    if ((response.status == 200 || response.status === "OK") && response.data.status == 200) {
       localStorage.setItem('token', JSON.stringify(response.data.transferObject));
-    } 
-    else if (response.status === 402) 
-      toast.error(response.data.message);
-    else
-      toast.error("Error ocurred.");
+      // window.location.reload(true);
+      window.location.href = "/";
+      toast.success(response.data.message);
+    } else {
+      toast.warn("Error ocurred.");
+    }
+  } catch (error) {
+    toast.error(error);
+  }
+};
+
+const createUser = async (user) => {
+  try {
+    const response = await axios.post(`https://localhost:63290/api/User/register`, user);
+    if ((response.status == 200 || response.status === "OK") && response.data.result.status == 200) {
+      window.location.reload(true);
+      window.location.href = "/";
+      toast.success(response.data.result.message);
+    } else {
+      toast.warn(response.data.result.message);
+    }
   } catch (error) {
     toast.success(error);
   }
 };
 
-
-
-
-
-const getUsers = async () => {
-  try {
-    const response = await axios.get(`https://localhost:63290/api/User`);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
-};
-
-const createUser = async (user) => {
-  console.log(API_URL + "DADADAADADDADADAAD");
-  console.log(JSON.stringify(user) + "prviiiiiii");
-  
-  try {
-    const response = await axios.post(`https://localhost:63290/api/User/register`, user);
-    console.log('radi');
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    // return null;
-  }
-};
-
-export default {
+const userServices = {
   login,
   createUser,
-  getUsers,
   logOut,
   getCurrentUser,
-  isLoggedIn,
+  isLoggedIn
 };
+
+export default userServices;

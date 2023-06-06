@@ -19,7 +19,9 @@
   padding: 20px;
   background: #00000087;
 }
-
+.login-link-wrapper{
+  color: white !important;
+}
 .login form {
   display: flex;
   flex-direction: column;

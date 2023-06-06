@@ -1,4 +1,6 @@
-﻿namespace ECommerce.DAL.Models
+﻿using ECommerce.DAL.DTO.Order.DataIn;
+
+namespace ECommerce.DAL.Models
 {
     public class Order : Entity
     {
@@ -17,5 +19,6 @@
         public int ProductId { get; set; }
         public Product Product { get; set; }
         public int Quantity { get; set; }
+
     }
 }

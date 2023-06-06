@@ -16,14 +16,14 @@ namespace ECommerce.DAL.Services.Implementations
         {
         }
 
-        public async Task<ResponsePackage<string>> SendEmail(string destination, string content)
+        public async Task<ResponsePackage<string>> SendEmail(string destination, string content, string title)
         {
             var apiKey = "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";
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("stefan@kupisajt.rs", "Example User");
-            var subject = "Sending with SendGrid is Fun";
-            var to = new EmailAddress(destination, "Example User");
-            var plainTextContent = "and easy to do anywhere, even with C#";
+            var from = new EmailAddress("stefan@kupisajt.rs", "Online Shop");
+            var subject = title;
+            var to = new EmailAddress(destination, "Online Customer");
+            var plainTextContent = "";
             var htmlContent = content;
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);

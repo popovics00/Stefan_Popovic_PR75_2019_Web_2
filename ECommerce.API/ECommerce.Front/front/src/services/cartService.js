@@ -24,8 +24,6 @@ function addToCart(product) {
 }
 
 
-
-
 function logOut() {
   console.log(localStorage.getItem('token'))
   localStorage.removeItem("token");
@@ -84,7 +82,6 @@ const createUser = async (user) => {
 };
 
 export default {
-  login,
   createUser,
   getUsers,
   logOut,

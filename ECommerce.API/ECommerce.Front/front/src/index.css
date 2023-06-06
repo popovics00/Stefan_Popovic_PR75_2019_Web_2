@@ -18,10 +18,9 @@ body {
   z-index: 1;
 }
 
-/* @font-face {
-  font-family: "GothamMedium";
-  src: url("fonts/GothamMedium.ttf") format("truetype");
-} */
+.login-link-wrapper a{
+  color: white !important;
+}
 
 .input-form {
   display: flex;
