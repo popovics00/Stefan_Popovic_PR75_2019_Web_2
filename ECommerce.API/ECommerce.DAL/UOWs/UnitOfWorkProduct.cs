@@ -8,6 +8,7 @@ namespace ECommerce.DAL.UOWs
         private ProductDbContext _productDb;
         private ICategoryRepository CategoryRepository { get; set; }
         private IProductRepository ProductRepository { get; set; }
+        private IOrderRepository OrderRepository { get; set; }
 
         public UnitOfWorkProduct(ProductDbContext productDb)
         {
@@ -25,6 +26,10 @@ namespace ECommerce.DAL.UOWs
         public IProductRepository GetProductRepository()
         {
             return ProductRepository ?? (ProductRepository = new ProductRepository(_productDb));
+        }
+        public IOrderRepository GetOrderRepository()
+        {
+            return OrderRepository ?? (OrderRepository = new OrderRepository(_productDb));
         }
     }
 }

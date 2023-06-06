@@ -13,12 +13,7 @@ namespace ECommerce.Product.Controllers
         {
             _categoryService = categoryService;
         }
-        //[HttpPost("save")]
-        //public ActionResult Save(CreateProduct dataIn)
-        //{
-        //    return Ok(_productService.Save(dataIn));
-        //}
-        
+
         [HttpGet("GetAllForOption")]
         public ActionResult GetAllForOption()
         {

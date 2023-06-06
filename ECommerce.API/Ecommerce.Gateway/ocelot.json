@@ -52,6 +52,25 @@
       "FileCacheOptions": { "TtlSeconds": 30 }
     },
 
+    //
+    //
+    //  ORDER SERVICE
+    //
+    //
+    {
+      "DownstreamPathTemplate": "/api/order/save",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7220
+        }
+      ],
+      "UpstreamPathTemplate": "/api/order/save",
+      "UpstreamHttpMethod": [ "Post" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+
 
     //
     //

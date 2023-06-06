@@ -65,8 +65,7 @@ namespace ECommerce.Product
                     .AllowCredentials();
                 });
             });
-            services.AddAutoMapper(typeof(ProductProfile));
-            services.AddAutoMapper(typeof(CategoryProfile));
+
 
             MappingServices(services);
             BindServices(services);
@@ -114,6 +113,7 @@ namespace ECommerce.Product
             services.AddDbContext<ProductDbContext>();
             services.AddTransient<IUnitOfWorkProduct, UnitOfWorkProduct>();
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddControllers()
@@ -131,7 +131,8 @@ namespace ECommerce.Product
         private void MappingServices(IServiceCollection services)
         {
             //bind mappings
-
+            services.AddAutoMapper(typeof(ProductProfile));
+            services.AddAutoMapper(typeof(CategoryProfile));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿
 using ECommerce.DAL.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace ECommerce.DAL.Data
 {
@@ -18,8 +19,22 @@ namespace ECommerce.DAL.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.Entity<OrderItem>()
+                .HasKey(cp => new { cp.OrderId, cp.ProductId });
+
+            builder.Entity<OrderItem>()
+                .HasOne(cp => cp.Product)
+                .WithMany(c => c.OrderItems)
+                .HasForeignKey(cp => cp.ProductId);
+
+            builder.Entity<OrderItem>()
+                .HasOne(cp => cp.Order)
+                .WithMany(p => p.OrderItems)
+                .HasForeignKey(cp => cp.OrderId);
         }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        //public virtual DbSet<OrderItem> OrderItems { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Style } from '../../styles/checkout.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import orderService from '../../services/orderService'
 function Checkout() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -45,8 +45,29 @@ function Checkout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+    // Kreiraj objekat sa podacima porudžbine
+    const order = {
+      firstName,
+      lastName,
+      address,
+      phoneNumber,
+      paymentMethod,
+      deliveryMethod,
+      cartItems
+    };
+  
+    // Simuliraj slanje podataka na server ili izvršavanje odgovarajućih akcija
+    console.log(order);
+    orderService.makeOrder(order)
+    // Resetuj stanja polja
+    setFirstName('');
+    setLastName('');
+    setAddress('');
+    setPhoneNumber('');
+    setPaymentMethod('');
+    setDeliveryMethod('');
   };
+  
 
   return (
     <div class="container-fluid pt-5">
@@ -57,15 +78,15 @@ function Checkout() {
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>First Name</label>
-                            <input class="form-control" type="text" placeholder="John"/>
+                            <input class="form-control" type="text" placeholder="John" value={firstName} onChange={handleFirstNameChange} />
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Last Name</label>
-                            <input class="form-control" type="text" placeholder="Doe"/>
+                            <input class="form-control" type="text" placeholder="Doe" value={lastName} onChange={handleLastNameChange}/>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com"/>
+                            <input class="form-control" type="text" placeholder="example@email.com" />
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Mobile No</label>
@@ -211,7 +232,7 @@ function Checkout() {
                         </div>
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
-                        <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Place Order</button>
+                        <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" onClick={handleSubmit}>Place Order</button>
                     </div>
                 </div>
             </div>

@@ -15,6 +15,8 @@ namespace ECommerce.DAL.Models
         public int? CategoryId { get; set; }
         public Category Category { get; set; }
         public string? Images{ get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
+
 
         public async Task<string> SaveImage(IFormFile image)
         {

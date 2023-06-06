@@ -6,6 +6,7 @@ namespace ECommerce.DAL.UOWs
     {
         ICategoryRepository GetCategoryRepository();
         IProductRepository GetProductRepository();
+        IOrderRepository GetOrderRepository();
 
         void Save();
     }
