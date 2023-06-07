@@ -4,6 +4,9 @@ using ECommerce.DAL.DTO.User.DataIn;
 using ECommerce.DAL.Services.Interfaces;
 using ECommerce.DAL.UOWs;
 using ECommerce.DAL.Models;
+using ECommerce.DAL.DTO.User.DataOut;
+using static System.Net.Mime.MediaTypeNames;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ECommerce.DAL.Services.Implementations
 {
@@ -33,6 +36,33 @@ namespace ECommerce.DAL.Services.Implementations
             };
         }
 
+        public ResponsePackage<UserDataOut> Get(int userId)
+        {
+            var user = _uowUser.GetUserRepository().GetUserById(userId);
+            if (user != null)
+                return new ResponsePackage<UserDataOut>
+                {
+                    TransferObject = new UserDataOut()
+                    {
+                        Id = user.Id,
+                        Address = user.Address,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        UserName = user.UserName,
+                        BirthDate = user.BirthDate,
+                        Role = user.Role.ToString(),
+                        Image = user.Image
+                    },
+                    Status = 200,
+                };
+            else return new ResponsePackage<UserDataOut>()
+            {
+                Status = 400,
+                Message = "User doesn't exist in database."
+            };
+        }
+
         public User GetUserByEmailAndPass(string email, string pass)
         {
             return _uowUser.GetUserRepository().GetUserByEmailAndPassword(email, pass);
@@ -42,21 +72,31 @@ namespace ECommerce.DAL.Services.Implementations
         {
 
             dataIn.Email = dataIn.Email.ToLower().Trim();
-            var userForDb = new User()
-            {
-                Address = dataIn.Address,
-                Email = dataIn.Email,
-                FirstName = dataIn.FirstName,
-                UserName = dataIn.Username,
-                LastName = dataIn.LastName,
-                Password = dataIn.Password,
-                Role = (Role)dataIn.RoleId,
-                Active = false,
-                ActivateKey = System.Guid.NewGuid().ToString(),
-                LastUpdateTime = DateTime.Now
-            };
+
             if(dataIn.Id == null) //create new
             {
+                //generate user
+                var userForDb = new User()
+                {
+                    Address = dataIn.Address,
+                    Email = dataIn.Email,
+                    FirstName = dataIn.FirstName,
+                    UserName = dataIn.Username,
+                    BirthDate = dataIn.BirthDate.GetValueOrDefault(),
+                    LastName = dataIn.LastName,
+                    Password = dataIn.Password,
+                    Role = (Role)Int32.Parse(dataIn.RoleId),
+                    Active = false,
+                    ActivateKey = System.Guid.NewGuid().ToString(),
+                    LastUpdateTime = DateTime.Now
+                };
+
+                if(dataIn.Image != null)
+                    userForDb.Image = await userForDb.SaveImage(dataIn.Image);
+
+
+
+
                 if (_uowUser.GetUserRepository().GetUserByEmail(userForDb.Email) != null)
                     return new ResponsePackage<string>(ResponseStatus.Error, "User with this email already exists.");
                 
@@ -219,7 +259,7 @@ align: center;
                                 <td bgcolor='#ffffff' align='center' style='padding: 20px 30px 30px 30px;'>
                                     <table border='0' cellspacing='0' cellpadding='0'>
                                         <tr>
-                                            <a href='https://localhost:63290/api/User/activate/{dataIn.Email}/{userForDb.ActivateKey}'><td align='center' style='border-radius: 3px;' bgcolor='#ff8000'><a href='https://localhost:63290/api/User/activate/{dataIn.Email}/{userForDb.ActivateKey}' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #ff8000; display: inline-block;'>Activate Account</td></a>
+                                            <a href='https://localhost:63290/api/User/activate/"+dataIn.Email+"/"+userForDb.ActivateKey+ @"'><td align='center' style='border-radius: 3px;' bgcolor='#ff8000'><a href='https://localhost:63290/api/User/activate/"+dataIn.Email+"/"+userForDb.ActivateKey+ @"' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #ff8000; display: inline-block;'>Activate Account</td></a>
                                         </tr>
                                     </table>
                                 </td>
@@ -252,8 +292,9 @@ align: center;
         </html>
         ";
                 #endregion
+                if(userForDb.Role == Role.Customer)
+                    _emailService.SendEmail(dataIn.Email, htmlContent, "Activate account on 1st Online Shop");
 
-                _emailService.SendEmail(dataIn.Email, htmlContent, "Activate account on Online Shop");
                 return new ResponsePackage<string>(ResponseStatus.Ok, "Successfully register new user, please check you Email.");
             }
             else // edit exist
@@ -262,15 +303,29 @@ align: center;
                 if(dbUser == null)
                     return new ResponsePackage<string>(ResponseStatus.Error, "User doesn't exist in database.");
 
-                dbUser.Address = dataIn.Address;
-                dbUser.Email = dataIn.Email;
-                dbUser.FirstName = dataIn.FirstName;
-                dbUser.LastName = dataIn.LastName;
-                dbUser.Password = dataIn.Password;
-                dbUser.Role = (Role)dataIn.RoleId;
+                string tempImage = "";
+                if (dataIn.Image != null)
+                    tempImage = await dbUser.SaveImage(dataIn.Image);
+
+                if (!string.IsNullOrEmpty(dataIn.Address) && dataIn.Address != dbUser.Address)
+                    dbUser.Address = dataIn.Address;
+                if (!string.IsNullOrEmpty(dataIn.Email) && dataIn.Email != dbUser.Email)
+                    dbUser.Email = dataIn.Email;
+                if (!string.IsNullOrEmpty(dataIn.FirstName) && dataIn.FirstName != dbUser.FirstName)
+                    dbUser.FirstName = dataIn.FirstName;
+                if (!string.IsNullOrEmpty(dataIn.LastName) && dataIn.LastName != dbUser.LastName)
+                    dbUser.LastName = dataIn.LastName;
+                if (!string.IsNullOrEmpty(tempImage) && tempImage != dbUser.Image)
+                    dbUser.Image = tempImage;
+                if (!string.IsNullOrEmpty(dataIn.Password) && dataIn.Password != dbUser.Password)
+                    dbUser.Password = dataIn.Password;
+                if (!string.IsNullOrEmpty(dataIn.RoleId) && dataIn.RoleId != "undefined"&& ((Role)Int32.Parse(dataIn.RoleId)) != dbUser.Role && dataIn.RoleId != null)
+                    dbUser.Role = (Role)Int32.Parse(dataIn.RoleId);
+                if (dataIn.BirthDate != null && dataIn.BirthDate != dbUser.BirthDate)
+                    dbUser.BirthDate = dataIn.BirthDate.GetValueOrDefault();
                 dbUser.LastUpdateTime = DateTime.Now;
 
-                await _dbContext.SaveChangesAsync();
+                _uowUser.Save();
                 return new ResponsePackage<string>(ResponseStatus.Ok, "Successfully edited user.");
             }
         }

@@ -8,6 +8,7 @@ import userServices from "./services/userServices";
 import ProductTable from './components/product-comp/product-table';
 import HomePage from './components/home';
 import Checkout from './components/cart/checkout'
+import EditProfile from './components/edit-profile';
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
         <Routes>
           <Route path="" element={<Login/>} />
           <Route path="login" element={<Login/>} />
-          <Route path="register" element={<Register/>} />
+          <Route path="register" element={<EditProfile/>} />
         </Routes>
       </div>
     </>
@@ -37,6 +38,8 @@ function App() {
         <Routes>
           <Route path="" element={<HomePage />} />
           <Route path="checkout" element={<Checkout/>} />
+          <Route path="edit-profile" element={<Register/>} />
+          <Route path="products" element={<ProductTable/>} />
         </Routes>
       </div>
     </>

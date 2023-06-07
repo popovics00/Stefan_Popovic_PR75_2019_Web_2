@@ -11,8 +11,11 @@ using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.FileProviders;
-
+using System.IO;
 namespace ECommerce.Product
 {
     public class Startup
@@ -88,7 +91,6 @@ namespace ECommerce.Product
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseRouting();
 
             app.UseCors();
             app.UseEndpoints(endpoints =>
@@ -106,6 +108,7 @@ namespace ECommerce.Product
                 RequestPath = "/images", // Prefiks URL-a za pristup folderu images
                 EnableDirectoryBrowsing = true // Dozvoljava pregled direktorijuma
             });
+            app.UseRouting();
         }
 
         private void BindServices(IServiceCollection services)
@@ -125,6 +128,7 @@ namespace ECommerce.Product
                             NamingStrategy = new CamelCaseNamingStrategy()
                         };
                     });
+
 
         }
 

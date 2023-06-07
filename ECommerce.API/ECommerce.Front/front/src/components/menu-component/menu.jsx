@@ -8,6 +8,8 @@ import cartService from '../../services/cartService'
 import userService from '../../services/userServices'
 import CartSidebar from '../../components/cart/cart-sidebar'
 import React, { useState } from "react";
+import { FaUser, FaSignOutAlt } from 'react-icons/fa';
+import EditProfile from "../edit-profile";
 
 function useLogout() {
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
@@ -27,20 +29,59 @@ function useLogout() {
   return { logout, openCartModal, closeCartModal, isCartModalOpen };
 }
 
-function ShowLogOut() {
-  const { logout } = useLogout();
+
+function ShowUserIcon() {
   const user = userServices.getCurrentUser();
-  
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // Dodano lokalno stanje isOpen
+  const { logout, openCartModal, closeCartModal } = useLogout();
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleOpenModal = () => {
+    setIsOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsOpen(false);
+  };
+
+  const openModal = (productId) => {
+    handleOpenModal();
+  };
+
+  const closeModal = () => {
+    handleCloseModal();
+  };
+
   return (
-    <>
-      {user != null ? (
-        <div className="item-wrapper" onClick={logout}>
-          <span className="item">Odjavi se</span>
-        </div>
-      ) : null}
-    </>
+    <div className="userIcon">
+      <div className="user-dropdown">
+        <img
+          src={user.image}
+          alt="Slika korisnika"
+          className="user-avatar"
+          onClick={handleDropdownToggle}
+        />
+        {isDropdownOpen && (
+          <ul className="dropdown-menu">
+            <li onClick={() => { openModal(user.id); handleDropdownToggle(); }}>Profil</li>
+            <li onClick={handleDropdownToggle}>Orders</li>
+            <li onClick={() => { logout(); handleDropdownToggle(); }}>
+              <FaSignOutAlt />
+              Odjava
+            </li>
+          </ul>
+        
+        )}
+      </div>
+      <EditProfile isOpen={isOpen} onClose={handleCloseModal} productId={user.id} />
+    </div>
   );
 }
+
 
 function Menu() {
   const { logout, openCartModal, closeCartModal, isCartModalOpen } = useLogout();
@@ -51,9 +92,10 @@ function Menu() {
       {user != null ? (
         <div className="menu-wrapper">
           <div className="menu-right">
+            <ShowUserIcon/>
             <MenuItem item="Profil" path="profil" role={["Customer","Saler","Admin"]}/>
             <MenuItem item="Profil" path="profil" role={["Customer","Saler","Admin"]}/>
-            <ShowLogOut/>
+            <MenuItem item="Profil" path="profil" role={["Customer","Saler","Admin"]}/>
           </div>
           <div className="menu-header">
             <img className="login-photo" src={require("../../images/logo.png")}/>
@@ -62,10 +104,9 @@ function Menu() {
             <MenuItem item="Prodavnica" path="glavna-prodavnica" role={["Customer","Saler","Admin"]}/>
             <MenuItem item="Prodavnica" path="glavna-prodavnica" role={["Customer","Saler","Admin"]}/>
             <MenuItem item="Prodavnica" path="glavna-prodavnica" role={["Customer","Saler","Admin"]}/>
-            <div className="cart-icon">
-              <FaShoppingCart onClick={openCartModal}/>
+            <div className="cart-icon" onClick={openCartModal}>
+              <FaShoppingCart/>
             </div>
-            <ShowLogOut />
           </div>
           {isCartModalOpen && <CartSidebar onClose={closeCartModal} />}
         </div>

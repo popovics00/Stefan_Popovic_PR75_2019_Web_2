@@ -24,14 +24,12 @@ namespace ECommerce.DAL.Models
             {
                 string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
                 string imagePath = Path.Combine("C:\\Users\\Stefan Sotex\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\Products\\ECommerce.Product\\images", uniqueFileName);
-                //string imagePath = Path.Combine(Environment.CurrentDirectory, "images");
 
                 using (var fileStream = new FileStream(imagePath, FileMode.Create))
                 {
                     await image.CopyToAsync(fileStream);
                 }
 
-                //return imagePath;
                 return "https://localhost:7220/images/" + uniqueFileName;
             }
 

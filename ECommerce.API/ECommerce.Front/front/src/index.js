@@ -6,17 +6,28 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ClipLoader } from 'react-spinners';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-        <App />
+      <App />
     </BrowserRouter>
     <ToastContainer
       position="top-right"
       autoClose={3000}
       hideProgressBar={false}
       closeOnClick
+    />
+    <ClipLoader
+      color={'white'}
+      loading={true}
+      size={150}
+      css={`
+        display: block;
+        margin: 0 auto;
+        background-color: orange;
+      `}
     />
   </React.StrictMode>,
   document.getElementById('root')

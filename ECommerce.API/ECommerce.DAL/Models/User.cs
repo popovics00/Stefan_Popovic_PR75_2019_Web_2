@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace ECommerce.DAL.Models
 {
@@ -15,9 +16,29 @@ namespace ECommerce.DAL.Models
         [Required]
         public string Password { get; set; }
         public string UserName { get; set; }
+        public string Image { get; set; }
+        public DateTime BirthDate { get; set; }
         public Role Role { get; set; }
         public bool Active { get; set; } = false;
         public string ActivateKey { get; set; }
+
+        public async Task<string> SaveImage(IFormFile image)
+        {
+            if (image != null && image.Length > 0)
+            {
+                string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+                string imagePath = Path.Combine("C:\\Users\\Stefan Sotex\\Desktop\\Stefan_Popovic_PR75_2019_Web_2\\ECommerce.API\\Users\\ECommerce.Users\\images", uniqueFileName);
+
+                using (var fileStream = new FileStream(imagePath, FileMode.Create))
+                {
+                    await image.CopyToAsync(fileStream);
+                }
+
+                return "https://localhost:7219/images/" + uniqueFileName;
+            }
+
+            return null;
+        }
     }
     public enum Role
     {
@@ -25,4 +46,6 @@ namespace ECommerce.DAL.Models
         Saler = 2,
         Admin = 3,
     }
+
+
 }

@@ -20,7 +20,7 @@ namespace ECommerce.DAL.Services.Implementations
         {
             var apiKey = "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";
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("stefan@kupisajt.rs", "Online Shop");
+            var from = new EmailAddress("stefan@kupisajt.rs", "1st Online Shop");
             var subject = title;
             var to = new EmailAddress(destination, "Online Customer");
             var plainTextContent = "";

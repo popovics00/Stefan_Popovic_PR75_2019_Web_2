@@ -25,6 +25,7 @@ namespace ECommerce.DAL.Helpers
                     new Claim("email", user.Email),
                     new Claim("id", user.Id.ToString()),
                     new Claim("role", user.Role.ToString()),
+                    new Claim("image", user.Image.ToString()),
                     new Claim("name", $"{user.FirstName} {user.LastName}"),
                 }),
 

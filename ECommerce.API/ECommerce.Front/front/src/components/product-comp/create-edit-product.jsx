@@ -3,6 +3,7 @@ import productService from '../../services/productService';
 import categoryService from '../../services/categoryService';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
+import style from '../../styles/editProduct.css'
 
 function CreateEditProduct({ isOpen, onClose, children, product }) {
   const {
@@ -52,9 +53,6 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
       formData.append('categoryId', productData.categoryId);
       formData.append('images', productData.images[0], productData.images[0].name);
       
-      console.log(productData.images[0], 'productData.images');
-      console.log(formData, 'formData');
-      
       await productService.createProduct(formData);
       onClose();
       resetProduct();
@@ -90,11 +88,13 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
   }
 
   return (
+    <div className="editProduct">
     <div className="modal">
-      <div className="modal-content">
-        <span className="close" onClick={onClose}>
-          &times;
-        </span>
+      <button className="close-button-modal" onClick={onClose}>x</button>
+      <div className="modal-content">          
+        <div className="register-container">
+            <div className="register-form-wrapper">
+
         {children}
         <h1 className="title">{product != null ? 'EDIT' : 'CREATE'} PRODUCT</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -170,8 +170,10 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
           <div className="row">
             <button type="submit">{product != null ? 'EDIT' : 'CREATE'} PRODUCT</button>
           </div>
-        </form>
+        </form>              </div>
+            </div>
       </div>
+    </div>
     </div>
   );
 }

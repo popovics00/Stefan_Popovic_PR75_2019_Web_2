@@ -28,7 +28,6 @@
 
   <ItemGroup>
     <Folder Include="DTO\Category\DataIn\" />
-    <Folder Include="DTO\User\DataOut\" />
   </ItemGroup>
 
 </Project>

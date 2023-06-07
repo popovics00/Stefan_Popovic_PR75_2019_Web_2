@@ -28,6 +28,7 @@ function Login() {
   return (
     <>
       <div className='login'>
+        <img src={require("../images/logoWhite.png")} class="logo" />
         <div className="frame">
           <h1>LOGIN</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -47,9 +48,9 @@ function Login() {
             {errors.password && <span>This field is required</span>}
             <button type="submit">LOGIN</button><br/>
           </form>
-          <div className="login-link-wrapper">
-            <Link to="/register">Register</Link>
-          </div>
+        </div>
+        <div className="login-link-wrapper">
+          <Link to="/register">Register</Link>
         </div>
       </div>
     </>

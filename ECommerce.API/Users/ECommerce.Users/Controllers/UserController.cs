@@ -22,9 +22,16 @@ namespace ECommerce.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public ActionResult Register(RegisterUserDataIn dataIn)
+        public ActionResult Register([FromForm] RegisterUserDataIn dataIn)
         {
             return Ok(_userService.Save(dataIn));
+        }
+        
+        [AllowAnonymous]
+        [HttpGet("{userId}")]
+        public ActionResult GetUser(int userId)
+        {
+            return Ok(_userService.Get(userId));
         }
 
         [HttpPost("login")]

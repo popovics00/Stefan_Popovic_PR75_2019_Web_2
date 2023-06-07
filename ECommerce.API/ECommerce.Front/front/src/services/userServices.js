@@ -11,8 +11,7 @@ function isLoggedIn() {
 
 function logOut() {
   localStorage.removeItem("token");
-  // toast.warn('Success logout!');
-  // window.location.reload(true);
+  window.location.reload(true);
   window.location.href = "/";
   toast.warn('Success logout!');
 }
@@ -34,7 +33,20 @@ const login = async (loginData) => {
       window.location.href = "/";
       toast.success(response.data.message);
     } else {
-      toast.warn("Error ocurred.");
+      toast.warn(response.data.message);
+    }
+  } catch (error) {
+    toast.error(error);
+  }
+};
+
+const getUser = async (userId) => {
+  try {
+    const response = await axios.get(`https://localhost:63290/api/User/`+userId);
+    if ((response.status == 200 || response.status === "OK") && response.data.status == 200) {
+      return response.data.transferObject
+    } else {
+      toast.warn(response.data.message);
     }
   } catch (error) {
     toast.error(error);
@@ -44,10 +56,12 @@ const login = async (loginData) => {
 const createUser = async (user) => {
   try {
     const response = await axios.post(`https://localhost:63290/api/User/register`, user);
+    console.log(response,'sss')
     if ((response.status == 200 || response.status === "OK") && response.data.result.status == 200) {
-      window.location.reload(true);
-      window.location.href = "/";
+      // window.location.reload(true);
+      // window.location.href = "/";
       toast.success(response.data.result.message);
+      return response.data.result
     } else {
       toast.warn(response.data.result.message);
     }
@@ -61,7 +75,8 @@ const userServices = {
   createUser,
   logOut,
   getCurrentUser,
-  isLoggedIn
+  isLoggedIn,
+  getUser
 };
 
 export default userServices;

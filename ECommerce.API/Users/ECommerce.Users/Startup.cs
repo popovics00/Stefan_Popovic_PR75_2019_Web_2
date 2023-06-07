@@ -11,6 +11,7 @@ using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Microsoft.Extensions.FileProviders;
 
 namespace ECommerce.API
 {
@@ -99,6 +100,13 @@ namespace ECommerce.API
             {
                 endpoints.MapControllers().RequireCors("AllowAll");
             });
+            app.UseFileServer(new FileServerOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                Path.Combine(env.ContentRootPath, "images")), // Putanja do foldera images
+                RequestPath = "/images", // Prefiks URL-a za pristup folderu images
+                EnableDirectoryBrowsing = true // Dozvoljava pregled direktorijuma
+            });
         }
 
         private void BindServices(IServiceCollection services)
@@ -116,6 +124,7 @@ namespace ECommerce.API
                             NamingStrategy = new CamelCaseNamingStrategy()
                         };
                     });
+
         }
         private void MappingServices(IServiceCollection services)
         {

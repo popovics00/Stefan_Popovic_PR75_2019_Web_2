@@ -32,6 +32,9 @@
 .sidebar .close-button {
   color: red;
   cursor: pointer;
+  font-size: 20px;
+  top: 60px;
+  width: 10px;
   display: flex;
   justify-content: right;
 }
