@@ -52,7 +52,23 @@ const getUser = async (userId) => {
     toast.error(error);
   }
 };
+const getAll = async (getData) => {
+  try {
+    const response = await axios.post(`https://localhost:63290/api/user/getall`, getData);
+    if (response.status >= 200 && response.status < 300) {
+      if(response.data.message != "")
+        toast.success(response.data.message);
 
+      return response.data.transferObject;
+    } else if (response.status === 402) {
+      toast.error(response.data.message);
+    } else {
+      toast.error("Error occurred.");
+    }
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 const createUser = async (user) => {
   try {
     const response = await axios.post(`https://localhost:63290/api/User/register`, user);
@@ -76,7 +92,8 @@ const userServices = {
   logOut,
   getCurrentUser,
   isLoggedIn,
-  getUser
+  getUser,
+  getAll
 };
 
 export default userServices;

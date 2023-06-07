@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm, Controller } from 'react-hook-form';
-import userServices from "../services/userServices";
+import userServices from "../../services/userServices";
 import React, { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import "react-datepicker/dist/react-datepicker.css";
 import { ToastContainer } from 'react-toastify';
-import styles from "../styles/editProfile.css";
+import styles from "../../styles/editProfile.css";
 
 function EditProfile({ isOpen, onClose, productId }) {
   const navigate = useNavigate();

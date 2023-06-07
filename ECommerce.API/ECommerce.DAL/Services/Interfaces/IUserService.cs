@@ -11,6 +11,7 @@ namespace ECommerce.DAL.Services.Interfaces
         User GetUserByEmailAndPass(string email, string pass);
         ResponsePackage<string> ActivateUser(string email, string key);
         ResponsePackage<UserDataOut> Get(int userId);
+        ResponsePackage<PaginationDataOut<UserDataOut>> GetAll(PaginationDataIn dataIn);
 
     }
 }

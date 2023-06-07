@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using ECommerce.DAL.Models;
+using ECommerce.DAL.DTO;
 
 namespace ECommerce.DAL.Repositories
 {
@@ -11,5 +12,6 @@ namespace ECommerce.DAL.Repositories
         User GetUserByEmail(string email);
         User GetUserByUserName(string username);
         User GetUserById(int userId);
+        ResponsePackage<List<User>> GetAllUsersWithPagination(PaginationDataIn dataIn);
     }
 }

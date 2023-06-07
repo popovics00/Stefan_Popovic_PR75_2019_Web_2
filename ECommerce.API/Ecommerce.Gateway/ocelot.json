@@ -118,6 +118,19 @@
       "FileCacheOptions": { "TtlSeconds": 30 }
     },
     {
+      "DownstreamPathTemplate": "/api/user/getAll",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7219
+        }
+      ],
+      "UpstreamPathTemplate": "/api/user/getAll",
+      "UpstreamHttpMethod": [ "POST" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
       "DownstreamPathTemplate": "/api/user/{userId}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [

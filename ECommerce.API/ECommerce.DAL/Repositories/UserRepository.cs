@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ECommerce.DAL.Models;
 using ECommerce.DAL.Data;
+using ECommerce.DAL.DTO;
 
 namespace ECommerce.DAL.Repositories
 {
@@ -32,6 +33,22 @@ namespace ECommerce.DAL.Repositories
         public User GetUserById(int userId)
         {
             return _dbContext.Set<User>().FirstOrDefault(x => !x.IsDeleted && x.Id == userId);
+        }
+
+        public ResponsePackage<List<User>> GetAllUsersWithPagination(PaginationDataIn dataIn)
+        {
+            var q = _dbContext.Set<User>().Where(x => x.IsDeleted == false);
+            if (dataIn.SearchName != null && dataIn.SearchName != "")
+                q = q.Where(x => x.FirstName.Contains(dataIn.SearchName) || x.LastName.Contains(dataIn.SearchName) || x.Email.Contains(dataIn.SearchName));
+            var count = q.Count();
+
+            return new ResponsePackage<List<User>>
+            {
+                TransferObject = q.OrderByDescending(x => x.Id)
+                    .Skip((dataIn.Page - 1) * dataIn.PageSize)
+                    .Take(dataIn.PageSize).ToList(),
+                Message = count.ToString()
+            };
         }
     }
 }

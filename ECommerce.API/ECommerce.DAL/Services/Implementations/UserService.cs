@@ -7,6 +7,7 @@ using ECommerce.DAL.Models;
 using ECommerce.DAL.DTO.User.DataOut;
 using static System.Net.Mime.MediaTypeNames;
 using Microsoft.IdentityModel.Tokens;
+using ECommerce.DAL.DTO.Product.DataOut;
 
 namespace ECommerce.DAL.Services.Implementations
 {
@@ -60,6 +61,30 @@ namespace ECommerce.DAL.Services.Implementations
             {
                 Status = 400,
                 Message = "User doesn't exist in database."
+            };
+        }
+
+        public ResponsePackage<PaginationDataOut<UserDataOut>> GetAll(PaginationDataIn dataIn)
+        {
+            var products = _uowUser.GetUserRepository().GetAllUsersWithPagination(dataIn);
+            var data = products.TransferObject.Select(
+                x=>new UserDataOut
+                {
+                    Id = x.Id,
+                    FirstName = x.FirstName,
+                    LastName= x.LastName,
+                    Role = x.Role.ToString(),
+                    Email = x.Email,
+                    BirthDate = x.BirthDate,
+                    Address = x.Address,
+                    Image = x.Image,
+                    UserName = x.UserName,
+                }).ToList();
+
+            return new ResponsePackage<PaginationDataOut<UserDataOut>>()
+            {
+                Status = ResponseStatus.Ok,
+                TransferObject = new PaginationDataOut<UserDataOut> { Data = data, Count = int.Parse(products.Message) }
             };
         }
 

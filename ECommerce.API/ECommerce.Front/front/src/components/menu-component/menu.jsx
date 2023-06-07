@@ -9,7 +9,7 @@ import userService from '../../services/userServices'
 import CartSidebar from '../../components/cart/cart-sidebar'
 import React, { useState } from "react";
 import { FaUser, FaSignOutAlt } from 'react-icons/fa';
-import EditProfile from "../edit-profile";
+import EditProfile from "../user/edit-profile";
 
 function useLogout() {
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);

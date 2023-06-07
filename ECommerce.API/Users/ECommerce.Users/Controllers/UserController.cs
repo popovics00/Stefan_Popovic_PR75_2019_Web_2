@@ -70,5 +70,11 @@ namespace ECommerce.API.Controllers
 
             return Ok(retval);
         }
+        [HttpPost("getAll")]
+        public ActionResult GetAll(PaginationDataIn dataIn)
+        {
+            return Ok(_userService.GetAll(dataIn));
+        }
+
     }
 }
