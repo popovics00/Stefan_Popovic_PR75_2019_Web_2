@@ -18,14 +18,14 @@ namespace ECommerce.DAL.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
-            builder.Entity<OrderItem>()
-                .HasKey(cp => new { cp.OrderId, cp.ProductId });
+            //base.OnModelCreating(builder);
+            //builder.Entity<OrderItem>()
+            //    .HasKey(cp => new { cp.OrderId, cp.ProductId });
 
-            builder.Entity<OrderItem>()
-                .HasOne(cp => cp.Order)
-                .WithMany(p => p.OrderItems)
-                .HasForeignKey(cp => cp.OrderId);
+            //builder.Entity<OrderItem>()
+            //    .HasOne(cp => cp.Order)
+            //    .WithMany(p => p.OrderItems)
+            //    .HasForeignKey(cp => cp.OrderId);
         }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Category> Categories { get; set; }

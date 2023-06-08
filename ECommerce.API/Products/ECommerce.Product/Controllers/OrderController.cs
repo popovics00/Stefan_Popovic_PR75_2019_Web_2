@@ -21,5 +21,12 @@ namespace ECommerce.Product.Controllers
         {
             return Ok(_orderService.Save(dataIn));
         }
+
+
+        [HttpPost("getAll")]
+        public ActionResult GetAll(PaginationDataIn dataIn)
+        {
+            return Ok(_orderService.GetAll(dataIn));
+        }
     }
 }

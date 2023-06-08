@@ -11,8 +11,8 @@ const API_URL = `${baseUrl}` + "user/"; // process.env.API_URL
 
 function addToCart(product) {
   const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-  const existingItemIndex = cartItems.findIndex((item) => item.id == product.Id);
-
+  const existingItemIndex = cartItems.findIndex((item) => item.id == product.id);
+  
   if (existingItemIndex !== -1) {
     cartItems[existingItemIndex].count++;
   } else {
@@ -23,6 +23,7 @@ function addToCart(product) {
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
   toast.success('Product added to cart!');
 }
+
 
 
 function logOut() {

@@ -15,6 +15,7 @@
 .sidebar .row {
   display: flex;
   align-items: center;
+  max-height: 100px;
 }
 
 .sidebar .col-md-6 {
@@ -46,6 +47,10 @@
 .sidebar ul.cart-items-list {
   list-style-type: none;
   padding: 0;
+  max-height: 470px;
+  min-height: 470px;
+  display: block;
+  overflow-y: auto;
 }
 
 .sidebar li.cart-item {
@@ -56,8 +61,8 @@
 }
 
 .sidebar .cart-item .cart-item-image {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 30px;
   border: 1px solid black;
   margin-right: 20px;
@@ -108,4 +113,61 @@
 .col2{
   display: block;
   width: 60%;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-button {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border: none;
+  color: orange;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.quantity-button:hover {
+  background-color: orange;
+  color: white;
+}
+
+.item-quantity {
+  margin: 10px 10px 0px 10px;
+  font-size: 16px;
+}
+
+
+/* DUGME I TOTAL */
+
+
+.checkout-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.total-amount {
+  font-size: 18px;
+}
+
+.checkout-button {
+  display: flex;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checkout-button:hover {
+  /* background-color: #0056b3; */
 }

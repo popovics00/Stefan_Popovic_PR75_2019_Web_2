@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import Pagination from '../pagination';
 import { Style } from '../../index.css';
 import { FaCheckCircle, FaTimesCircle,FaEdit , FaTrash } from 'react-icons/fa';
-import userServices from '../../services/userServices';
+import orderService from '../../services/orderService';
 class OrderTable extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +36,7 @@ class OrderTable extends React.Component {
 
 
   deleteUser = (productId) => {
-    userServices.deleteUser(productId);
+    orderService.deleteUser(productId);
     this.reloadTable(1);
   };
 
@@ -53,21 +53,9 @@ class OrderTable extends React.Component {
         this.setState({ currentPage: 1 });
       }
 
-      const productsData = await userServices.getAll(productData);
+      const productsData = await orderService.getAll(productData);
       const users = productsData.data;
       console.log(users)
-      // const products = productsData.data.map(item => new ProductDataIn(
-      //   item.category,
-      //   item.categoryId,
-      //   item.description,
-      //   item.id,
-      //   item.images,
-      //   item.name,
-      //   item.lastUpdateTime,
-      //   item.isDeleted,
-      //   item.price,
-      //   item.stock
-      // ));
       this.setState({ users: users, totalCount: productsData.count });
     } catch (error) {
       console.log("Došlo je do greške:", error);
@@ -75,12 +63,12 @@ class OrderTable extends React.Component {
   }
 
   handleApprove = (productId) => {
-    userServices.approveOrRejectUser(productId,true);
+    orderService.approveOrRejectUser(productId,true);
     this.reloadTable(1);
   };
   
   handleReject = (productId) => {
-    userServices.approveOrRejectUser(productId,false);
+    orderService.approveOrRejectUser(productId,false);
     this.reloadTable(1);
   };
 

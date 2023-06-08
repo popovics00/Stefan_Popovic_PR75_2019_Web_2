@@ -15,7 +15,7 @@ namespace ECommerce.DAL.Models
         public OrderStatus Status { get; set; }
 
     }
-    public class OrderItem
+    public class OrderItem : Entity
     {
         public int? OrderId { get; set; }
         public Order Order { get; set; }
