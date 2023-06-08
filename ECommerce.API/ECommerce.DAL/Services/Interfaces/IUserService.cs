@@ -10,6 +10,8 @@ namespace ECommerce.DAL.Services.Interfaces
         Task<ResponsePackage<string>> Save(RegisterUserDataIn dataIn);
         User GetUserByEmailAndPass(string email, string pass);
         ResponsePackage<string> ActivateUser(string email, string key);
+        ResponsePackage<string> ApproveOrRejectUser(int userId, bool rejectOrApprove);
+        ResponsePackage<string> Delete(int userId);
         ResponsePackage<UserDataOut> Get(int userId);
         ResponsePackage<PaginationDataOut<UserDataOut>> GetAll(PaginationDataIn dataIn);
 

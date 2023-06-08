@@ -27,7 +27,7 @@ namespace ECommerce.DAL.Services.Implementations
         {
             var userFromDb = _uowUser.GetUserRepository().GetUserByEmail(email);
             if(userFromDb.ActivateKey == key) 
-                userFromDb.Active = true;
+                userFromDb.Status = UserStatus.Approved;
             _uowUser.Save();
 
             return new ResponsePackage<string>()
@@ -35,6 +35,59 @@ namespace ECommerce.DAL.Services.Implementations
                 Status = 200,
                 Message = "Successfully activated account! "
             };
+        }
+
+        public ResponsePackage<string> ApproveOrRejectUser(int userId, bool rejectOrApprove)
+        {
+            string ret = "";
+            var tempUser = _uowUser.GetUserRepository().GetUserById(userId);
+
+            if(tempUser == null)
+                return new ResponsePackage<string>
+                {
+                    Message = "User doesn't exist in database!",
+                    Status = 200
+                };
+
+
+            //action
+            if (tempUser.Status == UserStatus.Pending)
+            {
+                tempUser.Status = rejectOrApprove ? UserStatus.Approved : UserStatus.Rejected;
+                _uowUser.Save();
+                ret = rejectOrApprove ? "User " + tempUser.FirstName + " " + tempUser.LastName + " is successful approved!" : "User " + tempUser.FirstName + " " + tempUser.LastName + " is successful rejected!";
+            }
+            else
+            {
+                ret = "User " + tempUser.FirstName + " " + tempUser.LastName + " isn't in pending state!";
+            }
+
+            return new ResponsePackage<string>
+            {
+                Message = ret,
+                Status = 200
+            };
+        }
+
+        public ResponsePackage<string> Delete(int userId)
+        {
+            var tempUser = _uowUser.GetUserRepository().GetUserById(userId);
+            if(tempUser == null)
+                return new ResponsePackage<string>
+                {
+                    Message = "User doesn't exist in database!",
+                    Status = 200
+                };
+            else
+            {
+                tempUser.IsDeleted = true;
+                _uowUser.Save();
+                return new ResponsePackage<string>
+                {
+                    Message = "User has been successfully deleted!",
+                    Status = 200
+                };
+            }
         }
 
         public ResponsePackage<UserDataOut> Get(int userId)
@@ -51,7 +104,7 @@ namespace ECommerce.DAL.Services.Implementations
                         LastName = user.LastName,
                         Email = user.Email,
                         UserName = user.UserName,
-                        BirthDate = user.BirthDate,
+                        BirthDate = user.BirthDate.GetValueOrDefault(),
                         Role = user.Role.ToString(),
                         Image = user.Image
                     },
@@ -75,8 +128,9 @@ namespace ECommerce.DAL.Services.Implementations
                     LastName= x.LastName,
                     Role = x.Role.ToString(),
                     Email = x.Email,
-                    BirthDate = x.BirthDate,
+                    BirthDate = x.BirthDate.GetValueOrDefault(),
                     Address = x.Address,
+                    Status = x.Status.ToString(),
                     Image = x.Image,
                     UserName = x.UserName,
                 }).ToList();
@@ -111,7 +165,7 @@ namespace ECommerce.DAL.Services.Implementations
                     LastName = dataIn.LastName,
                     Password = dataIn.Password,
                     Role = (Role)Int32.Parse(dataIn.RoleId),
-                    Active = false,
+                    Status = UserStatus.Pending,
                     ActivateKey = System.Guid.NewGuid().ToString(),
                     LastUpdateTime = DateTime.Now
                 };

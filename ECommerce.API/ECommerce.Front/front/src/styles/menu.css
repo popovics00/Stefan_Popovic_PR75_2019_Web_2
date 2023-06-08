@@ -33,6 +33,7 @@
 .menu-header .login-photo {
   width: 150px;
   height: auto;
+  cursor: pointer;
 }
 
 .menu-right {

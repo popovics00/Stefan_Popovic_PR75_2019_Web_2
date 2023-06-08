@@ -10,6 +10,7 @@ import HomePage from './components/home';
 import Checkout from './components/cart/checkout'
 import EditProfile from './components/user/edit-profile';
 import UserTable from './components/user/user-table';
+import OrderTable from './components/order/order-table';
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
           <Route path="edit-profile" element={<Register/>} />
           <Route path="products" element={<ProductTable/>} />
           <Route path="users" element={<UserTable/>} />
+          <Route path="orders" element={<OrderTable/>} />
         </Routes>
       </div>
     </>

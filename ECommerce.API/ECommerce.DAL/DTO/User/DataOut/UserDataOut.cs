@@ -17,6 +17,7 @@ namespace ECommerce.DAL.DTO.User.DataOut
         public string Email { get; set; }
         public string UserName { get; set; }
         public string Image { get; set; }
+        public string Status { get; set; }
         public string Role { get; set; }
         public DateTime BirthDate { get; set; }
 

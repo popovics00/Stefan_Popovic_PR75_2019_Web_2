@@ -1,16 +1,16 @@
 import React from 'react';
 import productService from "../../services/productService";
-import CreateEditProduct from './create-edit-product';
 import ProductDataIn from '../../models/product';
 import { toast } from 'react-toastify';
 import Pagination from '../pagination';
-import { FaCheckCircle, FaTimesCircle,FaEdit , FaTrash } from 'react-icons/fa';
 import { Style } from '../../index.css';
-class ProductTable extends React.Component {
+import { FaCheckCircle, FaTimesCircle,FaEdit , FaTrash } from 'react-icons/fa';
+import userServices from '../../services/userServices';
+class OrderTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
+      users: [],
       showModal: false,
       selectedProduct: null,
       searchName: "",
@@ -24,20 +24,21 @@ class ProductTable extends React.Component {
     if (productId == null) {
       this.setState({ showModal: true, selectedProduct: null });
     } else {
-      const selectedProductTemp = this.state.products.find(product => product.id === productId);
+      const selectedProductTemp = this.state.users.find(product => product.id === productId);
       this.setState({ showModal: true, selectedProduct: selectedProductTemp });
     }
   }
-
-  deleteProduct  = (productId) => {
-    productService.deleteProduct(productId);
-    this.reloadTable(1);
-  };
 
   closeModal = () => {
     this.setState({ showModal: false, selectedProduct: null, productId: null });
     this.reloadTable(1);
   }
+
+
+  deleteUser = (productId) => {
+    userServices.deleteUser(productId);
+    this.reloadTable(1);
+  };
 
   async reloadTable(page) {
     try {
@@ -52,24 +53,36 @@ class ProductTable extends React.Component {
         this.setState({ currentPage: 1 });
       }
 
-      const productsData = await productService.getAll(productData);
-      const products = productsData.data.map(item => new ProductDataIn(
-        item.categoryName,
-        item.categoryId,
-        item.description,
-        item.id,
-        item.images,
-        item.name,
-        item.lastUpdateTime,
-        item.isDeleted,
-        item.price,
-        item.stock
-      ));
-      this.setState({ products: products, totalCount: productsData.count });
+      const productsData = await userServices.getAll(productData);
+      const users = productsData.data;
+      console.log(users)
+      // const products = productsData.data.map(item => new ProductDataIn(
+      //   item.category,
+      //   item.categoryId,
+      //   item.description,
+      //   item.id,
+      //   item.images,
+      //   item.name,
+      //   item.lastUpdateTime,
+      //   item.isDeleted,
+      //   item.price,
+      //   item.stock
+      // ));
+      this.setState({ users: users, totalCount: productsData.count });
     } catch (error) {
       console.log("Došlo je do greške:", error);
     }
   }
+
+  handleApprove = (productId) => {
+    userServices.approveOrRejectUser(productId,true);
+    this.reloadTable(1);
+  };
+  
+  handleReject = (productId) => {
+    userServices.approveOrRejectUser(productId,false);
+    this.reloadTable(1);
+  };
 
   componentDidMount() {
     this.reloadTable(1);
@@ -97,7 +110,7 @@ class ProductTable extends React.Component {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossOrigin="anonymous" />
         <div className="width90">
           <div className="row">
-            <div className="col-md-6"><h1 className="title">PROIZVODI</h1></div>
+            <div className="col-md-6"><h1 className="title">ORDERS</h1></div>
             <div className="col-md-6 row">
               <div className="icons row">
                 <div className="addBox" onClick={() => this.openModal()}>
@@ -115,27 +128,47 @@ class ProductTable extends React.Component {
           <table>
             <thead>
               <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Username</th>
                 <th>Image</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Stock</th>
-                <th>Category</th>
+                <th>Role</th>
+                <th>Birth date</th>
+                <th>Status</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {this.state.products.map(product => (
+              {this.state.users.map(product => (
                 <tr key={product.id}>
-                  <td><img className='userImage' src={product.images}/></td>
-                  <td>{product.name}</td>
-                  <td>{product.price}</td>
-                  <td>{product.stock}</td>
-                  <td>{product.category}</td>
+                  <td>{product.id}</td>
+                  <td>{product.firstName}</td>
+                  <td>{product.lastName}</td>
+                  <td>{product.email}</td>
+                  <td>{product.userName}</td>
+                  <td><img className='userImage' src={product.image}/></td>
+                  <td>{product.role}</td>
+                  <td>{product.birthDate}</td>
+                  <td>
+                    {product.status}
+                    {product.status === 'Pending' && (
+                      <div>
+                        <button className='approveButton' onClick={() => this.handleApprove(product.id)}>
+                          <FaCheckCircle />
+                        </button>
+                        <button className='rejectButton' onClick={() => this.handleReject(product.id)}>
+                          <FaTimesCircle />
+                        </button>
+                      </div>
+                    )}
+                  </td>
                   <td>
                     <button className='editButton' onClick={() => this.openModal(product.id)}>
                       <FaEdit />
                     </button>
-                    <button className='removeButton' onClick={() => this.deleteProduct(product.id)}>
+                    <button className='removeButton' onClick={() => this.deleteUser(product.id)}>
                       <FaTrash />
                     </button>
                   </td>
@@ -145,10 +178,9 @@ class ProductTable extends React.Component {
           </table>
           <Pagination count={totalCount} currentPage={currentPage} pageSize={pageSize} onPageChange={this.handlePageChange} />
         </div>
-        <CreateEditProduct isOpen={this.state.showModal} onClose={this.closeModal} product={this.state.selectedProduct} />
       </>
     );
   }
 }
 
-export default ProductTable;
+export default OrderTable;

@@ -4,6 +4,7 @@ import ProductDataIn from '../../models/product';
 import { toast } from 'react-toastify';
 import Pagination from '../pagination';
 import { Style } from '../../index.css';
+import { FaCheckCircle, FaTimesCircle,FaEdit , FaTrash } from 'react-icons/fa';
 import userServices from '../../services/userServices';
 class UserTable extends React.Component {
   constructor(props) {
@@ -32,6 +33,12 @@ class UserTable extends React.Component {
     this.setState({ showModal: false, selectedProduct: null, productId: null });
     this.reloadTable(1);
   }
+
+
+  deleteUser = (productId) => {
+    userServices.deleteUser(productId);
+    this.reloadTable(1);
+  };
 
   async reloadTable(page) {
     try {
@@ -66,6 +73,16 @@ class UserTable extends React.Component {
       console.log("Došlo je do greške:", error);
     }
   }
+
+  handleApprove = (productId) => {
+    userServices.approveOrRejectUser(productId,true);
+    this.reloadTable(1);
+  };
+  
+  handleReject = (productId) => {
+    userServices.approveOrRejectUser(productId,false);
+    this.reloadTable(1);
+  };
 
   componentDidMount() {
     this.reloadTable(1);
@@ -111,14 +128,15 @@ class UserTable extends React.Component {
           <table>
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Stock</th>
-                <th>Category</th>
-                <th>Category</th>
-                <th>Category</th>
-                <th>Category</th>
-                <th>Category</th>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Image</th>
+                <th>Role</th>
+                <th>Birth date</th>
+                <th>Status</th>
                 <th></th>
               </tr>
             </thead>
@@ -130,11 +148,29 @@ class UserTable extends React.Component {
                   <td>{product.lastName}</td>
                   <td>{product.email}</td>
                   <td>{product.userName}</td>
-                  <td>{product.image}</td>
+                  <td><img className='userImage' src={product.image}/></td>
                   <td>{product.role}</td>
                   <td>{product.birthDate}</td>
                   <td>
-                    <button onClick={() => this.openModal(product.id)}>Edit</button>
+                    {product.status}
+                    {product.status === 'Pending' && (
+                      <div>
+                        <button className='approveButton' onClick={() => this.handleApprove(product.id)}>
+                          <FaCheckCircle />
+                        </button>
+                        <button className='rejectButton' onClick={() => this.handleReject(product.id)}>
+                          <FaTimesCircle />
+                        </button>
+                      </div>
+                    )}
+                  </td>
+                  <td>
+                    <button className='editButton' onClick={() => this.openModal(product.id)}>
+                      <FaEdit />
+                    </button>
+                    <button className='removeButton' onClick={() => this.deleteUser(product.id)}>
+                      <FaTrash />
+                    </button>
                   </td>
                 </tr>
               ))}

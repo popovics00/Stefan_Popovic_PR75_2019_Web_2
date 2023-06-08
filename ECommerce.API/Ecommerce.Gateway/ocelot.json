@@ -31,7 +31,19 @@
       "UpstreamHttpMethod": [ "Post" ],
       "FileCacheOptions": { "TtlSeconds": 30 }
     },
-
+    {
+      "DownstreamPathTemplate": "/api/product/delete/{userId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7220
+        }
+      ],
+      "UpstreamPathTemplate": "/api/product/delete/{userId}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
 
     //
     //
@@ -67,6 +79,32 @@
         }
       ],
       "UpstreamPathTemplate": "/api/order/save",
+      "UpstreamHttpMethod": [ "Post" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
+      "DownstreamPathTemplate": "/api/order/getAll",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7220
+        }
+      ],
+      "UpstreamPathTemplate": "/api/order/getAll",
+      "UpstreamHttpMethod": [ "Post" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
+      "DownstreamPathTemplate": "/api/order/cancel/{orderId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7220
+        }
+      ],
+      "UpstreamPathTemplate": "/api/order/cancel/{orderId}",
       "UpstreamHttpMethod": [ "Post" ],
       "FileCacheOptions": { "TtlSeconds": 30 }
     },
@@ -114,6 +152,32 @@
         }
       ],
       "UpstreamPathTemplate": "/api/user/activate/{email}/{key}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/approveOrRejectUser/{userId}/{action}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7219
+        }
+      ],
+      "UpstreamPathTemplate": "/api/user/approveOrRejectUser/{userId}/{action}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": { "TtlSeconds": 30 }
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/delete/{userId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7219
+        }
+      ],
+      "UpstreamPathTemplate": "/api/user/delete/{userId}",
       "UpstreamHttpMethod": [ "GET" ],
       "FileCacheOptions": { "TtlSeconds": 30 }
     },

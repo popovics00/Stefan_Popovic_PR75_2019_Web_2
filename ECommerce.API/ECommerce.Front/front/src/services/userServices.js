@@ -53,6 +53,7 @@ const getUser = async (userId) => {
     toast.error(error);
   }
 };
+
 const getAll = async (getData) => {
   try {
     const response = await axiosInstance.post(`/user/getall`, getData);
@@ -70,15 +71,40 @@ const getAll = async (getData) => {
     toast.error(error.message);
   }
 };
+
 const createUser = async (user) => {
   try {
     const response = await axiosInstance.post(`/user/register`, user);
-    console.log(response,'sss')
     if ((response.status == 200 || response.status === "OK") && response.data.result.status == 200) {
-      // window.location.reload(true);
-      // window.location.href = "/";
       toast.success(response.data.result.message);
       return response.data.result
+    } else {
+      toast.warn(response.data.result.message);
+    }
+  } catch (error) {
+    toast.success(error);
+  }
+};
+
+const approveOrRejectUser = async (userId, action) => {
+  try {
+    const response = await axiosInstance.get(`/user/approveOrRejectUser/${userId}/${action}`);
+    if ((response.status == 200 || response.status === "OK") && response.data.result.status == 200) {
+      toast.success(response.data.result.message);
+      return response.data.result
+    } else {
+      toast.warn(response.data.result.message);
+    }
+  } catch (error) {
+    toast.success(error);
+  }
+};
+
+const deleteUser = async (userId) => {
+  try {
+    const response = await axiosInstance.get(`/user/delete/${userId}`);
+    if ((response.status == 200 || response.status === "OK") && response.data.result.status == 200) {
+      toast.success(response.data.result.message);
     } else {
       toast.warn(response.data.result.message);
     }
@@ -94,7 +120,9 @@ const userServices = {
   getCurrentUser,
   isLoggedIn,
   getUser,
-  getAll
+  getAll,
+  deleteUser,
+  approveOrRejectUser
 };
 
 export default userServices;

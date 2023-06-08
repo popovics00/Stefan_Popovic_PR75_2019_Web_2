@@ -4,6 +4,7 @@ using ECommerce.DAL.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using ECommerce.DAL.Services.Implementations;
 
 namespace ECommerce.Product.Controllers
 {
@@ -25,6 +26,12 @@ namespace ECommerce.Product.Controllers
         public ActionResult GetAll(PaginationDataIn dataIn)
         {
             return Ok(_productService.GetAll(dataIn));
+        }
+        [HttpGet("delete/{productId}")]
+        [AllowAnonymous]
+        public ActionResult Delete(int productId)
+        {
+            return Ok(_productService.Delete(productId));
         }
     }
 }

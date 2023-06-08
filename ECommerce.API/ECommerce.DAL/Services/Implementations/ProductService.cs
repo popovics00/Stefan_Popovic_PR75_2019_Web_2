@@ -27,6 +27,27 @@ namespace ECommerce.DAL.Services.Implementations
             _mapper = mapper;
         }
 
+        public async Task<ResponsePackage<string>> Delete(int userId)
+        {
+            var tempProduct = await _unitOfWork.GetProductRepository().GetByIdAsync(userId);
+            if (tempProduct == null)
+                return new ResponsePackage<string>
+                {
+                    Message = "Product doesn't exist in database!",
+                    Status = 200
+                };
+            else
+            {
+                tempProduct.IsDeleted = true;
+                _unitOfWork.Save();
+                return new ResponsePackage<string>
+                {
+                    Message = "Product has been successfully deleted!",
+                    Status = 200
+                };
+            }
+        }
+
         public ResponsePackage<PaginationDataOut<ProductDataOut>> GetAll(PaginationDataIn dataIn)
         {
             var products = _unitOfWork.GetProductRepository().GetAllProductsWithPaggination(dataIn);

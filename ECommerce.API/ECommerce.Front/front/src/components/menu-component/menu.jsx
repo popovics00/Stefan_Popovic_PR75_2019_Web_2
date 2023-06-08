@@ -31,6 +31,7 @@ function useLogout() {
 
 
 function ShowUserIcon() {
+  const navigate = useNavigate();
   const user = userServices.getCurrentUser();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false); // Dodano lokalno stanje isOpen
@@ -43,7 +44,9 @@ function ShowUserIcon() {
   const handleOpenModal = () => {
     setIsOpen(true);
   };
-
+  const orders = () => {
+    navigate('/orders')
+  };
   const handleCloseModal = () => {
     setIsOpen(false);
   };
@@ -60,15 +63,15 @@ function ShowUserIcon() {
     <div className="userIcon">
       <div className="user-dropdown">
         <img
-          src={user.image}
+          src={user?.image}
           alt="Slika korisnika"
           className="user-avatar"
           onClick={handleDropdownToggle}
         />
         {isDropdownOpen && (
           <ul className="dropdown-menu">
-            <li onClick={() => { openModal(user.id); handleDropdownToggle(); }}>Profil</li>
-            <li onClick={handleDropdownToggle}>Orders</li>
+            <li onClick={() => { openModal(user?.id); handleDropdownToggle(); }}>Profil</li>
+            <li onClick={() => { orders(); handleDropdownToggle(); }}>Orders</li>
             <li onClick={() => { logout(); handleDropdownToggle(); }}>
               <FaSignOutAlt />
               Odjava
@@ -77,7 +80,7 @@ function ShowUserIcon() {
         
         )}
       </div>
-      <EditProfile isOpen={isOpen} onClose={handleCloseModal} productId={user.id} />
+      <EditProfile isOpen={isOpen} onClose={handleCloseModal} productId={user?.id} />
     </div>
   );
 }
@@ -86,7 +89,8 @@ function ShowUserIcon() {
 function Menu() {
   const { logout, openCartModal, closeCartModal, isCartModalOpen } = useLogout();
   const user = userServices.getCurrentUser();
-  
+  const navigate = useNavigate();
+
   return (
     <>
       {user != null ? (
@@ -98,7 +102,7 @@ function Menu() {
             <MenuItem item="Profil" path="profil" role={["Customer","Saler","Admin"]}/>
           </div>
           <div className="menu-header">
-            <img className="login-photo" src={require("../../images/logo.png")}/>
+            <img className="login-photo" src={require("../../images/logo.png")} onClick={() => { navigate('/'); }}/>
           </div>
           <div className="menu-left">
             <MenuItem item="Prodavnica" path="glavna-prodavnica" role={["Customer","Saler","Admin"]}/>

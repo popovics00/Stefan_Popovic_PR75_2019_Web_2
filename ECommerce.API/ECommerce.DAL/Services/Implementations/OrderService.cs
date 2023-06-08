@@ -33,6 +33,7 @@ namespace ECommerce.DAL.Services.Implementations
                 Name = dataIn.FirstName + " " + dataIn.LastName,
                 Comment = dataIn.Comment,
                 Phone = dataIn.PhoneNumber,
+                Status = OrderStatus.Pending,
                 Address = dataIn.Address,
                 LastUpdateTime = DateTime.Now,
                 OrderItems = dataIn.CartItems.Select(x => new OrderItem() {ProductId = x.Id.Value,Quantity = x.Count.Value}).ToList()

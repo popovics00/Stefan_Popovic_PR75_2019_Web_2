@@ -40,9 +40,23 @@ const getAll = async (getData) => {
   }
 };
 
+const deleteProduct = async (productId) => {
+  try {
+    const response = await axiosInstance.get(`/product/delete/${productId}`);
+    if ((response.status == 200 || response.status === "OK") && response.data.result.status == 200) {
+      toast.success(response.data.result.message);
+    } else {
+      toast.warn(response.data.result.message);
+    }
+  } catch (error) {
+    toast.success(error);
+  }
+};
+
 const productService = {
   createProduct,
-  getAll
+  getAll,
+  deleteProduct
 };
 
 

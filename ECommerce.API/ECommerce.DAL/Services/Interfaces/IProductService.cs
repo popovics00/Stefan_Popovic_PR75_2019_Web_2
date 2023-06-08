@@ -10,6 +10,7 @@ namespace ECommerce.DAL.Services.Interfaces
     {
         Task<ResponsePackage<string>> Save(CreateProduct dataIn);
         ResponsePackage<PaginationDataOut<ProductDataOut>> GetAll(PaginationDataIn dataIn);
+        Task<ResponsePackage<string>> Delete(int userId);
 
     }
 }

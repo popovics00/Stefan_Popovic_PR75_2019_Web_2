@@ -9,7 +9,10 @@ namespace ECommerce.DAL.Models
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Comment { get; set; }
+        public double Total { get; set; }
+        public DateTime OrderDate { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }
+        public OrderStatus Status { get; set; }
 
     }
     public class OrderItem
@@ -20,5 +23,13 @@ namespace ECommerce.DAL.Models
         public Product Product { get; set; }
         public int Quantity { get; set; }
 
+    }
+
+    public enum OrderStatus
+    {
+        Pending = 0,
+        Approved = 1,
+        Rejected = 2,
+        Completed = 3
     }
 }

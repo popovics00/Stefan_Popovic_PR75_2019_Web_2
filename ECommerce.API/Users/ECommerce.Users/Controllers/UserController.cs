@@ -6,6 +6,8 @@ using ECommerce.DAL.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
+using ECommerce.DAL.Models;
+using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 
 namespace ECommerce.API.Controllers
 {
@@ -42,8 +44,18 @@ namespace ECommerce.API.Controllers
             var user = this._userService.GetUserByEmailAndPass(loginData.Email, loginData.Password);
             if (user != null)
             {
-                if (user.Active == false)
-                    return Ok(new ResponsePackage<string>(ResponseStatus.Error, "Account is corrent, but deactivated (please check your email or contact support)!"));
+                if (user.Status != UserStatus.Approved)
+                {
+                    var tempstring = "";
+                    if (user.Role == Role.Customer)
+                        tempstring = "(please check your email for activation)";
+                    else if (user.Role == Role.Saler && user.Status == UserStatus.Pending)
+                        tempstring = "(please waiting for approve by support)";
+                    else if (user.Role == Role.Saler && user.Status == UserStatus.Rejected)
+                        tempstring = "(please conntact support for more details)";
+
+                    return Ok(new ResponsePackage<string>(ResponseStatus.Error, "Account is corrent, but his/her status is " + user.Status.ToString().ToLower() + " " + tempstring));
+                }
 
                 string token = JwtManager.GetToken(user, 60);
                 retval = new ResponsePackage<string>(token);
@@ -68,6 +80,20 @@ namespace ECommerce.API.Controllers
             retval = new ResponsePackage<string>("Success");
 
             return Ok(retval);
+        }
+
+        [HttpGet("approveOrRejectUser/{userId}/{rejectOrApprove}")]
+        [AllowAnonymous]
+        public ActionResult ApproveOrRejectUser(int userId, bool rejectOrApprove)
+        {
+            return Ok(_userService.ApproveOrRejectUser(userId,rejectOrApprove));
+        }
+
+        [HttpGet("delete/{userId}")]
+        [AllowAnonymous]
+        public ActionResult Delete(int userId)
+        {
+            return Ok(_userService.Delete(userId));
         }
         [HttpPost("getAll")]
         public ActionResult GetAll(PaginationDataIn dataIn)

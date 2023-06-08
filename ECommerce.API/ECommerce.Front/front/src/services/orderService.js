@@ -6,9 +6,6 @@ import { decodeToken, isExpired } from "react-jwt";
 import { toast } from 'react-toastify';
 import axiosInstance from '../helpers/interceptor';
 
-const API_URL = `${baseUrl}` + "user/"; // process.env.API_URL
-
-
 const makeOrder = async (productData) => {
   try {
     const response = await axiosInstance.post('/Order/save', productData);
