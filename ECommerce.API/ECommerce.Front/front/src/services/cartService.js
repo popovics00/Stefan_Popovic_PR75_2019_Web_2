@@ -4,6 +4,7 @@ import baseUrl from '../components/endpoints';
 import User from '../models/user';
 import { decodeToken, isExpired } from "react-jwt";
 import { toast } from 'react-toastify';
+import axiosInstance from '../helpers/interceptor';
 
 const API_URL = `${baseUrl}` + "user/"; // process.env.API_URL
 
@@ -39,7 +40,7 @@ function getCurrentUser () {
 
 const login = async (loginData) => {
   try {
-    const response = await axios.post(`https://localhost:63290/api/User/login`, loginData);
+    const response = await axiosInstance.post(`/User/login`, loginData);
     if (response.status == 200 || response.status === "OK") {
       toast.success(response.data.message);
       localStorage.setItem('token', JSON.stringify(response.data.transferObject));
@@ -59,7 +60,7 @@ const login = async (loginData) => {
 
 const getUsers = async () => {
   try {
-    const response = await axios.get(`https://localhost:63290/api/User`);
+    const response = await axiosInstance.get(`/User`);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -72,7 +73,7 @@ const createUser = async (user) => {
   console.log(JSON.stringify(user) + "prviiiiiii");
   
   try {
-    const response = await axios.post(`https://localhost:63290/api/User/register`, user);
+    const response = await axiosInstance.post(`/User/register`, user);
     console.log('radi');
     return response.data;
   } catch (error) {

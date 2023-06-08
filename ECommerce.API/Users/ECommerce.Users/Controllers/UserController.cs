@@ -27,7 +27,6 @@ namespace ECommerce.API.Controllers
             return Ok(_userService.Save(dataIn));
         }
         
-        [AllowAnonymous]
         [HttpGet("{userId}")]
         public ActionResult GetUser(int userId)
         {

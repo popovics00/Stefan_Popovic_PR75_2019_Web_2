@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { decodeToken, isExpired } from "react-jwt";
 import { toast } from 'react-toastify';
+import axiosInstance from '../helpers/interceptor';
 
 function isLoggedIn() {
   let token = localStorage.getItem('token');
@@ -26,7 +27,7 @@ function getCurrentUser() {
 
 const login = async (loginData) => {
   try {
-    const response = await axios.post(`https://localhost:63290/api/User/login`, loginData);
+    const response = await axiosInstance.post(`/user/login`, loginData);
     if ((response.status == 200 || response.status === "OK") && response.data.status == 200) {
       localStorage.setItem('token', JSON.stringify(response.data.transferObject));
       // window.location.reload(true);
@@ -42,7 +43,7 @@ const login = async (loginData) => {
 
 const getUser = async (userId) => {
   try {
-    const response = await axios.get(`https://localhost:63290/api/User/`+userId);
+    const response = await axiosInstance.get(`/user/`+userId);
     if ((response.status == 200 || response.status === "OK") && response.data.status == 200) {
       return response.data.transferObject
     } else {
@@ -54,7 +55,7 @@ const getUser = async (userId) => {
 };
 const getAll = async (getData) => {
   try {
-    const response = await axios.post(`https://localhost:63290/api/user/getall`, getData);
+    const response = await axiosInstance.post(`/user/getall`, getData);
     if (response.status >= 200 && response.status < 300) {
       if(response.data.message != "")
         toast.success(response.data.message);
@@ -71,7 +72,7 @@ const getAll = async (getData) => {
 };
 const createUser = async (user) => {
   try {
-    const response = await axios.post(`https://localhost:63290/api/User/register`, user);
+    const response = await axiosInstance.post(`/user/register`, user);
     console.log(response,'sss')
     if ((response.status == 200 || response.status === "OK") && response.data.result.status == 200) {
       // window.location.reload(true);
