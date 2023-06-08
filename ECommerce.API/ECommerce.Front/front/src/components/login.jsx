@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import userServices from "../services/userServices"
 import { toast } from "react-toastify";
+import FacebookLoginButton from "../helpers/FacebookLoginButton";
 
 function Login() {
   const navigate = useNavigate();
@@ -24,6 +25,18 @@ function Login() {
       navigate('/');
     }
   }, []);
+
+  const handleLoginSuccess = (accessToken) => {
+    // Obrada uspešne prijave
+    toast.success('Facebook login successfuly!')
+    console.log('Facebook login successfuly. Access token:', accessToken);
+  };
+
+  const handleLoginFailure = (error) => {
+    // Obrada neuspešne prijave
+    toast.error('Facebook login failed.')
+    console.log('Facebook login error:', error);
+  };
 
   return (
     <>
@@ -46,7 +59,12 @@ function Login() {
               </div>
             </label>
             {errors.password && <span>This field is required</span>}
+            
             <button type="submit">LOGIN</button><br/>
+            <FacebookLoginButton 
+              onLoginSuccess={handleLoginSuccess}
+              onLoginFailure={handleLoginFailure}
+            />
           </form>
         </div>
         <div className="login-link-wrapper">
