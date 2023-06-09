@@ -33,5 +33,11 @@ namespace ECommerce.Product.Controllers
         {
             return Ok(_productService.Delete(productId));
         }
+        [HttpGet("get/{productId}")]
+        [AllowAnonymous]
+        public ActionResult Get(int productId)
+        {
+            return Ok(_productService.GetById(productId));
+        }
     }
 }

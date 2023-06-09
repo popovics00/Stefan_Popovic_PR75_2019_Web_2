@@ -60,6 +60,23 @@ namespace ECommerce.DAL.Services.Implementations
             };
         }
 
+        public async Task<ResponsePackage<ProductDataOut>> GetById(int productId)
+        {
+            var tempProduct = await _unitOfWork.GetProductRepository().GetByIdAsync(productId);
+            if (tempProduct == null)
+                return new ResponsePackage<ProductDataOut>
+                {
+                    Status = ResponseStatus.Error,
+                    Message = "Product don't exist in database."
+                };
+            else
+                return new ResponsePackage<ProductDataOut>
+                {
+                    TransferObject = new ProductDataOut(tempProduct),
+                    Status = ResponseStatus.Ok,
+                };
+        }
+
         public async Task<ResponsePackage<string>> Save(CreateProduct dataIn)
         {
             var productForDb = new Product()
