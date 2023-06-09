@@ -51,7 +51,7 @@ namespace ECommerce.DAL.Services.Implementations
         public ResponsePackage<PaginationDataOut<ProductDataOut>> GetAll(PaginationDataIn dataIn)
         {
             var products = _unitOfWork.GetProductRepository().GetAllProductsWithPaggination(dataIn);
-            var data = _mapper.Map<List<ProductDataOut>>(products.TransferObject);
+            var data = products.TransferObject.Select(x => new ProductDataOut(x)).ToList();
 
             return new ResponsePackage<PaginationDataOut<ProductDataOut>>()
             {
@@ -96,7 +96,7 @@ namespace ECommerce.DAL.Services.Implementations
                     return new ResponsePackage<string>(ResponseStatus.Error, "Product with this name already exists.");
 
                 await _unitOfWork.GetProductRepository().AddAsync(productForDb);
-                _unitOfWork.Save();
+                await _unitOfWork.Save();
                 return new ResponsePackage<string>(ResponseStatus.Ok, "Successfully added new product.");
             }
             else // edit exist
@@ -110,10 +110,11 @@ namespace ECommerce.DAL.Services.Implementations
                 dbUser.Stock = productForDb.Stock;
                 dbUser.Description = productForDb.Description;
                 dbUser.CategoryId = productForDb.CategoryId;
-                dbUser.Images = await dbUser.SaveImage(dataIn.Images);
+                if(dataIn.Images !=null)
+                    dbUser.Images = await dbUser.SaveImage(dataIn.Images);
                 dbUser.LastUpdateTime = DateTime.Now;
 
-                _unitOfWork.Save();
+                await _unitOfWork.Save();
                 return new ResponsePackage<string>(ResponseStatus.Ok, "Successfully edited product.");
             }
         }

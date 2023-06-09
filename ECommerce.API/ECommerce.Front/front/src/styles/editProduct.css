@@ -158,6 +158,13 @@ button {
   transition: background-color 0.3s;
 }
 
+.row{
+  width: auto !important;
+}
+.submitButton{
+  width: auto !important;
+}
+
 button:hover {
   background-color: rgb(180, 99, 0);
   color: white;

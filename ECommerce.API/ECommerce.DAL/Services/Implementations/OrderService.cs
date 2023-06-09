@@ -67,7 +67,7 @@ namespace ECommerce.DAL.Services.Implementations
             };
 
             await _unitOfWork.GetOrderRepository().AddAsync(newOrder);
-            _unitOfWork.Save();
+            await _unitOfWork.Save();
             return new ResponsePackage<string>(ResponseStatus.Ok, "Successfully ordered.");
         }
     }

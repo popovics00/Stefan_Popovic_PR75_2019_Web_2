@@ -1,4 +1,5 @@
-﻿using ECommerce.DAL.Services.Implementations;
+﻿using ECommerce.DAL.Helpers;
+using ECommerce.DAL.Services.Implementations;
 using ECommerce.DAL.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -53,6 +54,7 @@ namespace Ecommerce.Gateway
                     .AllowCredentials();
                 });
             });
+
 
 
 

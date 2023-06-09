@@ -1,73 +1,58 @@
-.shop-detail-box-main {
-  padding: 60px 0;
-}
-
-.single-product-slider {
-  margin-bottom: 30px;
-}
-
-.single-product-details h2 {
-  font-size: 24px;
-  margin-bottom: 15px;
-}
-
-.single-product-details h5 {
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-.single-product-details p.available-stock {
-  margin-bottom: 15px;
-}
-
-.single-product-details h4 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.single-product-details p {
-  margin-bottom: 15px;
-}
-
-.single-product-details ul {
-  margin-bottom: 15px;
-}
-
-.single-product-details .form-group {
-  margin-bottom: 15px;
-}
-
-.single-product-details .price-box-bar {
-  margin-bottom: 20px;
-}
-
-.single-product-details .add-to-btn {
+.container-product {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
+  justify-content: center;
+}
+.row{
+  width: 100%;
+}
+.card-product {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  margin: auto;
+  margin-top: 80px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  height: 70% !important;
+  width: 90%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.kol2 {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.single-product-details .add-to-btn .add-comp a {
-  margin-right: 10px;
+.kol1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-.single-product-details .add-to-btn .share-bar a {
-  margin-right: 5px;
+.product-price{
+  font-size: 36px;
+  font-weight: 600;
+  padding: 10px;
+  background-color: #AFB435;
+  color: white;
 }
-
-@media (max-width: 767px) {
-  .single-product-details .add-to-btn {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .single-product-details .add-to-btn .add-comp a {
-    margin-bottom: 10px;
-    margin-right: 0;
-  }
+.title{
+  color: #FEA025;
+  font-size: 40px !important;
+  text-transform: uppercase;
 }
+img {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.addtocartproductpage{
 
-.img-product{
-  width: 300px;
-  height: 300px;
+  padding: 10px 20px 10px 20px ;
+  width: 100%;
+  margin-top: 1rem;
+  font-weight: 600;
 }

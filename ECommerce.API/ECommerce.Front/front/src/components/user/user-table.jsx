@@ -6,6 +6,7 @@ import Pagination from '../pagination';
 import { Style } from '../../index.css';
 import { FaCheckCircle, FaTimesCircle,FaEdit , FaTrash } from 'react-icons/fa';
 import userServices from '../../services/userServices';
+import CreateEditUser from './user-crud';
 class UserTable extends React.Component {
   constructor(props) {
     super(props);
@@ -177,6 +178,7 @@ class UserTable extends React.Component {
             </tbody>
           </table>
           <Pagination count={totalCount} currentPage={currentPage} pageSize={pageSize} onPageChange={this.handlePageChange} />
+          <CreateEditUser isOpen={this.state.showModal} onClose={this.closeModal} product={this.state.selectedProduct} />
         </div>
       </>
     );

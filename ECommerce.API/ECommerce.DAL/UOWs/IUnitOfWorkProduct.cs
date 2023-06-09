@@ -8,6 +8,6 @@ namespace ECommerce.DAL.UOWs
         IProductRepository GetProductRepository();
         IOrderRepository GetOrderRepository();
 
-        void Save();
+        Task<int> Save();
     }
 }

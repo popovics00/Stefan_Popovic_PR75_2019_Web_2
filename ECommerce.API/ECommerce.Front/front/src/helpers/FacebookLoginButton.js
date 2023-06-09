@@ -1,31 +1,35 @@
 import React from 'react';
 import FacebookLogin from 'react-facebook-login';
 import styles from '../styles/facebookLogin.css'
+import userServices from '../services/userServices';
+import { Link, useNavigate } from "react-router-dom";
+
 const FacebookLoginButton = ({ onLoginSuccess, onLoginFailure }) => {
+  const navigate = useNavigate();
+
   const responseFacebook = (response) => {
-    console.log(response)
-    console.log(responseFacebook)
     if (response.accessToken) {
-      // Prijava je uspešna
+      userServices.facebookLogin(response.accessToken)
       onLoginSuccess(response.accessToken);
     } else {
-      // Prijava nije uspešna
+      navigate('/')
       onLoginFailure(response);
     }
   };
 
   return (
     <FacebookLogin
-      appId="2512043105620404"
+      appId="921223238985384"
       autoLoad={false}
       fields="name,email,picture"
       callback={responseFacebook}
       cssClass="facebook-login-button"
         render={(renderProps) => (
-            <button onClick={renderProps.onClick}>Prijavi se preko Facebook-a</button>
+            <button onClick={renderProps.onClick}>FACEBOOK LOGIN</button>
         )}
     />
   );
 };
 
 export default FacebookLoginButton;
+

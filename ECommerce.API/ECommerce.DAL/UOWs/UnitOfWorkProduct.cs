@@ -15,9 +15,9 @@ namespace ECommerce.DAL.UOWs
             _productDb = productDb;
         }
 
-        public void Save()
+        public async Task<int> Save()
         {
-            _productDb.SaveChanges();
+            return await _productDb.SaveChangesAsync();
         }
         public ICategoryRepository GetCategoryRepository()
         {

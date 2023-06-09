@@ -54,6 +54,7 @@
 .register-form-wrapper .row {
   display: flex;
   gap: 20px;
+  width: auto;
 }
 
 .register-form-wrapper .col-md-6 {
@@ -156,6 +157,7 @@ button{
   color: black;
   border-radius: 20px;
   margin-top: 10px;
+  max-width: 300px;
   text-decoration: none;
   transition: background-color 0.3s;
 }

@@ -12,6 +12,10 @@ using Newtonsoft.Json;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using ECommerce.DAL.Helpers;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace ECommerce.API
 {
@@ -29,16 +33,16 @@ namespace ECommerce.API
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddAuthentication();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Web2eCommerce", Version = "v1" });
             });
 
-            //services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            //registracija db contexta u kontejneru zavisnosti, njegov zivotni vek je Scoped
-            services.AddDbContext<UserDbContext>(options => options.UseSqlServer("Server=localhost;Database=ECommerce_Users;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True;"));
+            //services.AddDbContext<UserDbContext>(options => options.UseSqlServer("Server=localhost;Database=ECommerce_Users;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True;"));
+            services.AddDbContext<UserDbContext>(options => options.UseSqlServer(Configuration["dataBaseConnectionString"]));
 
             //Registracija mapera u kontejneru, zivotni vek singleton
             var mapperConfig = new MapperConfiguration(mc =>
@@ -66,6 +70,28 @@ namespace ECommerce.API
                 });
             });
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o =>
+            {
+                o.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = "Issuer",
+                    ValidAudience = "Audience",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("b90ajAJiosjdASF93261a4d351e7gasd(0k0daj@Qjcf478ea8d312c763bb6caca")),
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = true
+                };
+            });
+            services.AddAuthorization();
+
+
+
             MappingServices(services);
             BindServices(services);
         }
@@ -89,6 +115,7 @@ namespace ECommerce.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseCors();
 
@@ -112,6 +139,8 @@ namespace ECommerce.API
         private void BindServices(IServiceCollection services)
         {
             services.AddDbContext<UserDbContext>();
+            services.AddHttpClient();
+            services.AddTransient<IFacebookService, FacebookService>();
             services.AddTransient<IUnitOfWorkUser, UnitOfWorkUser>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IUserService, UserService>();

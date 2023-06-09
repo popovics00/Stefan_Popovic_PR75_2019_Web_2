@@ -13,9 +13,9 @@ namespace ECommerce.DAL.UOWs
             _userDb = userDb;
         }
 
-        public void Save()
+        public async Task<int> Save()
         {
-            _userDb.SaveChanges();
+            return await _userDb.SaveChangesAsync();
         }
 
         public IUserRepository GetUserRepository()

@@ -41,6 +41,21 @@ const login = async (loginData) => {
   }
 };
 
+const facebookLogin = async (token) => {
+  try {
+    const response = await axiosInstance.post(`/user/facebookLogin`, { facebookLoginToken: token });
+    if ((response.status == 200 || response.status === "OK") && response.data.status == 200) {
+      localStorage.setItem('token', JSON.stringify(response.data.transferObject));
+      window.location.href = "/";
+      toast.success(response.data.message);
+    } else {
+      toast.warn(response.data.message);
+    }
+  } catch (error) {
+    toast.error(error);
+  }
+};
+
 const getUser = async (userId) => {
   try {
     const response = await axiosInstance.get(`/user/`+userId);
@@ -121,6 +136,7 @@ const userServices = {
   isLoggedIn,
   getUser,
   getAll,
+  facebookLogin,
   deleteUser,
   approveOrRejectUser
 };

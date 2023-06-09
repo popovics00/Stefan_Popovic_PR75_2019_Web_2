@@ -16,7 +16,6 @@ namespace ECommerce.DAL.Services.Implementations
         private readonly UserDbContext _dbContext;
         private readonly IEmailService _emailService;
         private readonly IUnitOfWorkUser _uowUser;
-
         public UserService(IUnitOfWorkUser uowUser, IEmailService userService)
         {
             _uowUser = uowUser;
@@ -145,6 +144,28 @@ namespace ECommerce.DAL.Services.Implementations
         public User GetUserByEmailAndPass(string email, string pass)
         {
             return _uowUser.GetUserRepository().GetUserByEmailAndPassword(email, pass);
+        }
+
+        public async Task<User> RegisterOrLoginFacebookUser(FacebookUserData dataIn)
+        {
+            var userFromDb = _uowUser.GetUserRepository().GetUserByEmail(dataIn.Email);
+            if(userFromDb==null && userFromDb.Password.IsNullOrEmpty())
+            {
+                // ne postoji ajde da ga registrujem
+                await _uowUser.GetUserRepository().AddAsync(new User()
+                {
+                    Email = dataIn.Email,
+                    FirstName = dataIn.Name.Split(' ')[0],
+                    LastName = dataIn.Name.Split(' ')[1],
+                    Image = dataIn.Picture.Data.Url,
+                    Role = Role.Customer,
+                    LastUpdateTime = DateTime.Now,
+                    Status = UserStatus.Approved
+                });
+                await _uowUser.Save();
+            }
+            var newUser = _uowUser.GetUserRepository().GetUserByEmail(dataIn.Email);
+            return newUser;
         }
 
         public async Task<ResponsePackage<string>> Save(RegisterUserDataIn dataIn)

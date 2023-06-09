@@ -5,6 +5,9 @@ namespace ECommerce.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
+    [AllowAnonymous]
+
     public class BaseController : ControllerBase
     {
         [ApiExplorerSettings(IgnoreApi = true)]
@@ -13,16 +16,5 @@ namespace ECommerce.API.Controllers
             var idClaim = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "id")?.Value;
             return Int32.TryParse(idClaim, out int ret) ? ret : (int?)null;
         }
-
-        //protected ObjectResult HandleErrorObjectResult(ResponseStatus status, string message)
-        //{
-        //    switch (status)
-        //    {
-        //        case ResponseStatus.BadRequest: return BadRequest(message);
-        //        case ResponseStatus.NotFound: return NotFound(message);
-        //        case ResponseStatus.InternalServerError: return Problem(message);
-        //        default: return BadRequest(message);
-        //    }
-        //}
     }
 }

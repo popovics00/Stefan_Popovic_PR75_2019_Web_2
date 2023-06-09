@@ -58,11 +58,11 @@ const get = async (productId) => {
     const response = await axiosInstance.get(`/product/get/${productId}`);
     console.log(response)
 
-    if ((response.status == 200 || response.status === "OK") && response.data.result.status == 200) {
-      toast.success(response.data.result.message);
-      return response.data.result
+    if ((response.status == 200 || response.status === "OK") && response.data.status == 200) {
+      toast.success(response.data.message);
+      return response.data
     } else {
-      toast.warn(response.data.result.message);
+      toast.warn(response.data.message);
     }
   } catch (error) {
     toast.success(error);

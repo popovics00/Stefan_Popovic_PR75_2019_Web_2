@@ -29,8 +29,7 @@ const getAll = async (getData) => {
     if (response.status >= 200 && response.status < 300) {
       if(response.data.message != "")
         toast.success(response.data.message);
-
-      return response.data.transferObject;
+      return response.data;
     } else if (response.status === 402) {
       toast.error(response.data.message);
     } else {
@@ -44,5 +43,5 @@ const getAll = async (getData) => {
 
 export default {
   makeOrder,
-  getAll,
+  getAll
 };

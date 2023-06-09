@@ -4,18 +4,15 @@ using ECommerce.DAL.Mappings;
 using ECommerce.DAL.Services.Implementations;
 using ECommerce.DAL.Services.Interfaces;
 using ECommerce.DAL.UOWs;
-using MailKit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
-using Ocelot.DependencyInjection;
-using Ocelot.Middleware;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.FileProviders;
-using System.IO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 namespace ECommerce.Product
 {
     public class Startup
@@ -31,17 +28,15 @@ namespace ECommerce.Product
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Web2eCommerce", Version = "v1" });
             });
 
-            //services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            //registracija db contexta u kontejneru zavisnosti, njegov zivotni vek je Scoped
-            services.AddDbContext<ProductDbContext>(options => options.UseSqlServer("Server=localhost;Database=ECommerce_Products;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True;"));
+            //services.AddDbContext<ProductDbContext>(options => options.UseSqlServer("Server=localhost;Database=ECommerce_Products;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True;"));
+            services.AddDbContext<ProductDbContext>(options => options.UseSqlServer(Configuration["dataBaseConnectionString"]));
 
             //Registracija mapera u kontejneru, zivotni vek singleton
             var mapperConfig = new MapperConfiguration(mc =>
@@ -69,6 +64,25 @@ namespace ECommerce.Product
                 });
             });
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o =>
+            {
+                o.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = Configuration["Issuer"],
+                    ValidAudience = Configuration["Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"])),
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = true
+                };
+            });
+            services.AddAuthorization();
 
             MappingServices(services);
             BindServices(services);
@@ -90,8 +104,8 @@ namespace ECommerce.Product
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseCors();
             app.UseEndpoints(endpoints =>
             {

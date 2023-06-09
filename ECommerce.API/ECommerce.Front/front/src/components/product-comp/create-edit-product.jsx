@@ -51,7 +51,12 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
       formData.append('stock', productData.stock);
       formData.append('description', productData.description);
       formData.append('categoryId', productData.categoryId);
-      formData.append('images', productData.images[0], productData.images[0].name);
+      console.log(product, 'product')
+      if (productData.images instanceof FileList) 
+        formData.append('images', productData.images[0], productData.images[0].name);
+      else
+        formData.append('images', productData.images);
+
       
       await productService.createProduct(formData);
       onClose();
@@ -126,23 +131,23 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
                 Categories
                 <div className="input-wrapper">
                 <select {...register('categoryId', { required: true })} defaultValue={product?.categoryId || ''}>
-                    <option value="">Select a category</option>
-                    {categories && categories.length > 0 ? (
-                      categories.map((category) => (
-                        <option
-                          key={category.id}
-                          value={category.id}
-                          selected={product?.categoryId === category.id} // Dodajte ovu liniju za provjeru odgovarajućeg odabira
-                        >
-                          {category.name}
-                        </option>
-                      ))
-                    ) : (
-                      <option value="" disabled>
-                        No categories available
+                  <option value="">Select a category</option>
+                  {categories && categories.length > 0 ? (
+                    categories.map((category) => (
+                      <option
+                        key={category.id}
+                        value={category.id}
+                      >
+                        {category.name}
                       </option>
-                    )}
-                  </select>
+                    ))
+                  ) : (
+                    <option value="" disabled>
+                      No categories available
+                    </option>
+                  )}
+                </select>
+
                 </div>
               </label>
               {errors.categoryId && <span>This field is required</span>}
@@ -168,7 +173,7 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
             </div>
           </div>
           <div className="row">
-            <button type="submit">{product != null ? 'EDIT' : 'CREATE'} PRODUCT</button>
+            <button className='submitButton' type="submit">{product != null ? 'EDIT' : 'CREATE'} PRODUCT</button>
           </div>
         </form>              </div>
             </div>

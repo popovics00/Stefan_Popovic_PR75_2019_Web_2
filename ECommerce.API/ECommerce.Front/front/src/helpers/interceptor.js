@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 // Create an instance of Axios with custom configuration
 const axiosInstance = axios.create({
@@ -7,14 +8,24 @@ const axiosInstance = axios.create({
 
 // Add a request interceptor
 axiosInstance.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
+  async (config) => {
+    const token = localStorage["token"];
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = "Bearer " + token;
     }
     return config;
   },
-  (error) => {
+  function (error) {
+    return Promise.reject(error);
+  }
+);
+
+// Add a response interceptor
+axiosInstance.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
     return Promise.reject(error);
   }
 );

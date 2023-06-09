@@ -4,13 +4,13 @@ import ProductDataIn from '../../models/product';
 import { toast } from 'react-toastify';
 import Pagination from '../pagination';
 import { Style } from '../../index.css';
-import { FaCheckCircle, FaTimesCircle,FaEdit , FaTrash } from 'react-icons/fa';
+import { FaCheckCircle, FaTimesCircle, FaEdit, FaTrash } from 'react-icons/fa';
 import orderService from '../../services/orderService';
 class OrderTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [],
+      orders: [],
       showModal: false,
       selectedProduct: null,
       searchName: "",
@@ -24,7 +24,7 @@ class OrderTable extends React.Component {
     if (productId == null) {
       this.setState({ showModal: true, selectedProduct: null });
     } else {
-      const selectedProductTemp = this.state.users.find(product => product.id === productId);
+      const selectedProductTemp = this.state.orders.find(product => product.id === productId);
       this.setState({ showModal: true, selectedProduct: selectedProductTemp });
     }
   }
@@ -54,9 +54,8 @@ class OrderTable extends React.Component {
       }
 
       const productsData = await orderService.getAll(productData);
-      const users = productsData.data;
-      console.log(users)
-      this.setState({ users: users, totalCount: productsData.count });
+      console.log(productsData.transferObject.data); // Ispisuje vrednost orders na konzolu
+      this.setState({ orders: productsData.transferObject.data, totalCount: productsData.transferObject.count });
     } catch (error) {
       console.log("Došlo je do greške:", error);
     }
@@ -117,46 +116,43 @@ class OrderTable extends React.Component {
             <thead>
               <tr>
                 <th>Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>Image</th>
-                <th>Role</th>
-                <th>Birth date</th>
+                <th>Customer</th>
+                <th>Shipping Data</th>
+                <th>Comment</th>
+                <th>Total</th>
+                <th>Date</th>
                 <th>Status</th>
+                <th>No products</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {this.state.users.map(product => (
-                <tr key={product.id}>
-                  <td>{product.id}</td>
-                  <td>{product.firstName}</td>
-                  <td>{product.lastName}</td>
-                  <td>{product.email}</td>
-                  <td>{product.userName}</td>
-                  <td><img className='userImage' src={product.image}/></td>
-                  <td>{product.role}</td>
-                  <td>{product.birthDate}</td>
+              {this.state.orders.map(order => (
+                <tr key={order.id}>
+                  <td>{order?.id}</td>
+                  <td>{order?.customerId}</td>
+                  <td>{order?.firstName} {order?.lastName} <br/> {order?.address}</td>
+                  <td>{order?.comment}</td>
+                  <td>{order?.total}</td>
+                  <td>{order?.orderDate}</td>
                   <td>
-                    {product.status}
-                    {product.status === 'Pending' && (
+                    {order?.status}
+                    {order?.status === 'Pending' && (
                       <div>
-                        <button className='approveButton' onClick={() => this.handleApprove(product.id)}>
+                        <button className='approveButton' onClick={() => this.handleApprove(order?.id)}>
                           <FaCheckCircle />
                         </button>
-                        <button className='rejectButton' onClick={() => this.handleReject(product.id)}>
+                        <button className='rejectButton' onClick={() => this.handleReject(order?.id)}>
                           <FaTimesCircle />
                         </button>
                       </div>
                     )}
                   </td>
                   <td>
-                    <button className='editButton' onClick={() => this.openModal(product.id)}>
+                    <button className='editButton' onClick={() => this.openModal(order?.id)}>
                       <FaEdit />
                     </button>
-                    <button className='removeButton' onClick={() => this.deleteUser(product.id)}>
+                    <button className='removeButton' onClick={() => this.deleteUser(order?.id)}>
                       <FaTrash />
                     </button>
                   </td>

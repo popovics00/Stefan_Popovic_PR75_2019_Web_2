@@ -14,6 +14,7 @@ namespace ECommerce.DAL.Services.Interfaces
         ResponsePackage<string> Delete(int userId);
         ResponsePackage<UserDataOut> Get(int userId);
         ResponsePackage<PaginationDataOut<UserDataOut>> GetAll(PaginationDataIn dataIn);
+        Task<User> RegisterOrLoginFacebookUser(FacebookUserData dataIn);
 
     }
 }

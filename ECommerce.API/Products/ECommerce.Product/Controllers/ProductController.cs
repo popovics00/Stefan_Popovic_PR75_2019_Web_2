@@ -35,9 +35,9 @@ namespace ECommerce.Product.Controllers
         }
         [HttpGet("get/{productId}")]
         [AllowAnonymous]
-        public ActionResult Get(int productId)
+        public async Task<ActionResult> Get(int productId)
         {
-            return Ok(_productService.GetById(productId));
+            return Ok(await _productService.GetById(productId));
         }
     }
 }

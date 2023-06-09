@@ -8,18 +8,21 @@ using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
 using ECommerce.DAL.Models;
 using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
+using Facebook;
 
 namespace ECommerce.API.Controllers
 {
     public class UserController : BaseController
     {
+        private readonly IFacebookService _facebookService;
         private readonly IUserService _userService;
         private readonly IEmailService _emailService;
 
-        public UserController(IUserService userService, IEmailService emailService)
+        public UserController(IUserService userService, IEmailService emailService, IFacebookService facebookService)
         {
             this._userService = userService;
             this._emailService = emailService;
+            this._facebookService = facebookService;
         }
 
         [AllowAnonymous]
@@ -98,8 +101,30 @@ namespace ECommerce.API.Controllers
         [HttpPost("getAll")]
         public ActionResult GetAll(PaginationDataIn dataIn)
         {
+            var temp = GetUserId();
             return Ok(_userService.GetAll(dataIn));
         }
+
+        [HttpPost("facebookLogin")]
+        public async Task<ActionResult> FacebookLogin(FacebookLoginDataIn dataIn)
+        {
+            var userFromDb = await _userService.RegisterOrLoginFacebookUser(await _facebookService.GetUserData(dataIn.FacebookLoginToken));
+            string token = JwtManager.GetToken(userFromDb, 60);
+            if(userFromDb==null)
+                return Ok(new ResponsePackage<string>()
+                {
+                    Status = ResponseStatus.Error,
+                    Message = "Error ocurred!",
+                });
+            else
+                return Ok(new ResponsePackage<string>()
+                {
+                    Status = ResponseStatus.Ok,
+                    Message = "Success loging!",
+                    TransferObject = token
+                });
+        }
+
 
     }
 }

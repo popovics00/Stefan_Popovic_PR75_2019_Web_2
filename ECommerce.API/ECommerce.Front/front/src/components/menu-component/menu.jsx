@@ -97,9 +97,9 @@ function Menu() {
         <div className="menu-wrapper">
           <div className="menu-right">
             <ShowUserIcon/>
-            <MenuItem item="Profil" path="profil" role={["Customer","Saler","Admin"]}/>
-            <MenuItem item="Profil" path="profil" role={["Customer","Saler","Admin"]}/>
-            <MenuItem item="Profil" path="profil" role={["Customer","Saler","Admin"]}/>
+            <MenuItem item="Products" path="/products" role={["Customer","Saler","Admin"]}/>
+            <MenuItem item="Users" path="/users" role={["Customer","Saler","Admin"]}/>
+            <MenuItem item="Orders" path="/orders" role={["Customer","Saler","Admin"]}/>
           </div>
           <div className="menu-header">
             <img className="login-photo" src={require("../../images/logo.png")} onClick={() => { navigate('/'); }}/>
