@@ -28,3 +28,17 @@ export default class ProductDataIn {
   }
 }
 
+//
+export class Product{
+  name = '';
+  id = 0;
+  price = 0;
+  description = '';
+  stock = 0;
+  categoryName = '';
+  categoryId = 0;
+  images = '';
+  count = 0;
+  salerName = '';
+  salerId = '';
+}

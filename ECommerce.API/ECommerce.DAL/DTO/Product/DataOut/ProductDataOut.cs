@@ -16,6 +16,8 @@ namespace ECommerce.DAL.DTO.Product.DataOut
         public string CategoryName { get; set; }
         public int? CategoryId { get; set; }
         public string Images { get; set; }
+        public string Saler { get; set; }
+        public int? SalerId { get; set; }
 
         public ProductDataOut()
         {
@@ -31,6 +33,7 @@ namespace ECommerce.DAL.DTO.Product.DataOut
             CategoryId = product?.CategoryId;
             Images = product?.Images;
             CategoryName = product?.Category?.Name;
+            SalerId = product.CustomerId;
         }
     }
 }

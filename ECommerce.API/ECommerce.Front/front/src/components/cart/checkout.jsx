@@ -59,10 +59,8 @@ function Checkout() {
       comment
     };
     orderService.makeOrder(order)
-    // Simuliraj slanje podataka na server ili izvršavanje odgovarajućih akcija
-    console.log(order);
     orderService.makeOrder(order)
-    // Resetuj stanja polja
+
     setFirstName('');
     setLastName('');
     setAddress('');
@@ -70,7 +68,6 @@ function Checkout() {
     setPaymentMethod('');
     setDeliveryMethod('');
   };
-  
   
 
   return (

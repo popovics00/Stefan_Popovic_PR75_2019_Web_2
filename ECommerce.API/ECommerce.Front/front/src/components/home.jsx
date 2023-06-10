@@ -62,7 +62,7 @@ class HomePage extends React.Component {
       ));
       this.setState({ products: products, totalCount: productsData.count });
     } catch (error) {
-      console.log("Došlo je do greške:", error);
+      console.log("Error ocurred:", error);
     }
   }
 
