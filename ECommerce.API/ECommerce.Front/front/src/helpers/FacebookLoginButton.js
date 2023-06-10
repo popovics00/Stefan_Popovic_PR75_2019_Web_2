@@ -1,8 +1,8 @@
 import React from 'react';
 import FacebookLogin from 'react-facebook-login';
-import styles from '../styles/facebookLogin.css'
+import styles from '../styles/facebookLogin.css';
 import userServices from '../services/userServices';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 
 const FacebookLoginButton = ({ onLoginSuccess, onLoginFailure }) => {
   const navigate = useNavigate();

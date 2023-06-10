@@ -119,6 +119,7 @@ namespace ECommerce.API.Controllers
         }
 
         [HttpPost("facebookLogin")]
+        [AllowAnonymous]
         public async Task<ActionResult> FacebookLogin(FacebookLoginDataIn dataIn)
         {
             var userFromDb = await _userService.RegisterOrLoginFacebookUser(await _facebookService.GetUserData(dataIn.FacebookLoginToken));

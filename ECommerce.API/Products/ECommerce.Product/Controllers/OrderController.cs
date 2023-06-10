@@ -24,18 +24,25 @@ namespace ECommerce.Product.Controllers
             return Int32.TryParse(idClaim, out int ret) ? ret : (int?)null;
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public string GetUserRole()
+        {
+            return HttpContext.User.Claims.FirstOrDefault(x => x.Type.Contains("role"))?.Value;
+            //return Int32.TryParse(idClaim, out int ret) ? ret : (int?)null;
+        }
+
 
         [HttpPost("save")]
-        public ActionResult Save(OrderDataIn dataIn)
+        public ActionResult Save([FromBody] OrderDataIn dataIn)
         {
-            return Ok(_orderService.Save(dataIn));
+            return Ok(_orderService.Save(dataIn, GetUserId()));
         }
 
 
         [HttpPost("getAll")]
         public ActionResult GetAll([FromBody] PaginationDataIn dataIn)
         {
-            return Ok(_orderService.GetAll(dataIn));
+            return Ok(_orderService.GetAll(dataIn, GetUserRole(), GetUserId()));
         }
     }
 }

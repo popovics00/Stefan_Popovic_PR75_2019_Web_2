@@ -41,9 +41,9 @@ const login = async (loginData) => {
   }
 };
 
-const facebookLogin = async (token) => {
+const facebookLogin = async (accessToken) => {
   try {
-    const response = await axiosInstance.post(`/user/facebookLogin`, { facebookLoginToken: token });
+    const response = await axiosInstance.post(`/user/facebookLogin`, { facebookLoginToken: accessToken });
     if ((response.status == 200 || response.status === "OK") && response.data.status == 200) {
       localStorage.setItem('token', JSON.stringify(response.data.transferObject));
       window.location.href = "/";

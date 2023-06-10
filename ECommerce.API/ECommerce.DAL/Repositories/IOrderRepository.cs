@@ -8,7 +8,7 @@ namespace ECommerce.DAL.Repositories
 {
     public interface IOrderRepository : IRepository<Order>
     {
-        ResponsePackage<List<Order>> GetAllProductsWithPaggination(PaginationDataIn dataIn);
+        ResponsePackage<List<Order>> GetAllProductsWithPaggination(PaginationDataIn dataIn, string role, int? userId);
 
         
     }

@@ -9,8 +9,8 @@ namespace ECommerce.DAL.Services.Interfaces
 {
     public interface IOrderService
     {
-        Task<ResponsePackage<string>> Save(OrderDataIn dataIn);
-        ResponsePackage<PaginationDataOut<OrderDataOut>> GetAll(PaginationDataIn dataIn);
+        Task<ResponsePackage<string>> Save(OrderDataIn dataIn, int? userId);
+        ResponsePackage<PaginationDataOut<OrderDataOut>> GetAll(PaginationDataIn dataIn, string role, int? userId);
 
     }
 }

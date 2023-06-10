@@ -6,6 +6,7 @@ using ECommerce.DAL.DTO.Product.DataOut;
 using ECommerce.DAL.Models;
 using ECommerce.DAL.Services.Interfaces;
 using ECommerce.DAL.UOWs;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +29,9 @@ namespace ECommerce.DAL.Services.Implementations
             _mapper = mapper;
         }
 
-        public ResponsePackage<PaginationDataOut<OrderDataOut>> GetAll(PaginationDataIn dataIn)
+        public ResponsePackage<PaginationDataOut<OrderDataOut>> GetAll(PaginationDataIn dataIn, string role, int? userId)
         {
-            var orders = _unitOfWork.GetOrderRepository().GetAllProductsWithPaggination(dataIn);
+            var orders = _unitOfWork.GetOrderRepository().GetAllProductsWithPaggination(dataIn, role, userId);
 
             var orderItems = orders.TransferObject.Select(x =>
             new OrderDataOut()
@@ -53,12 +54,13 @@ namespace ECommerce.DAL.Services.Implementations
             };
         }
 
-        public async Task<ResponsePackage<string>> Save(OrderDataIn dataIn)
+        public async Task<ResponsePackage<string>> Save([FromBody] OrderDataIn dataIn, int? userId)
         {
             var newOrder = new Order()
             {
                 Name = dataIn.FirstName + " " + dataIn.LastName,
                 Comment = dataIn.Comment,
+                CustomerId = userId,
                 Phone = dataIn.PhoneNumber,
                 Status = OrderStatus.Pending,
                 Address = dataIn.Address,
