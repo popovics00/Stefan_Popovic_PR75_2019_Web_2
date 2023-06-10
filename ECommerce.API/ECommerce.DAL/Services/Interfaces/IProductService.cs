@@ -12,6 +12,7 @@ namespace ECommerce.DAL.Services.Interfaces
         ResponsePackage<PaginationDataOut<ProductDataOut>> GetAll(PaginationDataIn dataIn, int? userId, string role);
         Task<ResponsePackage<string>> Delete(int userId);
         Task<ResponsePackage<ProductDataOut>> GetById(int productId);
+        Task<ResponsePackage<List<ProductDataOut>>> GetProductByIds(List<int> ids);
 
     }
 }

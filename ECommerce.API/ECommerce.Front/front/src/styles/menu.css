@@ -32,6 +32,7 @@
 
 .menu-header .login-photo {
   width: 150px;
+  border: none !important;
   height: auto;
   cursor: pointer;
 }

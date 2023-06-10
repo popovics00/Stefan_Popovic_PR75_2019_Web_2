@@ -15,7 +15,7 @@ class ProductTable extends React.Component {
       selectedProduct: null,
       searchName: "",
       currentPage: 1,
-      pageSize: 7,
+      pageSize: 5,
       totalCount: 0,
     };
   }
@@ -57,6 +57,7 @@ class ProductTable extends React.Component {
       const products = productsData.data.map(item => new ProductDataIn(
         item.categoryName,
         item.categoryId,
+        item.customerId,
         item.description,
         item.id,
         item.images,

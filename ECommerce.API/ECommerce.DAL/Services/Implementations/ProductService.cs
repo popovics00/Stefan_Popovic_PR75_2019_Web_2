@@ -77,6 +77,15 @@ namespace ECommerce.DAL.Services.Implementations
                 };
         }
 
+        public async Task<ResponsePackage<List<ProductDataOut>>> GetProductByIds(List<int> ids)
+        {
+            return new ResponsePackage<List<ProductDataOut>>
+            {
+                Status = ResponseStatus.Ok,
+                TransferObject = _unitOfWork.GetProductRepository().GetProductByIds(ids).Select(x => new ProductDataOut(x)).ToList(),
+            };
+        }
+
         public async Task<ResponsePackage<string>> Save(CreateProduct dataIn, int? userId)
         {
             var productForDb = new Product()

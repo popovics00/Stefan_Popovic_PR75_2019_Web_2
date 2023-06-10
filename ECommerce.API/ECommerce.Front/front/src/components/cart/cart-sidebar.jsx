@@ -3,14 +3,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Style } from '../../styles/cart.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import cartService from '../../services/cartService';
 
 function CartSidebar({ onClose }) {
+  cartService.updateCart();
+  
   const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
+  
   const [cartQuantity, setCartQuantity] = useState(
     cartItems.reduce((total, item) => total + item.count, 0)
   );
-
   const [totalAmount, setTotalAmount] = useState(
     cartItems.reduce((total, item) => total + item.price * item.count, 0)
   );

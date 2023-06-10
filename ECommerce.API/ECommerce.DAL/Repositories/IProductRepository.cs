@@ -10,5 +10,8 @@ namespace ECommerce.DAL.Repositories
     {
         ResponsePackage<ProductDataOut> GetProductByName(string Name);
         ResponsePackage<List<Product>> GetAllProductsWithPaggination(PaginationDataIn dataIn, int? userId, string role);
+
+        List<Product> GetProductByIds(List<int> ids);
+
     }
 }

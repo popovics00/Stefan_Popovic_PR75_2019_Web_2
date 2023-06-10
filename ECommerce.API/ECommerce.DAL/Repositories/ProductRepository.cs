@@ -3,6 +3,7 @@ using ECommerce.DAL.Data;
 using ECommerce.DAL.DTO;
 using ECommerce.DAL.DTO.Product.DataOut;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Crypto;
 
 namespace ECommerce.DAL.Repositories
 {
@@ -57,6 +58,12 @@ namespace ECommerce.DAL.Repositories
                     .Take(dataIn.PageSize).ToList(),
                 Message = count.ToString()
             };
+        }
+
+        public List<Product> GetProductByIds(List<int> ids)
+        { 
+            var q = _dbContext.Set<Product>().Where(x => ids.Any(y => y == x.Id));
+            return q.ToList();
         }
     }
 }

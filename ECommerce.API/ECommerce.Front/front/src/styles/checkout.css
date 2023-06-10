@@ -192,6 +192,38 @@
   width: 100%;
 }
 
+.error{
+  color: #ff4837;
+  margin-top: auto;
+}
+
 .font-weight-bold {
   font-weight: 700 !important;
+}
+
+.submitOrderButton{
+  margin-top: 50px;
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid black;
+  text-transform: uppercase;
+  color: white;
+  background-color: #1D7713;
+  font-size: 24px;
+  height: 40px;
+}
+
+.orderDetailsTitle{
+  align-items: center;
+  font-size: 24px;
+}
+
+.shippingDetailsTitle{
+  font-size: 40px;
+}
+
+.leftSide{
+  display: flex;  
+  align-items: center;
+  justify-self: center;
 }

@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ClipLoader } from 'react-spinners';
 
 ReactDOM.render(
-  <React.StrictMode>
+<>
     <BrowserRouter>
       <App />
     </BrowserRouter>
@@ -28,8 +28,8 @@ ReactDOM.render(
         margin: 0 auto;
         background-color: orange;
       `}
-    />
-  </React.StrictMode>,
+    /></>
+  ,
   document.getElementById('root')
 );
 

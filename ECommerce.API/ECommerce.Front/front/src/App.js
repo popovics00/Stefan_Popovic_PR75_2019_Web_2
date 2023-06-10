@@ -65,7 +65,8 @@ function App() {
           <Route path="" element={<HomePage />} />
           <Route path="products" element={<ProductTable/>} />
           <Route path="checkout" element={<Checkout/>} />
-          
+          <Route path="orders" element={<OrderTable/>} />
+
           <Route path="users" element={<UserTable/>} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="users" element={<UserTable/>} />
@@ -82,6 +83,8 @@ function App() {
      <div className="main-container">
         <Menu />
         <Routes>
+        <Route path="orders" element={<OrderTable/>} />
+
           <Route path="" element={<HomePage />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />

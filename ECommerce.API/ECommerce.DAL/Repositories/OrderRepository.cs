@@ -35,8 +35,9 @@ namespace ECommerce.DAL.Repositories
 
             if (tempRole == Role.Customer)
                 q = q.Where(x => x.CustomerId == userId);
-            else if(tempRole == Role.Saler)
-                q = q.Where(x => x.OrderItems.Any(y=>y.Product.CustomerId == userId));
+            else if (tempRole == Role.Saler)
+                q = q.Where(x => x.OrderItems.Any(y => y.Product.CustomerId == userId));
+
 
             count = q.Count();
             return new ResponsePackage<List<Order>>

@@ -14,9 +14,10 @@ export class CreateEditProduct {
 
 
 export default class ProductDataIn {
-  constructor(category, categoryId, description, id, images, name, lastUpdateTime, isDeleted, price, stock) {
+  constructor(category, categoryId, customerId, description, id, images, name, lastUpdateTime, isDeleted, price, stock) {
     this.category = category;
     this.categoryId = categoryId;
+    this.customerId = customerId;
     this.description = description;
     this.id = id;
     this.images = images;

@@ -55,5 +55,11 @@ namespace ECommerce.Product.Controllers
         {
             return Ok(await _productService.GetById(productId));
         }
+        [HttpPost("updateCart")]
+        [AllowAnonymous]
+        public async Task<ActionResult> Get([FromBody] List<int> productIds)
+        {
+            return Ok(await _productService.GetProductByIds(productIds));
+        }
     }
 }

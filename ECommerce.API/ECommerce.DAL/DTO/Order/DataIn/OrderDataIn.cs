@@ -16,6 +16,7 @@ namespace ECommerce.DAL.DTO.Order.DataIn
         public double? Price { get; set; }
         public int? Stock { get; set; }
         public int? Count { get; set; }
+        public int? CustomerId { get; set; }
     }
 
     public class OrderDataIn

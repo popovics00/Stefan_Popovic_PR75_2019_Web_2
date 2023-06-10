@@ -1,134 +1,136 @@
-import React from 'react';
-import productService from "../../services/productService";
-import ProductDataIn from '../../models/product';
+import React, { useState, useEffect } from 'react';
+import orderService from "../../services/orderService";
+import orderDataIn from '../../models/order';
 import { toast } from 'react-toastify';
 import Pagination from '../pagination';
 import { Style } from '../../index.css';
-import { FaCheckCircle, FaTimesCircle, FaEdit, FaTrash } from 'react-icons/fa';
-import orderService from '../../services/orderService';
-class OrderTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      orders: [],
-      showModal: false,
-      selectedProduct: null,
-      searchName: "",
-      currentPage: 1,
-      pageSize: 7,
-      totalCount: 0,
-    };
-  }
+import { FaCheckCircle, FaTimesCircle, FaEdit, FaTrash, FaRegListAlt } from 'react-icons/fa';
+import OrderItemTable from './order-table copy';
 
-  openModal = (productId) => {
-    if (productId == null) {
-      this.setState({ showModal: true, selectedProduct: null });
+function OrderTable() {
+  const [orders, setOrders] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [searchName, setSearchName] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+  const [totalCount, setTotalCount] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [expandedOrderId, setExpandedOrderId] = useState(null); // New state variable
+
+  const openModal = (orderId) => {
+    if (orderId == null) {
+      setShowModal(true);
+      setSelectedOrder(null);
+      setIsModalOpen(true);
     } else {
-      const selectedProductTemp = this.state.orders.find(product => product.id === productId);
-      this.setState({ showModal: true, selectedProduct: selectedProductTemp });
+      const selectedOrderTemp = orders.find(order => order.id === orderId);
+      setShowModal(true);
+      setSelectedOrder(selectedOrderTemp);
+      setIsModalOpen(true);
     }
-  }
-
-  closeModal = () => {
-    this.setState({ showModal: false, selectedProduct: null, productId: null });
-    this.reloadTable(1);
-  }
-
-
-  deleteUser = (productId) => {
-    orderService.deleteUser(productId);
-    this.reloadTable(1);
+    setExpandedOrderId(orderId); // Update the expanded order ID
   };
 
-  async reloadTable(page) {
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedOrder(null);
+    setIsModalOpen(false);
+    reloadTable(1);
+  };
+
+  const deleteUser = (orderId) => {
+    orderService.deleteUser(orderId);
+    reloadTable(1);
+  };
+
+  const reloadTable = async (page) => {
     try {
-      const productData = {
+      const orderData = {
         page: page,
-        searchName: this.state.searchName,
-        pageSize: this.state.pageSize,
+        searchName: searchName,
+        pageSize: pageSize,
       };
 
-      if (productData.searchName !== "") {
-        productData.page = 1;
-        this.setState({ currentPage: 1 });
+      if (orderData.searchName !== "") {
+        orderData.page = 1;
+        setCurrentPage(1);
       }
 
-      const productsData = await orderService.getAll(productData);
-      console.log(productsData.transferObject.data); // Ispisuje vrednost orders na konzolu
-      this.setState({ orders: productsData.transferObject.data, totalCount: productsData.transferObject.count });
+      const ordersData = await orderService.getAll(orderData);
+      setOrders(ordersData.transferObject.data);
+      setTotalCount(ordersData.transferObject.count);
     } catch (error) {
       console.log("Došlo je do greške:", error);
     }
-  }
+  };
 
-  handleApprove = (productId) => {
-    orderService.approveOrRejectUser(productId,true);
-    this.reloadTable(1);
+  const handleApprove = (orderId) => {
+    orderService.approveOrRejectUser(orderId, true);
+    reloadTable(1);
   };
   
-  handleReject = (productId) => {
-    orderService.approveOrRejectUser(productId,false);
-    this.reloadTable(1);
+  const handleReject = (orderId) => {
+    orderService.approveOrRejectUser(orderId, false);
+    reloadTable(1);
   };
 
-  componentDidMount() {
-    this.reloadTable(1);
-  }
+  useEffect(() => {
+    reloadTable(1);
+  }, []);
 
-  handleSearchSubmit = (event) => {
+  const handleSearchSubmit = (event) => {
     event.preventDefault();
-    this.reloadTable(1);
-  }
-
-  handleSearchChange = (event) => {
-    this.setState({ searchName: event.target.value });
-  }
-
-  handlePageChange = (page) => {
-    this.setState({ currentPage: page });
-    this.reloadTable(page);
+    reloadTable(1);
   };
 
-  render() {
-    const { totalCount, currentPage, pageSize } = this.state;
+  const handleSearchChange = (event) => {
+    setSearchName(event.target.value);
+  };
 
-    return (
-      <>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossOrigin="anonymous" />
-        <div className="width90">
-          <div className="row">
-            <div className="col-md-6"><h1 className="title">ORDERS</h1></div>
-            <div className="col-md-6 row">
-              <div className="icons row">
-                <div className="addBox" onClick={() => this.openModal()}>
-                  <i className="fas fa-plus"></i>
-                </div>
-                <div className="searchBox">
-                  <form name="search" onSubmit={this.handleSearchSubmit}>
-                    <input type="text" className="input" name="searchName" value={this.state.searchName} onChange={this.handleSearchChange} />
-                    <i className="fas fa-search" onClick={this.handleSearchSubmit}></i>
-                  </form>
-                </div>
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    reloadTable(page);
+  };
+
+  return (
+    <>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossOrigin="anonymous" />
+      <div className="width90">
+        <div className="row">
+          <div className="col-md-6"><h1 className="title">ORDERS</h1></div>
+          <div className="col-md-6 row">
+            <div className="icons row">
+              <div className="addBox" onClick={() => openModal()}>
+                <i className="fas fa-plus"></i>
+              </div>
+              <div className="searchBox">
+                <form name="search" onSubmit={handleSearchSubmit}>
+                  <input type="text" className="input" name="searchName" value={searchName} onChange={handleSearchChange} />
+                  <i className="fas fa-search" onClick={handleSearchSubmit}></i>
+                </form>
               </div>
             </div>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Customer</th>
-                <th>Shipping Data</th>
-                <th>Comment</th>
-                <th>Total</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>No products</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.orders.map(order => (
-                <tr key={order.id}>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Customer</th>
+              <th>Shipping Data</th>
+              <th>Comment</th>
+              <th>Total</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>No orders</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.map(order => (
+              <React.Fragment key={order.id}>
+                <tr>
                   <td>{order?.id}</td>
                   <td>{order?.customerId}</td>
                   <td>{order?.firstName} {order?.lastName} <br/> {order?.address}</td>
@@ -139,32 +141,45 @@ class OrderTable extends React.Component {
                     {order?.status}
                     {order?.status === 'Pending' && (
                       <div>
-                        <button className='approveButton' onClick={() => this.handleApprove(order?.id)}>
+                        <button className='approveButton' onClick={() => handleApprove(order?.id)}>
                           <FaCheckCircle />
                         </button>
-                        <button className='rejectButton' onClick={() => this.handleReject(order?.id)}>
+                        <button className='rejectButton' onClick={() => handleReject(order?.id)}>
                           <FaTimesCircle />
                         </button>
                       </div>
                     )}
                   </td>
+                  <td>{order?.orderItems.length}</td>
                   <td>
-                    <button className='editButton' onClick={() => this.openModal(order?.id)}>
-                      <FaEdit />
+                    <button className='editButton' onClick={() => openModal(order?.id)}>
+                      <FaRegListAlt />
                     </button>
-                    <button className='removeButton' onClick={() => this.deleteUser(order?.id)}>
+                    <button className='removeButton' onClick={() => deleteUser(order?.id)}>
                       <FaTrash />
                     </button>
                   </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-          <Pagination count={totalCount} currentPage={currentPage} pageSize={pageSize} onPageChange={this.handlePageChange} />
-        </div>
-      </>
-    );
-  }
+                {expandedOrderId === order.id && (
+                  <tr>
+                    <td colSpan="9">
+                      {isModalOpen && (
+                        <OrderItemTable
+                          isOpen={isModalOpen}
+                          onClose={closeModal}
+                          orderItems={order.orderItems}
+                        />
+                      )}
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>        
+      </div>
+    </>
+  );
 }
 
 export default OrderTable;

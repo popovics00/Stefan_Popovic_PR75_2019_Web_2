@@ -9,9 +9,11 @@ import axiosInstance from '../helpers/interceptor';
 const makeOrder = async (productData) => {
   try {
     const response = await axiosInstance.post('/Order/save', productData);
+    console.log(response,'sss')
     if (response.status === 200 || response.status === 'OK') {
       if (response.data.message !== '') {
         toast.success(response.data.message);
+        return response.data.result
       }
     } else if (response.status === 402) {
       toast.error(response.data.message);

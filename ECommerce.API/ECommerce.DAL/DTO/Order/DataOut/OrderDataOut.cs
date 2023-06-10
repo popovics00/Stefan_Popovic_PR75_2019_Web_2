@@ -9,6 +9,7 @@ namespace ECommerce.DAL.DTO.Order.DataOut
 {
     public class OrderDataOut
     {
+        public int? Id { get; set; }
         public int? CustomerId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
@@ -26,6 +27,7 @@ namespace ECommerce.DAL.DTO.Order.DataOut
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public double ProductPrice { get; set; }
+        public string Image { get; set; }
         public int Quantity { get; set; }
 
         public OrderItemDataOut(OrderItem x)
@@ -33,6 +35,7 @@ namespace ECommerce.DAL.DTO.Order.DataOut
             OrderId = x.OrderId;
             ProductId = x.ProductId;
             Quantity = x.Quantity;
+            Image = x.Product.Images;
             ProductName = x.Product != null ? x.Product.Name : "";
             ProductPrice = x.Product != null ? x.Product.Price : 0;
         }

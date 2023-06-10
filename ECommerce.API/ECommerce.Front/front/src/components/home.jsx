@@ -51,6 +51,7 @@ class HomePage extends React.Component {
       const products = productsData.data.map(item => new ProductDataIn(
         item.category,
         item.categoryId,
+        item.customerId,
         item.description,
         item.id,
         item.images,
