@@ -22,9 +22,13 @@ function EditProfile({ isOpen, onClose, productId }) {
     confirmPassword: ""
   });
 
-  const [birthDate, setBirthDate] = useState(new Date());
   const [product, setProduct] = useState(null);
   const [formattedDate, setFormattedDate] = useState('');
+
+  const handleDateChange = (e) => {
+    const formattedDate = new Date(e.target.value).toISOString().split('T')[0];
+    setFormattedDate(formattedDate);
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -38,44 +42,42 @@ function EditProfile({ isOpen, onClose, productId }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
       const formDataToSend = new FormData();
       formDataToSend.append("firstName", formData.firstName);
       formDataToSend.append("lastName", formData.lastName);
       formDataToSend.append("username", formData.username);
-      formDataToSend.append("birthDate", formData.birthDate);
+      formDataToSend.append("birthDate", formattedDate); // koristimo ažuriranu vrednost formattedDate
       formDataToSend.append("roleId", formData.roleId);
       formDataToSend.append("image", formData.image);
       formDataToSend.append("address", formData.address);
       formDataToSend.append("email", formData.email);
       formDataToSend.append("id", formData.id);
       formDataToSend.append("password", formData.password);
-
+  
       const ret = await userServices.createUser(formDataToSend);
-
+  
       if (ret.status === 200) {
-        toast.success(ret.message);
+        toast.success("Successfully changed profile.");
         userServices.logOut();
-        window.location.href = "/";
-        window.location.reload(true);
-
+        navigate('/');
       } else {
         toast.error(ret.message);
       }
       navigate("/");
-
+  
     } catch (error) {
       // handle error
     }
   };
+  
 
   useEffect(() => {
     const fetchData = async () => {
       if (isOpen && productId) {
         const product = await userServices.getUser(productId);
         setProduct(product);
-        setBirthDate(product?.birthDate || new Date()); // Postavite početnu vrijednost datuma
         const formattedDate = new Date(product?.birthDate).toISOString().split('T')[0];
         setFormattedDate(formattedDate);
       }
@@ -138,7 +140,7 @@ function EditProfile({ isOpen, onClose, productId }) {
                               type="date"
                               name="birthDate"
                               value={formattedDate}
-                              onChange={(e) => setFormattedDate(e.target.value)}
+                              onChange={handleDateChange}
                             />
                           </div>
                         </label>

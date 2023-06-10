@@ -209,9 +209,6 @@ namespace ECommerce.DAL.Services.Implementations
                 if(dataIn.Image != null)
                     userForDb.Image = await userForDb.SaveImage(dataIn.Image);
 
-
-
-
                 if (_uowUser.GetUserRepository().GetUserByEmail(userForDb.Email) != null)
                     return new ResponsePackage<string>(ResponseStatus.Error, "User with this email already exists.");
                 

@@ -8,8 +8,8 @@ namespace ECommerce.DAL.Services.Interfaces
 {
     public interface IProductService
     {
-        Task<ResponsePackage<string>> Save(CreateProduct dataIn);
-        ResponsePackage<PaginationDataOut<ProductDataOut>> GetAll(PaginationDataIn dataIn);
+        Task<ResponsePackage<string>> Save(CreateProduct dataIn, int? userId);
+        ResponsePackage<PaginationDataOut<ProductDataOut>> GetAll(PaginationDataIn dataIn, int? userId, string role);
         Task<ResponsePackage<string>> Delete(int userId);
         Task<ResponsePackage<ProductDataOut>> GetById(int productId);
 

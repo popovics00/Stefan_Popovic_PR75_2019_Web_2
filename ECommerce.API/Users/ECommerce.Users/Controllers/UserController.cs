@@ -120,7 +120,7 @@ namespace ECommerce.API.Controllers
 
         [HttpPost("facebookLogin")]
         [AllowAnonymous]
-        public async Task<ActionResult> FacebookLogin(FacebookLoginDataIn dataIn)
+        public async Task<ActionResult> FacebookLogin([FromBody] FacebookLoginDataIn dataIn)
         {
             var userFromDb = await _userService.RegisterOrLoginFacebookUser(await _facebookService.GetUserData(dataIn.FacebookLoginToken));
             string token = JwtManager.GetToken(userFromDb, 60);

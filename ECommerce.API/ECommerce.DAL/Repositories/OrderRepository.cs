@@ -29,10 +29,8 @@ namespace ECommerce.DAL.Repositories
             if (!Enum.TryParse<Role>(role, true, out tempRole))
                 return new ResponsePackage<List<Order>>
                 {
-                    TransferObject = q.OrderByDescending(x => x.Id)
-                                    .Skip((dataIn.Page - 1) * dataIn.PageSize)
-                                    .Take(dataIn.PageSize).ToList(),
-                    Message = count.ToString()
+                    TransferObject = new List<Order>(),
+                    Message = "0"
                 };
 
             if (tempRole == Role.Customer)

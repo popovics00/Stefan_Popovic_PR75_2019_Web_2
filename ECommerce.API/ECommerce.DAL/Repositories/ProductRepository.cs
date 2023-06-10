@@ -27,12 +27,28 @@ namespace ECommerce.DAL.Repositories
             };
         }
 
-        public ResponsePackage<List<Product>> GetAllProductsWithPaggination(PaginationDataIn dataIn)
+        public ResponsePackage<List<Product>> GetAllProductsWithPaggination(PaginationDataIn dataIn, int? userId, string role)
         {
             var q = _dbContext.Set<Product>().Include(x=>x.Category).Where(x => x.IsDeleted==false);
             if (dataIn.SearchName != null && dataIn.SearchName != "")
                 q = q.Where(x => x.Name.Contains(dataIn.SearchName));
+
             var count = q.Count();
+
+            if(dataIn.FilterByUserRole != null && dataIn.FilterByUserRole != false) {
+                Role tempRole;
+                if (!Enum.TryParse<Role>(role, true, out tempRole))
+                    return new ResponsePackage<List<Product>>
+                    {
+                        TransferObject = new List<Product>(),   //losa rola ovo je nemoguce ali je zastita
+                        Message = "0"
+                    };
+                if (tempRole == Role.Saler)
+                {
+                    q = q.Where(x => x.CustomerId == userId); //vrati mu sve njegove proizvode
+                    count = q.Count();
+                }
+            }
 
             return new ResponsePackage<List<Product>>
             {

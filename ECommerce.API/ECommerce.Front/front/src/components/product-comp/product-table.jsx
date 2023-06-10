@@ -45,6 +45,7 @@ class ProductTable extends React.Component {
         page: page,
         searchName: this.state.searchName,
         pageSize: this.state.pageSize,
+        filterByUserRole: true
       };
 
       if (productData.searchName !== "") {

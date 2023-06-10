@@ -11,5 +11,6 @@ namespace ECommerce.DAL.DTO
         public int PageSize { get; set; }
         public int Page { get; set; }
         public string? SearchName { get; set; }
+        public bool? FilterByUserRole { get; set; }
     }
 }

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { decodeToken, isExpired } from "react-jwt";
 import { toast } from 'react-toastify';
 import axiosInstance from '../helpers/interceptor';
+import { Link, useNavigate } from "react-router-dom";
 
 function isLoggedIn() {
   let token = localStorage.getItem('token');
@@ -11,9 +12,9 @@ function isLoggedIn() {
 }
 
 function logOut() {
-  localStorage.removeItem("token");
-  window.location.reload(true);
   window.location.href = "/";
+  window.location.reload(true);
+  localStorage.removeItem("token");
   toast.warn('Success logout!');
 }
 
@@ -30,7 +31,6 @@ const login = async (loginData) => {
     const response = await axiosInstance.post(`/user/login`, loginData);
     if ((response.status == 200 || response.status === "OK") && response.data.status == 200) {
       localStorage.setItem('token', JSON.stringify(response.data.transferObject));
-      // window.location.reload(true);
       window.location.href = "/";
       toast.success(response.data.message);
     } else {

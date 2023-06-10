@@ -25,17 +25,23 @@ namespace ECommerce.Product.Controllers
             return Int32.TryParse(idClaim, out int ret) ? ret : (int?)null;
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public string GetUserRole()
+        {
+            return HttpContext.User.Claims.FirstOrDefault(x => x.Type.Contains("role"))?.Value;
+            //return Int32.TryParse(idClaim, out int ret) ? ret : (int?)null;
+        }
         [HttpPost("save")]
         [DisableRequestSizeLimit]
         public ActionResult Save([FromForm] CreateProduct dataIn)
         {
-            return Ok(_productService.Save(dataIn));
+            return Ok(_productService.Save(dataIn, GetUserId()));
         }
         
         [HttpPost("getAll")]
         public ActionResult GetAll([FromBody] PaginationDataIn dataIn)
         {
-            return Ok(_productService.GetAll(dataIn));
+            return Ok(_productService.GetAll(dataIn, GetUserId(), GetUserRole()));
         }
         [HttpGet("delete/{productId}")]
         [AllowAnonymous]

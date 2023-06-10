@@ -9,6 +9,6 @@ namespace ECommerce.DAL.Repositories
     public interface IProductRepository : IRepository<Product>
     {
         ResponsePackage<ProductDataOut> GetProductByName(string Name);
-        ResponsePackage<List<Product>> GetAllProductsWithPaggination(PaginationDataIn dataIn);
+        ResponsePackage<List<Product>> GetAllProductsWithPaggination(PaginationDataIn dataIn, int? userId, string role);
     }
 }

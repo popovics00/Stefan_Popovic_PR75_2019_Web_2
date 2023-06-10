@@ -28,6 +28,7 @@ function App() {
           <Route path="register" element={<Register/>} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="users" element={<UserTable/>} />
+          <Route path="*" element={<NotFound />} />
 
         </Routes>
       </div>
@@ -48,6 +49,7 @@ function App() {
           <Route path="users" element={<UserTable/>} />
           <Route path="orders" element={<OrderTable/>} />
           <Route path="/product/:id" element={<ProductPage />} />
+                  <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </>
@@ -67,7 +69,7 @@ function App() {
           <Route path="users" element={<UserTable/>} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="users" element={<UserTable/>} />
-
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </>
@@ -87,11 +89,19 @@ function App() {
           <Route path="users" element={<UserTable/>} />
           <Route path="checkout" element={<Checkout/>} />
           <Route path="product/:id" component={ProductPage} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </>
     );
   }
+}
+function NotFound() {
+  const navigate = useNavigate();
+
+  navigate('/'); // Redirektuj na početnu stranicu
+
+  return null; // Ova komponenta neće biti renderovana
 }
 
 export default App;

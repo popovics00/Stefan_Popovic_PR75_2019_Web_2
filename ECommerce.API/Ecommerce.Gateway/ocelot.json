@@ -259,15 +259,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/user/facebookLogin",
-      "UpstreamHttpMethod": [ "POST" ],
-      "RateLimitOptions": {
-        "ClientWhitelist": [],
-        "EnableRateLimiting": true,
-        "Period": "5s",
-        "PeriodTimespan": 1,
-        "Limit": 1
-      },
-      
+      "UpstreamHttpMethod": [ "POST" ]
     },
     {
       "DownstreamPathTemplate": "/api/user/activate/{email}/{key}",

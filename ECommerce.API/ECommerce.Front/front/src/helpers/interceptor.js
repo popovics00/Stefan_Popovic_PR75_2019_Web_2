@@ -10,10 +10,9 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   async (config) => {
     const token = localStorage["token"];
-    const bezPrvogKaraktera = token.substring(1);
-    const bezPoslednjegKaraktera = bezPrvogKaraktera.substring(0, bezPrvogKaraktera.length - 1);
-    console.log(token)
     if (token) {
+      const bezPrvogKaraktera = token.substring(1);
+      const bezPoslednjegKaraktera = bezPrvogKaraktera.substring(0, bezPrvogKaraktera.length - 1);
       config.headers.Authorization = "Bearer " + bezPoslednjegKaraktera;
     }
     return config;

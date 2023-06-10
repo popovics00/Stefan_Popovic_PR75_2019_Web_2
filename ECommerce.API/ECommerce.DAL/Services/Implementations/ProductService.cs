@@ -48,9 +48,9 @@ namespace ECommerce.DAL.Services.Implementations
             }
         }
 
-        public ResponsePackage<PaginationDataOut<ProductDataOut>> GetAll(PaginationDataIn dataIn)
+        public ResponsePackage<PaginationDataOut<ProductDataOut>> GetAll(PaginationDataIn dataIn, int? userId, string role)
         {
-            var products = _unitOfWork.GetProductRepository().GetAllProductsWithPaggination(dataIn);
+            var products = _unitOfWork.GetProductRepository().GetAllProductsWithPaggination(dataIn, userId, role);
             var data = products.TransferObject.Select(x => new ProductDataOut(x)).ToList();
 
             return new ResponsePackage<PaginationDataOut<ProductDataOut>>()
@@ -77,7 +77,7 @@ namespace ECommerce.DAL.Services.Implementations
                 };
         }
 
-        public async Task<ResponsePackage<string>> Save(CreateProduct dataIn)
+        public async Task<ResponsePackage<string>> Save(CreateProduct dataIn, int? userId)
         {
             var productForDb = new Product()
             {
@@ -86,7 +86,8 @@ namespace ECommerce.DAL.Services.Implementations
                 Stock = dataIn.Stock,
                 Description = dataIn.Description,
                 CategoryId = dataIn.CategoryId,
-                LastUpdateTime = DateTime.Now
+                LastUpdateTime = DateTime.Now,
+                CustomerId = userId
             };
             productForDb.Images = await productForDb.SaveImage(dataIn.Images);
 

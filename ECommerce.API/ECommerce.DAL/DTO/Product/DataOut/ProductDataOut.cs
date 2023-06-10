@@ -25,6 +25,7 @@ namespace ECommerce.DAL.DTO.Product.DataOut
         {
             Name = product?.Name;
             Id = product?.Id;
+            Stock = product.Stock;
             Price = product?.Price;
             Description = product?.Description;
             CategoryId = product?.CategoryId;
