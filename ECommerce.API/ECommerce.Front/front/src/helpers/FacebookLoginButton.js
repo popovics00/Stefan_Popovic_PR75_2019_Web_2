@@ -7,14 +7,18 @@ import { Link, useNavigate } from "react-router-dom";
 const FacebookLoginButton = ({ onLoginSuccess, onLoginFailure }) => {
   const navigate = useNavigate();
 
-  const responseFacebook = (response) => {
+  const responseFacebook = async (response) => {
     if (response.accessToken) {
-      userServices.facebookLogin(response.accessToken)
+      await userServices.facebookLogin(response.accessToken);
       onLoginSuccess(response.accessToken);
     } else {
-      navigate('/')
+      navigate('/');
       onLoginFailure(response);
     }
+  };
+
+  const handleFacebookLogin = async () => {
+    await responseFacebook();
   };
 
   return (
@@ -22,14 +26,13 @@ const FacebookLoginButton = ({ onLoginSuccess, onLoginFailure }) => {
       appId="921223238985384"
       autoLoad={false}
       fields="name,email,picture"
-      callback={responseFacebook}
+      callback={responseFacebook} // Bez await ovde
       cssClass="facebook-login-button"
-        render={(renderProps) => (
-            <button onClick={renderProps.onClick}>FACEBOOK LOGIN</button>
-        )}
+      render={(renderProps) => (
+        <button onClick={handleFacebookLogin}>FACEBOOK LOGIN</button>
+      )}
     />
   );
 };
 
 export default FacebookLoginButton;
-

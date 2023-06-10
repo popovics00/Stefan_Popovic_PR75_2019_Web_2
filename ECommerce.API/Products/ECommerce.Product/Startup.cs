@@ -4,12 +4,16 @@ using ECommerce.DAL.Mappings;
 using ECommerce.DAL.Services.Implementations;
 using ECommerce.DAL.Services.Interfaces;
 using ECommerce.DAL.UOWs;
+using MailKit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using ECommerce.DAL.Helpers;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -28,6 +32,8 @@ namespace ECommerce.Product
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddAuthentication();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -52,17 +58,14 @@ namespace ECommerce.Product
 
             services.AddCors(options =>
             {
-                var frontendUrl = Configuration.GetValue<string>("frontend_url");
-
                 options.AddDefaultPolicy(builder =>
                 {
-                    builder.WithOrigins(frontendUrl)
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .SetIsOriginAllowed((host) => true)
-                    .AllowCredentials();
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
                 });
             });
+
 
             services.AddAuthentication(options =>
             {
@@ -73,9 +76,9 @@ namespace ECommerce.Product
             {
                 o.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidIssuer = Configuration["Issuer"],
-                    ValidAudience = Configuration["Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"])),
+                    ValidIssuer = "Issuer",
+                    ValidAudience = "Audience",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("b90ajAJiosjdASF93261a4d351e7gasd(0k0daj@Qjcf478ea8d312c763bb6caca")),
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = false,
@@ -83,6 +86,8 @@ namespace ECommerce.Product
                 };
             });
             services.AddAuthorization();
+
+
 
             MappingServices(services);
             BindServices(services);
@@ -104,9 +109,13 @@ namespace ECommerce.Product
 
             app.UseRouting();
 
+
+            app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseCors();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -122,12 +131,13 @@ namespace ECommerce.Product
                 RequestPath = "/images", // Prefiks URL-a za pristup folderu images
                 EnableDirectoryBrowsing = true // Dozvoljava pregled direktorijuma
             });
-            app.UseRouting();
+
         }
 
         private void BindServices(IServiceCollection services)
         {
             services.AddDbContext<ProductDbContext>();
+            services.AddHttpClient();
             services.AddTransient<IUnitOfWorkProduct, UnitOfWorkProduct>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IOrderService, OrderService>();
@@ -143,9 +153,7 @@ namespace ECommerce.Product
                         };
                     });
 
-
         }
-
         private void MappingServices(IServiceCollection services)
         {
             //bind mappings

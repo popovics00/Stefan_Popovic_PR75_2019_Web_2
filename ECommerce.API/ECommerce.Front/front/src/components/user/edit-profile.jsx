@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useForm, Controller } from 'react-hook-form';
 import userServices from "../../services/userServices";
 import React, { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
@@ -10,39 +9,64 @@ import styles from "../../styles/editProfile.css";
 function EditProfile({ isOpen, onClose, productId }) {
   const navigate = useNavigate();
 
-  const { register, handleSubmit, formState: { errors }, control, watch, setValue } = useForm();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    birthDate: "",
+    roleId: "1",
+    image: null,
+    address: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
+
   const [birthDate, setBirthDate] = useState(new Date());
   const [product, setProduct] = useState(null);
+  const [formattedDate, setFormattedDate] = useState('');
 
-  const password = watch("password"); // Prati vrijednost unosa šifre
-  const onSubmit = async (registerData) => {
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setFormData({ ...formData, image: file });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     try {
-      const formData = new FormData();
-      formData.append("firstName", registerData.firstName);
-      formData.append("lastName", registerData.lastName);
-      formData.append("username", registerData.username);
-      formData.append("birthDate", registerData.birthDate);
-      formData.append("roleId", registerData.roleId);
-      formData.append("image", registerData.image[0]);
-      formData.append("address", registerData.address);
-      formData.append("email", registerData.email);
-      formData.append("id", registerData.id);
-      formData.append("password", registerData.password);
-  
-      const ret = await userServices.createUser(formData);
-      
+      const formDataToSend = new FormData();
+      formDataToSend.append("firstName", formData.firstName);
+      formDataToSend.append("lastName", formData.lastName);
+      formDataToSend.append("username", formData.username);
+      formDataToSend.append("birthDate", formData.birthDate);
+      formDataToSend.append("roleId", formData.roleId);
+      formDataToSend.append("image", formData.image);
+      formDataToSend.append("address", formData.address);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("id", formData.id);
+      formDataToSend.append("password", formData.password);
+
+      const ret = await userServices.createUser(formDataToSend);
+
       if (ret.status === 200) {
         toast.success(ret.message);
         userServices.logOut();
         window.location.href = "/";
         window.location.reload(true);
-      
+
       } else {
         toast.error(ret.message);
       }
       navigate("/");
 
     } catch (error) {
+      // handle error
     }
   };
 
@@ -51,25 +75,29 @@ function EditProfile({ isOpen, onClose, productId }) {
       if (isOpen && productId) {
         const product = await userServices.getUser(productId);
         setProduct(product);
+        setBirthDate(product?.birthDate || new Date()); // Postavite početnu vrijednost datuma
+        const formattedDate = new Date(product?.birthDate).toISOString().split('T')[0];
+        setFormattedDate(formattedDate);
       }
     };
-  
+
     fetchData();
   }, [isOpen, productId]);
-  
+
   useEffect(() => {
     if (product) {
-      setValue("firstName", product.firstName);
-      setValue("lastName", product.lastName);
-      setValue("address", product.address);
-      setValue("birthDate", product.birthDate);
-      setValue("email", product.email);
-      setValue("image", product.image);
-      setValue("id", product.id);
+      setFormData({
+        ...formData,
+        firstName: product.firstName,
+        lastName: product.lastName,
+        address: product.address,
+        birthDate: product.birthDate,
+        email: product.email,
+        image: product.image,
+        id: product.id
+      });
     }
   }, [product]);
-  
-  
 
   return (
     <>
@@ -81,32 +109,37 @@ function EditProfile({ isOpen, onClose, productId }) {
               <div className="register-container">
                 <div className="register-form-wrapper">
                   <img src={product?.image} className="imageProfileEdit" alt="Profile Picture" />
-                  <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
-                    <input type="text" {...register("id", { required: false })} hidden />
+                  <form onSubmit={handleSubmit} encType="multipart/form-data">
+                    <input type="text" name="id" value={formData.id} hidden />
                     <div className="row">
                       <div className="col-md-6">
                         <label className="input-label">
                           First Name
                           <div className="input-wrapper">
-                            <input type="text" {...register("firstName", { required: false })} />
+                            <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} />
                           </div>
                         </label>
                         <label className="input-label">
                           Last Name
                           <div className="input-wrapper">
-                            <input type="text" {...register("lastName", { required: false })} />
+                            <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} />
                           </div>
                         </label>
                         <label className="input-label">
                           Address
                           <div className="input-wrapper">
-                            <input type="text" {...register("address", { required: false })} />
+                            <input type="text" name="address" value={formData.address} onChange={handleInputChange} />
                           </div>
                         </label>
                         <label className="input-label">
                           Birth Date
                           <div className="input-wrapper">
-                            <input type="date" {...register("birthDate", { required: false })} />
+                            <input
+                              type="date"
+                              name="birthDate"
+                              value={formattedDate}
+                              onChange={(e) => setFormattedDate(e.target.value)}
+                            />
                           </div>
                         </label>
                       </div>
@@ -114,13 +147,13 @@ function EditProfile({ isOpen, onClose, productId }) {
                         <label className="input-label">
                           Profile Picture
                           <div className="input-wrapper">
-                            <input type="file" accept="image/*" {...register("image", { required: false })} />
+                            <input type="file" accept="image/*" name="image" onChange={handleImageChange} />
                           </div>
                         </label>
                         <label className="input-label">
                           Email
                           <div className="input-wrapper">
-                            <input type="email" {...register("email", { required: false })} disabled/>
+                            <input type="email" name="email" value={formData.email} disabled />
                           </div>
                         </label>
                         <label className="input-label">
@@ -128,25 +161,23 @@ function EditProfile({ isOpen, onClose, productId }) {
                           <div className="input-wrapper">
                             <input
                               type="password"
-                              {...register("password", { required: false, minLength: 8, maxLength: 20 })}
+                              name="password"
+                              value={formData.password}
+                              onChange={handleInputChange}
                             />
                           </div>
                         </label>
-                        {errors.password?.type === "minLength" && <span>Password must be at least 8 characters long</span>}
-                        {errors.password?.type === "maxLength" && <span>Password must be at most 20 characters long</span>}
                         <label className="input-label">
                           Confirm Password
                           <div className="input-wrapper">
                             <input
                               type="password"
-                              {...register("confirmPassword", {
-                                required: false,
-                                validate: (value) => value === password, // Provjerava jednakost sa unosom šifre
-                              })}
+                              name="confirmPassword"
+                              value={formData.confirmPassword}
+                              onChange={handleInputChange}
                             />
                           </div>
                         </label>
-                        {errors.confirmPassword?.type === "validate" && <span>Passwords do not match</span>}
                       </div>
                     </div>
                     <button type="submit">EDIT</button>

@@ -5,8 +5,7 @@ namespace ECommerce.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
-    [AllowAnonymous]
+    [Authorize]
 
     public class BaseController : ControllerBase
     {

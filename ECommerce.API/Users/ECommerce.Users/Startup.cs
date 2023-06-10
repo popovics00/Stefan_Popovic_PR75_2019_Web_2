@@ -54,21 +54,18 @@ namespace ECommerce.API
             services.AddSingleton(mapper);
 
             var provider = services.BuildServiceProvider();
-           // var configure
+            // var configure
 
             services.AddCors(options =>
             {
-                var frontendUrl = Configuration.GetValue<string>("frontend_url");
-
                 options.AddDefaultPolicy(builder =>
                 {
-                    builder.WithOrigins(frontendUrl)
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .SetIsOriginAllowed((host) => true)
-                    .AllowCredentials();
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
                 });
             });
+
 
             services.AddAuthentication(options =>
             {
@@ -144,6 +141,7 @@ namespace ECommerce.API
             services.AddTransient<IUnitOfWorkUser, UnitOfWorkUser>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IPasswordMD5Service, PasswordMD5Service>();
             services.AddControllers()
                     .AddNewtonsoftJson(options =>
                     {

@@ -8,6 +8,7 @@ using ECommerce.DAL.DTO.User.DataOut;
 using static System.Net.Mime.MediaTypeNames;
 using Microsoft.IdentityModel.Tokens;
 using ECommerce.DAL.DTO.Product.DataOut;
+using Microsoft.Identity.Client;
 
 namespace ECommerce.DAL.Services.Implementations
 {
@@ -16,10 +17,12 @@ namespace ECommerce.DAL.Services.Implementations
         private readonly UserDbContext _dbContext;
         private readonly IEmailService _emailService;
         private readonly IUnitOfWorkUser _uowUser;
-        public UserService(IUnitOfWorkUser uowUser, IEmailService userService)
+        private readonly IPasswordMD5Service _passwordMD5Service;
+        public UserService(IUnitOfWorkUser uowUser, IEmailService userService, IPasswordMD5Service passwordMD5Service)
         {
             _uowUser = uowUser;
             _emailService = userService;
+            _passwordMD5Service = passwordMD5Service;
         }
 
         public ResponsePackage<string> ActivateUser(string email, string key)
@@ -141,9 +144,21 @@ namespace ECommerce.DAL.Services.Implementations
             };
         }
 
-        public User GetUserByEmailAndPass(string email, string pass)
+        public ResponsePackage<User> GetUserByEmailAndPass(string email, string pass)
         {
-            return _uowUser.GetUserRepository().GetUserByEmailAndPassword(email, pass);
+            var userFromDb = _uowUser.GetUserRepository().GetUserByEmail(email);
+            if (userFromDb == null || !_passwordMD5Service.VerifyMd5Hash(pass, userFromDb.Password))
+                return new ResponsePackage<User>()
+                {
+                    Status = ResponseStatus.Unautorized,
+                    Message = "Invalid email or password."
+                };
+            else
+                return new ResponsePackage<User>
+                {
+                    Status = ResponseStatus.Ok,
+                    TransferObject = userFromDb,
+                };
         }
 
         public async Task<User> RegisterOrLoginFacebookUser(FacebookUserData dataIn)
@@ -184,7 +199,7 @@ namespace ECommerce.DAL.Services.Implementations
                     UserName = dataIn.Username,
                     BirthDate = dataIn.BirthDate.GetValueOrDefault(),
                     LastName = dataIn.LastName,
-                    Password = dataIn.Password,
+                    Password = _passwordMD5Service.GetMd5Hash(dataIn.Password),
                     Role = (Role)Int32.Parse(dataIn.RoleId),
                     Status = UserStatus.Pending,
                     ActivateKey = System.Guid.NewGuid().ToString(),
@@ -418,7 +433,7 @@ align: center;
                 if (!string.IsNullOrEmpty(tempImage) && tempImage != dbUser.Image)
                     dbUser.Image = tempImage;
                 if (!string.IsNullOrEmpty(dataIn.Password) && dataIn.Password != dbUser.Password)
-                    dbUser.Password = dataIn.Password;
+                    dbUser.Password = _passwordMD5Service.GetMd5Hash(dataIn.Password);
                 if (!string.IsNullOrEmpty(dataIn.RoleId) && dataIn.RoleId != "undefined"&& ((Role)Int32.Parse(dataIn.RoleId)) != dbUser.Role && dataIn.RoleId != null)
                     dbUser.Role = (Role)Int32.Parse(dataIn.RoleId);
                 if (dataIn.BirthDate != null && dataIn.BirthDate != dbUser.BirthDate)

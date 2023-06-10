@@ -47,5 +47,6 @@
         public const int Ok = 200;
         public const int Error = 400;
         public const int InternalServerError = 500;
+        public const int Unautorized = 401;
     }
 }

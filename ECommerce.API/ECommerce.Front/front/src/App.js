@@ -25,8 +25,10 @@ function App() {
         <Routes>
           <Route path="" element={<Login/>} />
           <Route path="login" element={<Login/>} />
-          <Route path="register" element={<EditProfile/>} />
+          <Route path="register" element={<Register/>} />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="users" element={<UserTable/>} />
+
         </Routes>
       </div>
     </>
@@ -61,6 +63,7 @@ function App() {
           <Route path="" element={<HomePage />} />
           <Route path="products" element={<ProductTable/>} />
           <Route path="checkout" element={<Checkout/>} />
+          
           <Route path="users" element={<UserTable/>} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="users" element={<UserTable/>} />

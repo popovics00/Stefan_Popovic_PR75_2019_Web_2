@@ -24,7 +24,7 @@ const createProduct = async (productData) => {
 
 const getAll = async (getData) => {
   try {
-    const response = await axiosInstance.post(`/product/getall`, getData);
+    const response = await axiosInstance.post(`/product/getAll`, getData);
     if (response.status >= 200 && response.status < 300) {
       if(response.data.message != "")
         toast.success(response.data.message);

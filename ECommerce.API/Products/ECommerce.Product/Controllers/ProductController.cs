@@ -8,13 +8,23 @@ using ECommerce.DAL.Services.Implementations;
 
 namespace ECommerce.Product.Controllers
 {
-    public class ProductController : BaseController
+    [Authorize]
+    [Route("api/[controller]")]
+    public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
         public ProductController(IProductService productService)
         {
             _productService = productService;
         }
+
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public int? GetUserId()
+        {
+            var idClaim = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "id")?.Value;
+            return Int32.TryParse(idClaim, out int ret) ? ret : (int?)null;
+        }
+
         [HttpPost("save")]
         [DisableRequestSizeLimit]
         public ActionResult Save([FromForm] CreateProduct dataIn)
@@ -22,8 +32,8 @@ namespace ECommerce.Product.Controllers
             return Ok(_productService.Save(dataIn));
         }
         
-        [HttpPost("GetAll")]
-        public ActionResult GetAll(PaginationDataIn dataIn)
+        [HttpPost("getAll")]
+        public ActionResult GetAll([FromBody] PaginationDataIn dataIn)
         {
             return Ok(_productService.GetAll(dataIn));
         }
