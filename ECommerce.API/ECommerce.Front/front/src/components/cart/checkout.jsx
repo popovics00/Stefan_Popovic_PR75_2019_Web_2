@@ -39,7 +39,7 @@ function Checkout() {
     });
     return total;
   };
-
+ 
   const handleFirstNameChange = (e) => {
     setFirstName(e.target.value);
   };
@@ -220,9 +220,19 @@ function Checkout() {
               </div>
 
               <div className="card-footer border-secondary bg-transparent">
-                <div className="d-flex justify-content-between mt-2">
-                  <h5 className="font-weight-bold">Total</h5>
-                  <h5 className="font-weight-bold">{calculateTotal()} RSD</h5>
+                <div className="row">
+                  <div className='col-md-4'>
+                  <h7 className="titleCheckout">PRODUCTS</h7>
+                  <h3 className="valueCheckout">{calculateTotal()} RSD</h3>
+                  </div>
+                  <div className='col-md-4'>
+                  <h7 className="titleCheckout">SHIPPING</h7>
+                  <h3 className="valueCheckout">{cartService.calculateShipping()} RSD</h3>
+                  </div>
+                  <div className='col-md-4'>
+                  <h7 className="titleCheckout">TOTAL</h7>
+                  <h3 className="valueCheckout">{calculateTotal()+cartService.calculateShipping()} RSD</h3>
+                  </div>
                 </div>
               </div>
             </div>

@@ -23,6 +23,17 @@ function addToCart(product) {
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
 
+function calculateShipping(){
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  let saleri = new Set(); // Koristimo Set da bismo sačuvali samo jedinstvene vrednosti salera
+  cartItems.forEach(proizvod => {
+    let saler = proizvod.customerId; // Pritupamo polju 'saler' za svaki proizvod
+    saleri.add(saler); // Dodajemo salera u Set
+  });
+  return saleri.size * 250; // Vraćamo broj različitih salera (veličinu Set-a)
+}
+
+
 function removeFromCart(id) {
   const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
   const itemIndex = cartItems.findIndex((item) => item.id === id);
@@ -100,5 +111,6 @@ export default {
   truncateCart,
   updateCart,
   decreaseQuantity,
-  removeFromCart
+  removeFromCart,
+  calculateShipping
 };
