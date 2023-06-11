@@ -7,17 +7,53 @@ import { Product } from "../models/product";
 
 function addToCart(product) {
   const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-  const existingItemIndex = cartItems.findIndex((item) => item.id == product.id);
-  
-  if (existingItemIndex !== -1) {
-    cartItems[existingItemIndex].count++;
-  } else {
+  const existingItem = cartItems.find((item) => item.id === product.id);
+
+  if (existingItem && existingItem.count < existingItem.stock) {
+    existingItem.count++;
+    toast.success('Product added to cart!');
+  } else if (!existingItem && product.stock >= 1) {
     product.count = 1;
     cartItems.push(product);
+    toast.success('Product added to cart!');
+  } else {
+    toast.error('There are not enough products in stock');
   }
 
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  toast.success('Product added to cart!');
+}
+
+function removeFromCart(id) {
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  const itemIndex = cartItems.findIndex((item) => item.id === id);
+
+  if (itemIndex !== -1) {
+    cartItems.splice(itemIndex, 1);
+    toast.success('Product removed from cart!')
+  } else {
+    toast.error('Product not found in cart')
+  }
+
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+}
+
+function decreaseQuantity(id) {
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  const itemIndex = cartItems.findIndex((item) => item.id === id);
+
+  if (cartItems[itemIndex] && cartItems[itemIndex].count >0) {
+    cartItems[itemIndex].count--;
+    if(cartItems[itemIndex].count == 0){
+      cartItems.splice(itemIndex, 1);
+      toast.warn('Product is remove from cart.')
+    }
+    toast.success('Item count increased!')
+  } else if (!cartItems[itemIndex]) {
+    toast.warn('Item not found in cart')
+  } else {
+    toast.error('Item count cannot exceed stock')
+  }
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
 
 function truncateCart() {
@@ -33,11 +69,18 @@ const updateCart = async () => {
     const response = await axiosInstance.post(`/product/updateCart`, productIds);
     if (response.status >= 200 && response.status < 300) {
       cartItems.forEach(element1 => {
-        const matchingElement = response.data.transferObject.find(element2 => element2.id === element1.id);
-        if (matchingElement && element1.price != matchingElement.price) {
-          element1.price = matchingElement.price
+        const elementFromDB = response.data.transferObject.find(element2 => element2.id === element1.id);
+        if (elementFromDB && element1.price != elementFromDB.price) {
+          element1.price = elementFromDB.price
           toast.warn(element1.name + "is updated in the meantime.")
-          return false;
+        }
+        if(elementFromDB && elementFromDB.stock != element1.stock)
+        {
+          element1.stock = elementFromDB.stock;
+          if(elementFromDB.stock < element1.count){
+            element1.count = elementFromDB.stock;
+            toast.error('The stock has changed, so we have reduced the number of '+element1.name+' to '+element1.count+' !');
+          }
         }
       });
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -55,5 +98,7 @@ const updateCart = async () => {
 export default {
   addToCart,
   truncateCart,
-  updateCart
+  updateCart,
+  decreaseQuantity,
+  removeFromCart
 };

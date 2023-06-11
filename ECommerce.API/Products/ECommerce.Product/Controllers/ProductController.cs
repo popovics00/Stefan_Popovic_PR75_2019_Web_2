@@ -44,19 +44,16 @@ namespace ECommerce.Product.Controllers
             return Ok(_productService.GetAll(dataIn, GetUserId(), GetUserRole()));
         }
         [HttpGet("delete/{productId}")]
-        [AllowAnonymous]
         public ActionResult Delete(int productId)
         {
             return Ok(_productService.Delete(productId));
         }
         [HttpGet("get/{productId}")]
-        [AllowAnonymous]
         public async Task<ActionResult> Get(int productId)
         {
             return Ok(await _productService.GetById(productId));
         }
         [HttpPost("updateCart")]
-        [AllowAnonymous]
         public async Task<ActionResult> Get([FromBody] List<int> productIds)
         {
             return Ok(await _productService.GetProductByIds(productIds));

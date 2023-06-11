@@ -306,7 +306,28 @@ input
   border-radius: 50px;
   display: flex;
 }
-
+.checkBoxTest{
+  display: flex;
+  width: 120px !important;
+  height: 40px;
+  border: 1px solid black;;
+  border-radius: 50px;
+  display: flex;
+}
+.cb{
+  margin: auto;
+  margin-left: 15px;
+  width: 20px;
+  height: 20px;
+}
+.cbtext{
+  padding-right: 10px;
+  margin: auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+}
 .input {
   margin: auto;
   padding: 10px;

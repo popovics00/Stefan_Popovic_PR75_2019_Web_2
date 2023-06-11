@@ -40,6 +40,9 @@ namespace ECommerce.DAL.Repositories
             var q = _dbContext.Set<User>().Where(x => x.IsDeleted == false);
             if (dataIn.SearchName != null && dataIn.SearchName != "")
                 q = q.Where(x => x.FirstName.Contains(dataIn.SearchName) || x.LastName.Contains(dataIn.SearchName) || x.Email.Contains(dataIn.SearchName));
+
+            if (dataIn.FilterByUserRole.GetValueOrDefault())
+                q = q.Where(x => x.Role == Role.Saler);
             var count = q.Count();
 
             return new ResponsePackage<List<User>>

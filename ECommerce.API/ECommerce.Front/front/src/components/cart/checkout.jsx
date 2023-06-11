@@ -18,11 +18,19 @@ function Checkout() {
   const [deliveryMethod, setDeliveryMethod] = useState('');
   const [comment, setComment] = useState('');
   const [errors, setErrors] = useState({});
-  cartService.updateCart();
-  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
 
-
+  useEffect(() => {
+    const updateCart = async () => {
+      await cartService.updateCart();
+      const updatedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      setCartItems(updatedCartItems);
+    };
+  
+    updateCart();
+  }, []);
+  
 
   const calculateTotal = () => {
     let total = 0;
@@ -61,14 +69,6 @@ function Checkout() {
   };
 
   const handleSubmit = async (e) => {
-    if(!cartService.updateCart())
-    {
-      toast.error('Please check again product list.');
-      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-      navigate('/checkout')
-      return null;
-    }
-
     e.preventDefault();
 
     const validationErrors = validateForm();
@@ -88,24 +88,24 @@ function Checkout() {
       comment,
     };
 
-    try{
+    try {
       const ret = await orderService.makeOrder(order);
-      if(ret.status == 200){
-        toast.success(ret.message)
-        navigate('/')
-      }
-      else if(ret.status==400){
-        toast.warn(ret.message)
+      if (ret.status === 200) {
+        toast.success(ret.message);
+        navigate('/');
+      } else if (ret.status === 400) {
+        toast.warn(ret.message);
         cartService.updateCart();
-      }
-      else{
-        toast.warn(ret.message)
+        const updatedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        setCartItems(updatedCartItems);
+      } else {
+        toast.warn(ret.message);
       }
     } catch (error) {
-      toast.error('Error ocurred: ' + error)
-    }    
+      toast.error('Error occurred: ' + error);
+    }
 
-    //reset
+    // Reset form values
     setFirstName('');
     setLastName('');
     setAddress('');
@@ -138,17 +138,17 @@ function Checkout() {
   };
 
   return (
-    <div class="checkout">
-      <div class="container-fluid pt-5">
-        <div class="row">
-          <div class="col-md-6 leftSide">
-            <div class="mb-4">
-              <h4 class="shippingDetailsTitle">SHIPPING DETAILS</h4>
-              <div class="row">
-                <div class="col-md-6 form-group">
+    <div className="checkout">
+      <div className="container-fluid pt-5">
+        <div className="row">
+          <div className="col-md-6 leftSide">
+            <div className="mb-4">
+              <h4 className="shippingDetailsTitle">SHIPPING DETAILS</h4>
+              <div className="row">
+                <div className="col-md-6 form-group">
                   <label>First Name</label>
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="text"
                     placeholder=""
                     onChange={handleFirstNameChange}
@@ -158,10 +158,10 @@ function Checkout() {
                     <p className="error">{errors.firstName}</p>
                   )}
                 </div>
-                <div class="col-md-6 form-group">
+                <div className="col-md-6 form-group">
                   <label>Last Name</label>
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="text"
                     placeholder=""
                     onChange={handleLastNameChange}
@@ -169,10 +169,10 @@ function Checkout() {
                   />
                   {errors.lastName && <p className="error">{errors.lastName}</p>}
                 </div>
-                <div class="col-md-6 form-group">
+                <div className="col-md-6 form-group">
                   <label>Mobile No</label>
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="text"
                     placeholder=""
                     onChange={handlePhoneNumberChange}
@@ -182,10 +182,10 @@ function Checkout() {
                     <p className="error">{errors.phoneNumber}</p>
                   )}
                 </div>
-                <div class="col-md-6 form-group">
+                <div className="col-md-6 form-group">
                   <label>Address</label>
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="text"
                     placeholder=""
                     onChange={handleAddressChange}
@@ -194,7 +194,7 @@ function Checkout() {
                   {errors.address && <p className="error">{errors.address}</p>}
                 </div>
               </div>
-              <div class="row">
+              <div className="row">
                 <label>Comment</label>
                 <textarea name="comment" onChange={handleCommentChange}></textarea>
                 <button className="submitOrderButton" onClick={handleSubmit}>
@@ -203,14 +203,14 @@ function Checkout() {
               </div>
             </div>
           </div>
-          <div class="col-md-6 rightSide">
-            <div class="card border-secondary mb-5">
-              <div class="card-header bg-secondary border-0">
-                <h4 class="orderDetailsTitle">ORDER DETAILS</h4>
+          <div className="col-md-6 rightSide">
+            <div className="card border-secondary mb-5">
+              <div className="card-header bg-secondary border-0">
+                <h4 className="orderDetailsTitle">ORDER DETAILS</h4>
               </div>
-              <div class="card-body">
+              <div className="card-body">
                 {cartItems.map((item) => (
-                  <div class="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between">
                     <p>{item?.name}</p>
                     <p>
                       <span>{item?.count} x</span> <b>{item?.price} RSD</b>
@@ -219,10 +219,10 @@ function Checkout() {
                 ))}
               </div>
 
-              <div class="card-footer border-secondary bg-transparent">
-                <div class="d-flex justify-content-between mt-2">
-                  <h5 class="font-weight-bold">Total</h5>
-                  <h5 class="font-weight-bold">{calculateTotal()} RSD</h5>
+              <div className="card-footer border-secondary bg-transparent">
+                <div className="d-flex justify-content-between mt-2">
+                  <h5 className="font-weight-bold">Total</h5>
+                  <h5 className="font-weight-bold">{calculateTotal()} RSD</h5>
                 </div>
               </div>
             </div>

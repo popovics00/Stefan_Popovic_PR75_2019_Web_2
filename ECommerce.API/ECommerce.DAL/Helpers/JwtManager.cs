@@ -34,7 +34,7 @@ namespace ECommerce.DAL.Helpers
                 new Claim("image", user.Image.ToString()),
                 new Claim("name", $"{user.FirstName}"),
                 new Claim("lastName", $"{user.LastName}"),
-                new Claim("address", $"{user.LastName}"),
+                new Claim("address", $"{user.Address}"),
             });
 
             var expires = DateTime.Now.AddMinutes(100);

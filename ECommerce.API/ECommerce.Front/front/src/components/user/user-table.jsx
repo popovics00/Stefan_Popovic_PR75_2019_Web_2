@@ -18,6 +18,7 @@ class UserTable extends React.Component {
       currentPage: 1,
       pageSize: 7,
       totalCount: 0,
+      isCheckboxChecked: false,
     };
   }
 
@@ -47,6 +48,8 @@ class UserTable extends React.Component {
         page: page,
         searchName: this.state.searchName,
         pageSize: this.state.pageSize,
+        pageSize: this.state.pageSize,
+        filterByUserRole: !this.state.isCheckboxChecked
       };
 
       if (productData.searchName !== "") {
@@ -102,7 +105,13 @@ class UserTable extends React.Component {
     this.setState({ currentPage: page });
     this.reloadTable(page);
   };
-
+  handleCheckboxChange = () => {
+    this.setState(prevState => ({
+      isCheckboxChecked: !prevState.isCheckboxChecked,
+    }));
+    this.reloadTable(1)
+  };
+  
   render() {
     const { totalCount, currentPage, pageSize } = this.state;
 
@@ -114,8 +123,12 @@ class UserTable extends React.Component {
             <div className="col-md-6"><h1 className="title">USERS</h1></div>
             <div className="col-md-6 row">
               <div className="icons row">
-                <div className="addBox" onClick={() => this.openModal()}>
+                {/* <div className="addBox" onClick={() => this.openModal()}>
                   <i className="fas fa-plus"></i>
+                </div> */}
+                <div className="checkBoxTest" onClick={() => this.handleCheckboxChange()}>
+                  <input type='checkbox' className='cb' checked={this.state.isCheckboxChecked}/>
+                  <span className='cbtext'>SALER</span>
                 </div>
                 <div className="searchBox">
                   <form name="search" onSubmit={this.handleSearchSubmit}>

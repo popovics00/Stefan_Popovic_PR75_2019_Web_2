@@ -6,6 +6,7 @@ using ECommerce.DAL.DTO.Product.DataOut;
 using ECommerce.DAL.Models;
 using ECommerce.DAL.Services.Interfaces;
 using ECommerce.DAL.UOWs;
+using EllipticCurve;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Math.EC.Rfc7748;
@@ -91,6 +92,15 @@ namespace ECommerce.DAL.Services.Implementations
                     TransferObject = orderErrors
                 };
             }
+
+            //stock umanjivanje
+            foreach(var item in tempList)
+            {
+                var tempItem = dataIn.CartItems.FirstOrDefault(x => x.Id == item.Id);
+                item.Stock -= tempList.Count;
+            }
+
+
             var newOrder = new Order()
             {
                 Name = dataIn.FirstName + " " + dataIn.LastName,
