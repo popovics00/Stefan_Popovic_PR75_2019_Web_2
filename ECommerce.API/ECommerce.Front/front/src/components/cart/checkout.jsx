@@ -113,6 +113,7 @@ function Checkout() {
     setPaymentMethod('');
     setDeliveryMethod('');
     setErrors({});
+    cartService.truncateCart();
   };
 
   const validateForm = () => {
@@ -172,6 +173,7 @@ function Checkout() {
                 <div className="col-md-6 form-group">
                   <label>Mobile No</label>
                   <input
+                    pattern="[0-9]*"
                     className="form-control"
                     type="text"
                     placeholder=""

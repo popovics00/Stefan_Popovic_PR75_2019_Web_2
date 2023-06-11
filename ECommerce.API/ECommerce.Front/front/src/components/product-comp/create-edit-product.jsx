@@ -105,7 +105,7 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row">
             <div className="col-md-6">
-              <input type="number" {...register('id', { required: true })} defaultValue={product?.id || null} hidden />
+              <input type="number" min="0" {...register('id', { required: true })} defaultValue={product?.id || null} hidden />
               <label className="input-label">
                 Name
                 <div className="input-wrapper">
@@ -116,14 +116,14 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
               <label className="input-label">
                 Price
                 <div className="input-wrapper">
-                  <input type="number" step="0.01" {...register('price', { required: true })} defaultValue={product?.price || ''} />
+                  <input type="number" min="0"  step="0.1" {...register('price', { required: true })} defaultValue={product?.price || ''} />
                 </div>
               </label>
               {errors.price && <span>This field is required</span>}
               <label className="input-label">
                 Stock
                 <div className="input-wrapper">
-                  <input type="number" {...register('stock', { required: true })} defaultValue={product?.stock || ''} />
+                  <input type="number" min="0" step="1" {...register('stock', { required: true })} defaultValue={product?.stock || ''} />
                 </div>
               </label>
               {errors.stock && <span>This field is required</span>}

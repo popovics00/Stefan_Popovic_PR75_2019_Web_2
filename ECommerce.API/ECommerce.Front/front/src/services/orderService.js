@@ -12,7 +12,7 @@ const makeOrder = async (productData) => {
     console.log(response,'sss')
     if (response.status === 200 || response.status === 'OK') {
       if (response.data.message !== '') {
-        toast.success(response.data.message);
+        toast.success(response.data.result.message);
         return response.data.result
       }
     } else if (response.status === 402) {

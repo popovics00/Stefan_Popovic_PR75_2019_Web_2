@@ -68,7 +68,7 @@ function decreaseQuantity(id) {
 }
 
 function truncateCart() {
-  localStorage.removeItem("token");
+  localStorage.removeItem("cartItems");
 }
 
 const updateCart = async () => {
@@ -82,7 +82,6 @@ const updateCart = async () => {
       cartItems.forEach(element1 => {
         const elementFromDB = response.data.transferObject.find(element2 => element2.id === element1.id);
         if (elementFromDB && element1.price != elementFromDB.price) {
-          element1.price = elementFromDB.price
           toast.warn(element1.name + "is updated in the meantime.")
         }
         if(elementFromDB && elementFromDB.stock != element1.stock)
@@ -92,6 +91,16 @@ const updateCart = async () => {
             element1.count = elementFromDB.stock;
             toast.error('The stock has changed, so we have reduced the number of '+element1.name+' to '+element1.count+' !');
           }
+        }
+        if(!elementFromDB)
+        {
+          const itemIndex = cartItems.findIndex((item) => item.id === element1.id);
+          cartItems.splice(itemIndex, 1);
+          toast.error(element1.name + " is deleted from cart, because is deleted from shop.")
+        }
+        if(element1.count == 0){
+          const itemIndex = cartItems.findIndex((item) => item.id === element1.id);
+          cartItems.splice(itemIndex, 1);
         }
       });
       localStorage.setItem('cartItems', JSON.stringify(cartItems));

@@ -65,5 +65,24 @@ namespace ECommerce.DAL.Repositories
             var q = _dbContext.Set<Product>().Where(x => ids.Any(y => y == x.Id));
             return q.ToList();
         }
+
+        public bool IncreseStock(int id, int count)
+        {
+            var q = _dbContext.Set<Product>().FirstOrDefault(x => x.IsDeleted == false && x.Id == id);
+            if (q.Stock >= count && count>0)
+            {
+                q.Stock = q.Stock - count;
+                _dbContext.SaveChanges();
+                return true;
+            }
+            else if(count<=0)
+            {
+                q.Stock = q.Stock - count;
+                _dbContext.SaveChanges();
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }

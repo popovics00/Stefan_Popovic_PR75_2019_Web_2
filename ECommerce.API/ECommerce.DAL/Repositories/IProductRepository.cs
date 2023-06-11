@@ -13,5 +13,7 @@ namespace ECommerce.DAL.Repositories
 
         List<Product> GetProductByIds(List<int> ids);
 
+        bool IncreseStock(int id, int count);
+
     }
 }

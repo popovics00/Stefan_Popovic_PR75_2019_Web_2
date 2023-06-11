@@ -38,12 +38,21 @@ namespace ECommerce.DAL.Services.Implementations
 
         public async Task<ResponsePackage<string>> CancelOrder(int id)
         {
-            var order = await _unitOfWork.GetOrderRepository().GetByIdAsync(id);
+            var order = await _unitOfWork.GetOrderRepository().GetByIdAsync(id, includes: x => x.OrderItems);
             TimeSpan ts = DateTime.Now - order.OrderDate;
             if (order.Status == OrderStatus.Pending && (DateTime.Now < order.ShippingTime) && ts.TotalHours > 1)
             {
+                var products = _unitOfWork.GetProductRepository().GetProductByIds(order.OrderItems.Select(x=>x.ProductId).ToList());
+                foreach(var p in products)
+                {
+                    var count = order.OrderItems.FirstOrDefault(x => x.ProductId == p.Id).Quantity;
+                    _unitOfWork.GetProductRepository().IncreseStock(p.Id, -count);
+                }
                 order.Status = OrderStatus.Rejected;
                 await _unitOfWork.Save();
+                var responseJson = await _httpClientService.PostDataToApi("https://localhost:7219/api/User/getByIds", JsonConvert.SerializeObject(new List<int>() { order.CustomerId.Value}));
+                var listCustomers = JsonConvert.DeserializeObject<List<UserDataOut>>(responseJson);
+                await _emailService.SendEmail(listCustomers[0].Email, "Vas order je uspesno cancelovan.", "Canceled order on 1ST Online Shop");
                 return new ResponsePackage<string>()
                 {
                     Status = ResponseStatus.Ok,
@@ -156,12 +165,20 @@ namespace ECommerce.DAL.Services.Implementations
             //stock umanjivanje
             foreach(var item in tempList)
             {
-                var tempItem = dataIn.CartItems.FirstOrDefault(x => x.Id == item.Id);
-                item.Stock -= tempList.Count;
+                var tempItem = dataIn.CartItems.FirstOrDefault(x => x.Name == item.Name);
+                if (item.Stock >= tempItem.Count)
+                    _unitOfWork.GetProductRepository().IncreseStock(tempItem.Id.Value, tempItem.Count.Value);
+                else
+                    return new ResponsePackage<string>()
+                    {
+                        Status = ResponseStatus.Error,
+                        Message = "Error with stock of product with name " + tempItem.Name
+                    };
             }
+            //await _unitOfWork.Save();
 
             Random random = new Random();
-            int randomHours = random.Next(1, 25);
+            int randomHours = random.Next(3, 25);
             var newOrder = new Order()
             {
                 Name = dataIn.FirstName + " " + dataIn.LastName,
@@ -177,7 +194,9 @@ namespace ECommerce.DAL.Services.Implementations
                 Shipping = numberSalerInOrder * 250,
                 Total = (numberSalerInOrder * 250) + dataIn.CartItems.Sum(orderItem => orderItem.Price.Value * orderItem.Count.Value)
             };
-
+            var responseJson = await _httpClientService.PostDataToApi("https://localhost:7219/api/User/getByIds", JsonConvert.SerializeObject(new List<int>() {userId.Value}));
+            var listCustomers = JsonConvert.DeserializeObject<List<UserDataOut>>(responseJson);
+            await _emailService.SendEmail(listCustomers[0].Email, "Uspesno ste napravili porudzbinu, mozete je proveriti u orders na nasoj stranici.", "New Order on 1ST Online Shop");
             await _unitOfWork.GetOrderRepository().AddAsync(newOrder);
             await _unitOfWork.Save();
             return new ResponsePackage<string>(ResponseStatus.Ok, "Successfully ordered.");

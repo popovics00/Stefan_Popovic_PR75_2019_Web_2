@@ -3,7 +3,7 @@ import orderService from "../../services/orderService";
 import orderDataIn from '../../models/order';
 import { toast } from 'react-toastify';
 import Pagination from '../pagination';
-import { Style } from '../../index.css';
+import '../../index.css'; // Corrected import statement for CSS
 import { FaCheckCircle, FaTimesCircle, FaEdit, FaTrash, FaRegListAlt } from 'react-icons/fa';
 import OrderItemTable from './order-item-table';
 import OrderStatus from './order-status';
@@ -89,9 +89,9 @@ function OrderTable() {
     setSearchName(event.target.value);
   };
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    reloadTable(page);
+  const handlePageChange = (page) => { // Removed "this" keyword
+    setCurrentPage(page); // Updated to use setCurrentPage hook
+    reloadTable(page); // Updated to use reloadTable function
   };
 
   return (
@@ -102,9 +102,9 @@ function OrderTable() {
           <div className="col-md-6"><h1 className="title">ORDERS</h1></div>
           <div className="col-md-6 row">
             <div className="icons row">
-              <div className="addBox" onClick={() => openModal()}>
+              {/* <div className="addBox" onClick={() => openModal()}>
                 <i className="fas fa-plus"></i>
-              </div>
+              </div> */}
               <div className="searchBox">
                 <form name="search" onSubmit={handleSearchSubmit}>
                   <input type="text" className="input" name="searchName" value={searchName} onChange={handleSearchChange} />
@@ -134,7 +134,7 @@ function OrderTable() {
                 <tr>
                   <td>{order?.id}</td>
                   <td>{order?.customer} ({order?.customerId})</td>
-                  <td>{order?.firstName} {order?.lastName} <br/> {order?.address}</td>
+                  <td>{order?.name} <br/> {order?.address} <br/> {order?.phone}</td>
                   <td>{order?.comment}</td>
                   <td>{order?.total}</td>
                   <td><b>Order Date</b><br/>{order?.orderDate} <br/> <b>Shipping Date</b> <br/> {order?.shippingTime}</td>
@@ -165,9 +165,11 @@ function OrderTable() {
                   </tr>
                 )}
               </React.Fragment>
+              
             ))}
           </tbody>
-        </table>        
+        </table>
+        <Pagination count={totalCount} currentPage={currentPage} pageSize={pageSize} onPageChange={handlePageChange} />        
       </div>
     </>
   );
