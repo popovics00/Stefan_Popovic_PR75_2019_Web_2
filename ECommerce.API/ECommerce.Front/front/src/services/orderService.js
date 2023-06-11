@@ -46,9 +46,8 @@ const cancelOrder = async (id) => {
   try {
     const response = await axiosInstance.get(`/order/cancelOrder/`+id);
     if (response.status >= 200 && response.status < 300) {
-      if(response.data.message != "")
-        toast.success(response.data.message);
-      return response.data;
+      toast.success(response.data.result.message);
+      return response.data.result
     } else if (response.status === 402) {
       toast.error(response.data.message);
     } else {
