@@ -23,6 +23,7 @@ class UserTable extends React.Component {
   }
 
   openModal = (productId) => {
+
     if (productId == null) {
       this.setState({ showModal: true, selectedProduct: null });
     } else {
@@ -59,19 +60,6 @@ class UserTable extends React.Component {
 
       const productsData = await userServices.getAll(productData);
       const users = productsData.data;
-      console.log(users)
-      // const products = productsData.data.map(item => new ProductDataIn(
-      //   item.category,
-      //   item.categoryId,
-      //   item.description,
-      //   item.id,
-      //   item.images,
-      //   item.name,
-      //   item.lastUpdateTime,
-      //   item.isDeleted,
-      //   item.price,
-      //   item.stock
-      // ));
       this.setState({ users: users, totalCount: productsData.count });
     } catch (error) {
       console.log("Došlo je do greške:", error);
@@ -179,9 +167,9 @@ class UserTable extends React.Component {
                     )}
                   </td>
                   <td>
-                    <button className='editButton' onClick={() => this.openModal(product.id)}>
+                    {/* <button className='editButton' onClick={() => this.openModal(product.id)}>
                       <FaEdit />
-                    </button>
+                    </button> */}
                     <button className='removeButton' onClick={() => this.deleteUser(product.id)}>
                       <FaTrash />
                     </button>
