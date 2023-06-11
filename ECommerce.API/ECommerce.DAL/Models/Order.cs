@@ -9,6 +9,8 @@ namespace ECommerce.DAL.Models
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Comment { get; set; }
+        public DateTime ShippingTime { get; set; }
+        public double Shipping { get; set; }
         public double Total { get; set; }
         public DateTime OrderDate { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; }

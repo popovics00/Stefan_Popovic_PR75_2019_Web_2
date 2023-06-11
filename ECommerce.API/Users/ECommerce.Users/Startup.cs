@@ -137,6 +137,7 @@ namespace ECommerce.API
         {
             services.AddDbContext<UserDbContext>();
             services.AddHttpClient();
+            services.AddTransient<IHttpClientService, HttpClientService>();
             services.AddTransient<IFacebookService, FacebookService>();
             services.AddTransient<IUnitOfWorkUser, UnitOfWorkUser>();
             services.AddTransient<IEmailService, EmailService>();

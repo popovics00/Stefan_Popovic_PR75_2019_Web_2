@@ -20,7 +20,7 @@ namespace ECommerce.DAL.Services.Implementations
         {
 
         }
-        public async Task PostDataToApi(string url, string jsonData)
+        public async Task<string> PostDataToApi(string url, string jsonData)
         {
             try
             {
@@ -32,7 +32,8 @@ namespace ECommerce.DAL.Services.Implementations
 
                     if (response.IsSuccessStatusCode)
                     {
-                        Console.WriteLine("Podaci su uspješno poslani na API.");
+                        string responseJson = await response.Content.ReadAsStringAsync();
+                        return responseJson;
                     }
                     else
                     {
@@ -44,6 +45,9 @@ namespace ECommerce.DAL.Services.Implementations
             {
                 Console.WriteLine("Došlo je do greške prilikom slanja zahtjeva: " + e.Message);
             }
+
+            return null; // Ukoliko dođe do greške, vraćamo null
         }
+
     }
 }

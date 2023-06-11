@@ -9,6 +9,6 @@ namespace ECommerce.DAL.Services.Interfaces
 {
     public interface IHttpClientService
     {
-        Task PostDataToApi(string url, string jsonData);
+        Task<string> PostDataToApi(string url, string jsonData);
     }
 }

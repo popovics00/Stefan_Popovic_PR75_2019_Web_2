@@ -37,12 +37,18 @@ namespace ECommerce.Product.Controllers
         {
             return Ok(_orderService.Save(dataIn, GetUserId()));
         }
+        
+        [HttpGet("cancelOrder/{id}")]
+        public ActionResult CancelOrder(int id)
+        {
+            return Ok(_orderService.CancelOrder(id));
+        }
 
 
         [HttpPost("getAll")]
-        public ActionResult GetAll([FromBody] PaginationDataIn dataIn)
+        public async Task<ActionResult> GetAll([FromBody] PaginationDataIn dataIn)
         {
-            return Ok(_orderService.GetAll(dataIn, GetUserRole(), GetUserId()));
+            return Ok(await _orderService.GetAll(dataIn, GetUserRole(), GetUserId()));
         }
     }
 }

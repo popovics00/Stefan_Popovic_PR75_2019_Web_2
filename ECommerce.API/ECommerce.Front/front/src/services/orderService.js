@@ -42,8 +42,25 @@ const getAll = async (getData) => {
   }
 };
 
+const cancelOrder = async (id) => {
+  try {
+    const response = await axiosInstance.get(`/order/cancelOrder/`+id);
+    if (response.status >= 200 && response.status < 300) {
+      if(response.data.message != "")
+        toast.success(response.data.message);
+      return response.data;
+    } else if (response.status === 402) {
+      toast.error(response.data.message);
+    } else {
+      toast.error("Error occurred.");
+    }
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 
 export default {
   makeOrder,
-  getAll
+  getAll,
+  cancelOrder
 };

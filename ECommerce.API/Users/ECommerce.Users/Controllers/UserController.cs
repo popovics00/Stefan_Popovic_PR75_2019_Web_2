@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using ECommerce.DAL.Models;
 using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 using Facebook;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ECommerce.API.Controllers
 {
@@ -116,6 +117,13 @@ namespace ECommerce.API.Controllers
         {
             var temp = GetUserId();
             return Ok(_userService.GetAll(dataIn));
+        }
+        
+        [HttpPost("getByIds")]
+        [AllowAnonymous]
+        public ActionResult GetByIds([FromBody] List<int> ids)
+        {
+            return Ok(_userService.GetByIds(ids));
         }
 
         [HttpPost("facebookLogin")]

@@ -1,5 +1,4 @@
 import React from 'react';
-
 function OrderItemTable({ isOpen, onClose, orderItems }) {
   return (
     <div className={`modal ${isOpen ? 'open' : ''}`}>
@@ -13,6 +12,7 @@ function OrderItemTable({ isOpen, onClose, orderItems }) {
               <th>Product</th>
               <th>Price</th>
               <th>Quantity</th>
+              <th>Saler</th>
             </tr>
           </thead>
           <tbody>
@@ -22,6 +22,7 @@ function OrderItemTable({ isOpen, onClose, orderItems }) {
                 <td>{item.productName}</td>
                 <td>{item.productPrice}</td>
                 <td>{item.quantity}</td>
+                <td>{item.saler}</td>
               </tr>
             ))}
           </tbody>

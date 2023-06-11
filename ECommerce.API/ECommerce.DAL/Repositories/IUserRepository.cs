@@ -12,6 +12,7 @@ namespace ECommerce.DAL.Repositories
         User GetUserByEmail(string email);
         User GetUserByUserName(string username);
         User GetUserById(int userId);
+        List<User> GetUserByIds(List<int> ids);
         ResponsePackage<List<User>> GetAllUsersWithPagination(PaginationDataIn dataIn);
     }
 }

@@ -339,6 +339,19 @@ align: center;
             };
         }
 
+        public List<UserDataOut> GetByIds(List<int> ids)
+        {
+            var users = _uowUser.GetUserRepository().GetUserByIds(ids);
+            return users.Select(x => new UserDataOut(){
+                FirstName = x.FirstName,
+                LastName = x.LastName, 
+                Id = x.Id,
+                Address = x.Address,
+                UserName = x.UserName,
+                Email = x.Email
+            }).ToList();
+        }
+
         public ResponsePackage<User> GetUserByEmailAndPass(string email, string pass)
         {
             var userFromDb = _uowUser.GetUserRepository().GetUserByEmail(email);

@@ -12,6 +12,7 @@ namespace ECommerce.DAL.Services.Interfaces
         ResponsePackage<string> ActivateUser(string email, string key);
         ResponsePackage<string> ApproveOrRejectUser(int userId, bool rejectOrApprove);
         ResponsePackage<string> Delete(int userId);
+        List<UserDataOut> GetByIds(List<int> ids);
         ResponsePackage<UserDataOut> Get(int userId);
         ResponsePackage<PaginationDataOut<UserDataOut>> GetAll(PaginationDataIn dataIn);
         Task<User> RegisterOrLoginFacebookUser(FacebookUserData dataIn);

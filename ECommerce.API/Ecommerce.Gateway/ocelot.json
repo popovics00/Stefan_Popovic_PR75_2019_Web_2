@@ -134,7 +134,6 @@
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
       }
-
     },
     {
       "DownstreamPathTemplate": "/api/order/getAll",
@@ -154,7 +153,7 @@
 
     },
     {
-      "DownstreamPathTemplate": "/api/order/cancel/{orderId}",
+      "DownstreamPathTemplate": "/api/order/cancelOrder/{id}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -162,13 +161,12 @@
           "Port": 7220
         }
       ],
-      "UpstreamPathTemplate": "/api/order/cancel/{orderId}",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamPathTemplate": "/api/order/cancelOrder/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
       }
-
     },
 
 

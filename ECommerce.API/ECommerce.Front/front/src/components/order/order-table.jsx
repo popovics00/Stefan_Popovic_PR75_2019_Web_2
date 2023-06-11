@@ -5,7 +5,8 @@ import { toast } from 'react-toastify';
 import Pagination from '../pagination';
 import { Style } from '../../index.css';
 import { FaCheckCircle, FaTimesCircle, FaEdit, FaTrash, FaRegListAlt } from 'react-icons/fa';
-import OrderItemTable from './order-table copy';
+import OrderItemTable from './order-item-table';
+import OrderStatus from './order-status';
 
 function OrderTable() {
   const [orders, setOrders] = useState([]);
@@ -132,32 +133,22 @@ function OrderTable() {
               <React.Fragment key={order.id}>
                 <tr>
                   <td>{order?.id}</td>
-                  <td>{order?.customerId}</td>
+                  <td>{order?.customer} ({order?.customerId})</td>
                   <td>{order?.firstName} {order?.lastName} <br/> {order?.address}</td>
                   <td>{order?.comment}</td>
                   <td>{order?.total}</td>
-                  <td>{order?.orderDate}</td>
+                  <td><b>Order Date</b><br/>{order?.orderDate} <br/> <b>Shipping Date</b> <br/> {order?.shippingTime}</td>
                   <td>
-                    {order?.status}
-                    {order?.status === 'Pending' && (
-                      <div>
-                        <button className='approveButton' onClick={() => handleApprove(order?.id)}>
-                          <FaCheckCircle />
-                        </button>
-                        <button className='rejectButton' onClick={() => handleReject(order?.id)}>
-                          <FaTimesCircle />
-                        </button>
-                      </div>
-                    )}
+                      <OrderStatus order={{id: order?.id, orderDate: order?.orderDate, shippingTime: order?.shippingTime, status: order?.status}} />
                   </td>
                   <td>{order?.orderItems.length}</td>
                   <td>
                     <button className='editButton' onClick={() => openModal(order?.id)}>
                       <FaRegListAlt />
                     </button>
-                    <button className='removeButton' onClick={() => deleteUser(order?.id)}>
+                    {/* <button className='removeButton' onClick={() => deleteUser(order?.id)}>
                       <FaTrash />
-                    </button>
+                    </button> */}
                   </td>
                 </tr>
                 {expandedOrderId === order.id && (

@@ -53,5 +53,10 @@ namespace ECommerce.DAL.Repositories
                 Message = count.ToString()
             };
         }
+
+        public List<User> GetUserByIds(List<int> ids)
+        {
+            return _dbContext.Set<User>().Where(x => ids.Contains(x.Id)).ToList();
+        }
     }
 }

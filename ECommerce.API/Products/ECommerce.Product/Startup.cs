@@ -138,6 +138,7 @@ namespace ECommerce.Product
         {
             services.AddDbContext<ProductDbContext>();
             services.AddHttpClient();
+            services.AddTransient<IHttpClientService, HttpClientService>();
             services.AddTransient<IUnitOfWorkProduct, UnitOfWorkProduct>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IOrderService, OrderService>();
