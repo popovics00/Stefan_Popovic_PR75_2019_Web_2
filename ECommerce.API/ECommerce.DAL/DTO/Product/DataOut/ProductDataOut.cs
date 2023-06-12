@@ -18,6 +18,7 @@ namespace ECommerce.DAL.DTO.Product.DataOut
         public string Images { get; set; }
         public string Saler { get; set; }
         public int? CustomerId { get; set; }
+        public DateTime? LastUpdateTime { get; set; }
 
         public ProductDataOut()
         {
@@ -34,6 +35,7 @@ namespace ECommerce.DAL.DTO.Product.DataOut
             Images = product?.Images;
             CategoryName = product?.Category?.Name;
             CustomerId = product.CustomerId;
+            LastUpdateTime = product.LastUpdateTime;
         }
     }
 }

@@ -115,6 +115,9 @@ namespace ECommerce.DAL.Services.Implementations
                 if(dbUser == null)
                     return new ResponsePackage<string>(ResponseStatus.Error, "Product not fount in database.");
 
+                if (dataIn.LastUpdateTime != dbUser.LastUpdateTime)
+                    return new ResponsePackage<string>(ResponseStatus.Error, "The product has been changed in the meantime. Try again.");
+
                 dbUser.Name = productForDb.Name;
                 dbUser.Price = productForDb.Price;
                 dbUser.Stock = productForDb.Stock;

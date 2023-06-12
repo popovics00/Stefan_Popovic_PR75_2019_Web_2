@@ -37,7 +37,8 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
       stock: '',
       categoryId: '',
       description: '',
-      images: ''
+      images: '',
+      lastUpdateTime: new Date()
     });
     reset(product);
   };
@@ -51,6 +52,7 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
       formData.append('stock', productData.stock);
       formData.append('description', productData.description);
       formData.append('categoryId', productData.categoryId);
+      formData.append('lastUpdateTime', productData.lastUpdateTime);
       console.log(product, 'product')
       if (productData.images instanceof FileList) 
         formData.append('images', productData.images[0], productData.images[0].name);
@@ -58,9 +60,17 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
         formData.append('images', productData.images);
 
       
-      await productService.createProduct(formData);
-      onClose();
-      resetProduct();
+      const temp = await productService.createProduct(formData);
+      if(temp.status!=200)
+      {
+        toast.error(temp.message); 
+      }
+      else
+      {
+        toast.success(temp.message); 
+        onClose();
+        resetProduct();
+      }
     } catch (error) {
       toast.error('Error creating product.');
     }
@@ -83,7 +93,8 @@ function CreateEditProduct({ isOpen, onClose, children, product }) {
         price: '',
         stock: '',
         categoryId: '',
-        description: ''
+        description: '',
+        lastUpdateTime: new Date()
       });
     }
   }, [product, reset]);

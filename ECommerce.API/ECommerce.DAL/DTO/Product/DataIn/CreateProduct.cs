@@ -10,6 +10,7 @@ namespace ECommerce.DAL.DTO.Product.DataIn
         public int Stock { get; set; } = 0;
         public string? Description { get; set; }
         public int? CategoryId { get; set; }
+        public DateTime? LastUpdateTime { get; set; }
         public IFormFile? Images { get; set; }
     }
 }

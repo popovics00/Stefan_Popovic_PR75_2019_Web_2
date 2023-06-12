@@ -17,6 +17,7 @@ const createProduct = async (productData) => {
     } else {
       toast.error('An error occurred.');
     }
+    return response.data.result
   } catch (error) {
     toast.error(error.message);
   }
