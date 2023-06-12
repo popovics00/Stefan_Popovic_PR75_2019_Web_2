@@ -97,17 +97,16 @@ function Menu() {
         <div className="menu-wrapper">
           <div className="menu-right">
             <ShowUserIcon/>
-            <MenuItem item="Products" path="/products" role={["Customer","Saler","Admin"]}/>
-            <MenuItem item="Users" path="/users" role={["Customer","Saler","Admin"]}/>
-            <MenuItem item="Orders" path="/orders" role={["Customer","Saler","Admin"]}/>
+            <MenuItem item="Home" path="/" role={["Customer","Saler","Admin"]}/>
+            <MenuItem item="Users" path="/users" role={["Admin"]}/>
           </div>
           <div className="menu-header">
             <img className="login-photo" src={require("../../images/logo.png")} onClick={() => { navigate('/'); }}/>
           </div>
           <div className="menu-left">
-            <MenuItem item="Prodavnica" path="glavna-prodavnica" role={["Customer","Saler","Admin"]}/>
-            <MenuItem item="Prodavnica" path="glavna-prodavnica" role={["Customer","Saler","Admin"]}/>
-            <MenuItem item="Prodavnica" path="glavna-prodavnica" role={["Customer","Saler","Admin"]}/>
+            
+            <MenuItem item="Products" path="/products" role={["Saler","Admin"]}/>
+            <MenuItem item="Orders" path="/orders" role={["Customer","Saler","Admin"]}/>
             <div className="cart-icon" onClick={openCartModal}>
               <FaShoppingCart/>
             </div>

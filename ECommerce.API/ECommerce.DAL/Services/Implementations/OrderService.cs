@@ -109,12 +109,14 @@ namespace ECommerce.DAL.Services.Implementations
                 {
                     var oiOfSaler = order.OrderItems.Where(x => x.Product.CustomerId == userId).ToList();
                     order.OrderItems = oiOfSaler;
+                    order.Total = order.OrderItems.Sum(x => x.Product.Price*x.Quantity);
+                    order.Shipping = 250;
                 }
             }
             var ordersDto = orders.TransferObject.Select(x =>
             new OrderDataOut()
             {
-                Customer = listCustomers.FirstOrDefault(y=>y.Id==x.CustomerId)?.FirstName + "" + listCustomers.FirstOrDefault(y => y.Id == x.CustomerId)?.LastName,
+                Customer = listCustomers.FirstOrDefault(y=>y.Id==x.CustomerId)?.FirstName + " " + listCustomers.FirstOrDefault(y => y.Id == x.CustomerId)?.LastName,
                 CustomerId = x.CustomerId,
                 Name = x.Name,
                 Address = x.Address,
@@ -122,6 +124,7 @@ namespace ECommerce.DAL.Services.Implementations
                 Phone = x.Phone,
                 Comment = x.Comment,
                 Total = x.Total,
+                Shipping = x.Shipping,
                 ShippingTime = x.ShippingTime,
                 OrderDate = x.OrderDate,
                 Status = x.Status.ToString(),

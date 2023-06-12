@@ -12,6 +12,8 @@ import UserTable from './components/user/user-table';
 import OrderTable from './components/order/order-table';
 import ProductPage from './components/product-comp/single-product-page';
 import userServices from './services/userServices';
+import { toast } from 'react-toastify';
+
 function App() {
 
   const currentUser = userServices.getCurrentUser();
@@ -26,10 +28,7 @@ function App() {
           <Route path="" element={<Login/>} />
           <Route path="login" element={<Login/>} />
           <Route path="register" element={<Register/>} />
-          <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="users" element={<UserTable/>} />
           <Route path="*" element={<NotFound />} />
-
         </Routes>
       </div>
     </>
@@ -44,12 +43,9 @@ function App() {
         <Routes>
           <Route path="" element={<HomePage />} />
           <Route path="checkout" element={<Checkout/>} />
-          <Route path="edit-profile" element={<Register/>} />
-          <Route path="products" element={<ProductTable/>} />
-          <Route path="users" element={<UserTable/>} />
           <Route path="orders" element={<OrderTable/>} />
           <Route path="/product/:id" element={<ProductPage />} />
-                  <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </>
@@ -62,14 +58,12 @@ function App() {
      <div className="main-container">
         <Menu />
         <Routes>
-          <Route path="" element={<HomePage />} />
-          <Route path="products" element={<ProductTable/>} />
+        <Route path="" element={<HomePage />} />
           <Route path="checkout" element={<Checkout/>} />
           <Route path="orders" element={<OrderTable/>} />
-
-          <Route path="users" element={<UserTable/>} />
           <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="users" element={<UserTable/>} />
+          <Route path="products" element={<ProductTable/>} />
+          <Route path="*" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
@@ -89,6 +83,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="products" element={<ProductTable/>} />
+          <Route path="orders" element={<OrderTable/>} />
           <Route path="users" element={<UserTable/>} />
           <Route path="checkout" element={<Checkout/>} />
           <Route path="product/:id" component={ProductPage} />
@@ -101,10 +96,9 @@ function App() {
 }
 function NotFound() {
   const navigate = useNavigate();
-
-  navigate('/'); // Redirektuj na početnu stranicu
-
-  return null; // Ova komponenta neće biti renderovana
+  window.location.href = "https://localhost:3000/";
+  toast.error('Wrong page.');
+  return null;
 }
 
 export default App;

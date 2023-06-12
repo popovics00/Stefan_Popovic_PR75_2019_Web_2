@@ -122,6 +122,7 @@ function OrderTable() {
               <th>Shipping Data</th>
               <th>Comment</th>
               <th>Total</th>
+              <th>Shipping</th>
               <th>Date</th>
               <th>Status</th>
               <th>No orders</th>
@@ -136,7 +137,8 @@ function OrderTable() {
                   <td>{order?.customer} ({order?.customerId})</td>
                   <td>{order?.name} <br/> {order?.address} <br/> {order?.phone}</td>
                   <td>{order?.comment}</td>
-                  <td>{order?.total}</td>
+                  <td>{order?.total} RSD</td>
+                  <td>{order?.shipping} RSD</td>
                   <td><b>Order Date</b><br/>{order?.orderDate} <br/> <b>Shipping Date</b> <br/> {order?.shippingTime}</td>
                   <td>
                       <OrderStatus order={{id: order?.id, orderDate: order?.orderDate, shippingTime: order?.shippingTime, status: order?.status}} />
