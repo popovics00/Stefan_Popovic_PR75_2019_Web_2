@@ -2,6 +2,7 @@
 using ECommerce.DAL.Models;
 using ECommerce.DAL.Data;
 using ECommerce.DAL.DTO;
+using NLog.LayoutRenderers.Wrappers;
 
 namespace ECommerce.DAL.Repositories
 {
@@ -38,7 +39,12 @@ namespace ECommerce.DAL.Repositories
             else if (tempRole == Role.Saler)
                 q = q.Where(x => x.OrderItems.Any(y => y.Product.CustomerId == userId) || x.CustomerId == userId);
 
-
+            if (dataIn.FilterByUserRole.Value)
+            {
+                var oneHourAgo = DateTime.Now.AddHours(-1);
+                q = q.Where(x => x.Status == OrderStatus.Pending);
+                q = q.Where(x => x.OrderDate >= oneHourAgo);
+            }
             count = q.Count();
             return new ResponsePackage<List<Order>>
             {

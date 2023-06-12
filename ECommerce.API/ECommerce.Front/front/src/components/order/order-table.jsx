@@ -3,7 +3,7 @@ import orderService from "../../services/orderService";
 import orderDataIn from '../../models/order';
 import { toast } from 'react-toastify';
 import Pagination from '../pagination';
-import '../../index.css'; // Corrected import statement for CSS
+import '../../index.css'; // Ispravljena izjava za uvoz CSS-a
 import { FaCheckCircle, FaTimesCircle, FaEdit, FaTrash, FaRegListAlt } from 'react-icons/fa';
 import OrderItemTable from './order-item-table';
 import OrderStatus from './order-status';
@@ -17,6 +17,7 @@ function OrderTable() {
   const [pageSize, setPageSize] = useState(5);
   const [totalCount, setTotalCount] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCheckboxChecked, setCheckboxChecked] = useState(true);
   const [expandedOrderId, setExpandedOrderId] = useState(null); // New state variable
 
   const openModal = (orderId) => {
@@ -51,6 +52,7 @@ function OrderTable() {
         page: page,
         searchName: searchName,
         pageSize: pageSize,
+        filterByUserRole: !isCheckboxChecked
       };
 
       if (orderData.searchName !== "") {
@@ -88,10 +90,15 @@ function OrderTable() {
   const handleSearchChange = (event) => {
     setSearchName(event.target.value);
   };
-
-  const handlePageChange = (page) => { // Removed "this" keyword
-    setCurrentPage(page); // Updated to use setCurrentPage hook
-    reloadTable(page); // Updated to use reloadTable function
+  
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    reloadTable(page);
+  };
+  
+  const handleCheckboxChange = () => {
+    setCheckboxChecked(!isCheckboxChecked);
+    reloadTable(1);
   };
 
   return (
@@ -105,6 +112,10 @@ function OrderTable() {
               {/* <div className="addBox" onClick={() => openModal()}>
                 <i className="fas fa-plus"></i>
               </div> */}
+              <div className="checkBoxTest" onClick={handleCheckboxChange}>
+                <input type='checkbox' className='cb' checked={isCheckboxChecked} />
+                <span className='cbtext'>NEW ORDERS</span>
+              </div>
               <div className="searchBox">
                 <form name="search" onSubmit={handleSearchSubmit}>
                   <input type="text" className="input" name="searchName" value={searchName} onChange={handleSearchChange} />
@@ -141,7 +152,7 @@ function OrderTable() {
                   <td>{order?.shipping} RSD</td>
                   <td><b>Order Date</b><br/>{order?.orderDate} <br/> <b>Shipping Date</b> <br/> {order?.shippingTime}</td>
                   <td>
-                      <OrderStatus order={{id: order?.id, orderDate: order?.orderDate, shippingTime: order?.shippingTime, status: order?.status}} />
+                    <OrderStatus order={{id: order?.id, orderDate: order?.orderDate, shippingTime: order?.shippingTime, status: order?.status}} />
                   </td>
                   <td>{order?.orderItems.length}</td>
                   <td>
@@ -167,7 +178,6 @@ function OrderTable() {
                   </tr>
                 )}
               </React.Fragment>
-              
             ))}
           </tbody>
         </table>
