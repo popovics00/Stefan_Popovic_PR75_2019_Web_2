@@ -224,10 +224,6 @@
       ],
       "UpstreamPathTemplate": "/api/user/activate/{email}/{key}",
       "UpstreamHttpMethod": [ "GET" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
 
     },
     {

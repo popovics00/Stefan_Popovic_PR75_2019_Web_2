@@ -87,8 +87,8 @@ namespace ECommerce.API.Controllers
                 return Ok(new ResponsePackage<string>(ResponseStatus.Error, "Wrong email or password!"));
         }
 
-        [HttpGet("activate/{email}/{key}")]
         [AllowAnonymous]
+        [HttpGet("activate/{email}/{key}")]
         public ActionResult Activate(string email, string key)
         {
             ResponsePackage<string> retval;
