@@ -118,7 +118,7 @@
   width: 100%;
   padding: 10px;
   margin-top: 20px;
-  background-color: #4caf50;
+  background-color: #fbcbe7;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -126,7 +126,7 @@
 }
 
 .register-form-wrapper button:hover {
-  background-color: #45a049;
+  background-color: #eaa8f3;
 }
 
 .login-link-wrapper {
@@ -166,7 +166,7 @@ button {
 }
 
 button:hover {
-  background-color: rgb(180, 99, 0);
+  background-color: rgb(147, 0, 180);
   color: white;
 }
 

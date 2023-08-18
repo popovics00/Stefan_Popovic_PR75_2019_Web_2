@@ -77,17 +77,17 @@ function App() {
      <div className="main-container">
         <Menu />
         <Routes>
-        <Route path="orders" element={<OrderTable/>} />
-
           <Route path="" element={<HomePage />} />
+          <Route path="orders" element={<OrderTable/>} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="products" element={<ProductTable/>} />
           <Route path="orders" element={<OrderTable/>} />
           <Route path="users" element={<UserTable/>} />
           <Route path="checkout" element={<Checkout/>} />
-          <Route path="product/:id" component={ProductPage} />
+          <Route path="product/:id" element={<ProductPage />} />
           <Route path="*" element={<NotFound />} />
+          
         </Routes>
       </div>
     </>

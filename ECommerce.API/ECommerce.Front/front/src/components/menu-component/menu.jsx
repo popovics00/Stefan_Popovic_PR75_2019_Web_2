@@ -95,18 +95,18 @@ function Menu() {
     <>
       {user != null ? (
         <div className="menu-wrapper">
-          <div className="menu-right">
-            <ShowUserIcon/>
-            <MenuItem item="Home" path="/" role={["Customer","Saler","Admin"]}/>
-            <MenuItem item="Users" path="/users" role={["Admin"]}/>
-          </div>
           <div className="menu-header">
             <img className="login-photo" src={require("../../images/logo.png")} onClick={() => { navigate('/'); }}/>
           </div>
-          <div className="menu-left">
-            
+          <div className="menu-right">
+            <MenuItem item="Home" path="/" role={["Customer","Saler","Admin"]}/>
+            <MenuItem item="Users" path="/users" role={["Admin"]}/>
             <MenuItem item="Products" path="/products" role={["Saler","Admin"]}/>
             <MenuItem item="Orders" path="/orders" role={["Customer","Saler","Admin"]}/>
+          </div>
+          <div className="menu-left">
+            
+            <ShowUserIcon/>
             <div className="cart-icon" onClick={openCartModal}>
               <FaShoppingCart/>
             </div>
