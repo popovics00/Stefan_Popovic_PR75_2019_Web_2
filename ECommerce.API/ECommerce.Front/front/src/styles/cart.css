@@ -126,7 +126,7 @@
   height: 30px;
   background-color: #fff;
   border: none;
-  color: orange;
+  color: purple;
   font-size: 18px;
   cursor: pointer;
   display: flex;
@@ -136,7 +136,7 @@
 }
 
 .quantity-button:hover {
-  background-color: orange;
+  background-color: purple;
   color: white;
 }
 

@@ -26,7 +26,7 @@ ReactDOM.render(
       css={`
         display: block;
         margin: 0 auto;
-        background-color: orange;
+        background-color: purple;
       `}
     /></>
   ,

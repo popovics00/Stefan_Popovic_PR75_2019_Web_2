@@ -31,7 +31,7 @@
 }
 
 .menu-header .login-photo {
-  width: 150px;
+  width: 100px;
   border: none !important;
   height: auto;
   cursor: pointer;
@@ -96,11 +96,11 @@
     border-radius: 10px;
     height: 40px;
     margin: auto;
-    border: 1px solid orange;
+    border: 1px solid purple;
   }
   .user-avatar:hover {
     transition: 0.5s;
-    border: 5px solid orange;
+    border: 5px solid purple;
   }
 }
 
