@@ -19,28 +19,16 @@ function ProductElement(obj) {
   const { product } = obj;
   return (
     <>
-      <div className="products-single fix">
+      <div className="products-single fix" >
         <div className="box-img-hover">
-          <div className="type-lb">
-            <p className="sale">Sale</p>
-          </div>
           <img src={product.images} className="img-fluid" alt="Image" onClick={() => navigate('/product/'+product?.id)}/>
-          <div className="mask-icon">
-            <ul>
-              <li>
-                <a href="#" data-toggle="tooltip" data-placement="right" title="View" onClick={() => navigate('/product/'+product?.id)}>
-                  <i className="fas fa-eye"></i>
-                </a>
-              </li>
-            </ul>
-            <a className="cart" onClick={() => handleAddToCart(product)}>
-              ADD TO CART
-            </a>
-          </div>
         </div>
         <div className="why-text" onClick={() => navigate('/product/'+product?.id)}>
-          <h4>{product.name}</h4>
-          <h5>{product.price} RSD</h5>
+          <h4 onClick={() => navigate('/product/'+product?.id)}>{product.name} </h4>
+          <h5 onClick={() => navigate('/product/'+product?.id)}>{product.price} RSD</h5>
+          <a className="cart" onClick={() => handleAddToCart(product)}>
+            ADD TO CART
+          </a>
         </div>
       </div>
     </>

@@ -193,13 +193,13 @@ table td {
 
 table thead th {
   color: #ffffff;
-  background: #c3a64f;
+  background: #c34f99;
 }
 
 
 table thead th:nth-child(odd) {
   color: #ffffff;
-  background: #604a32;
+  background: #8f4975;
 }
 
 table tr:nth-child(even) {

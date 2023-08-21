@@ -54,7 +54,8 @@
     color: black;
     padding: 15px 20px;
     text-align: center;
-    background-color: #fca400;
+    color: #fff;
+    background-color: #b000fc;
     text-transform: uppercase;
   }
   .slides-container li .btn:hover {
@@ -223,10 +224,10 @@
 .why-text h5{
   font-size: 18px;
   font-family: 'Poppins', sans-serif;
-  padding: 4px;
+  padding: 8px;
 display: inline-block;
-background: #b0b435;
-color: #ffffff;
+background: #5b0b62;
+color: #fff;
   font-weight: 600;
 }
 .mask-icon{
